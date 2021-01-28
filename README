@@ -7,3 +7,7 @@ relocates the vector table to the flash memory.
 
 The Makefile builds the pico-sdk and runs the gcc preprocessor to generate
 boot2.S. crt0.S has been manually patched and is not currently auto-generated.
+
+You'll need an arm-none-eabi toolchain and cmake to build pico-sdk and the
+AdaCore Community 2020 GNAT toolchain to build Ada code.
+Other toolchains may work, ymmv.

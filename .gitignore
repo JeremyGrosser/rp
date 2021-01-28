@@ -1,3 +1,4 @@
 *.swp
 obj
 pico-sdk
+src/boot2.S
