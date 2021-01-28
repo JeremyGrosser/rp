@@ -29,51 +29,9 @@ project RP is
       for Leading_Switches ("Ada") use ("boot2.o");
       for Switches ("Ada") use
           ("-T" & Project'Project_Dir & "pico-sdk/src/rp2_common/pico_standard_link/memmap_default.ld",
-           "-L" & Project'Project_Dir & "pico-sdk/src/rp2_common/boot_stage2",
            "-Wl,-Map=link.map",
            "-Wl,-print-memory-usage",
            "-Wl,-gc-sections");
    end Linker;
-
-   package Device_Configuration is
-      --  Name of the CPU core on the RP2040
-      for CPU_Name use "ARM Cortex-M0+";
-
-      for Float_Handling use "soft";
-
-      --  Number of interrupt lines on the RP2040
-      for Number_Of_Interrupts use "26";
-
-      --  List of memory banks on the RP2040
-      for Memories use ("SRAM", "FLASH", "CCM1");
-
-      --  Specify from which memory bank the program will load
-      for Boot_Memory use "FLASH";
-
-      --  Allocate the main stack in CCM1
-      for Main_Stack_Memory use "CCM1";
-      for Main_Stack_Size use "4096";
-
-      --  Specification of the SRAM
-      for Mem_Kind ("SRAM") use "ram";
-      for Address ("SRAM") use "0x20000000";
-      for Size ("SRAM") use "256K";
-
-      --  Specification of the CCM1
-      for Mem_Kind ("CCM1") use "ram";
-      for Address ("CCM1") use "0x20040000";
-      for Size ("CCM1") use "4096";
-
-      --  Specification of the CCM2
-      for Mem_Kind ("CCM2") use "ram";
-      for Address ("CCM2") use "0x20041000";
-      for Size ("CCM2") use "4096";
-
-      --  Specification of the FLASH
-      for Mem_Kind ("FLASH") use "rom";
-      for Address ("FLASH") use "0x10000000";
-      for Size ("FLASH") use "2M";
-
-   end Device_Configuration;
 
 end RP;
