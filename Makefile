@@ -5,7 +5,7 @@ main: pico-sdk src/boot2.S
 	gprbuild -P rp.gpr -j0 -f
 
 pico-sdk:
-	git submodule init --update
+	git submodule update
 	cd pico-sdk && cmake . && make
 
 src/boot2.S: pico-sdk
@@ -17,3 +17,6 @@ src/boot2.S: pico-sdk
 
 svd:
 	svd2ada -o src/rp2040 -p RP2040_SVD --boolean --gen-interrupts --gen-uint-always src/rp2040.svd
+
+clean:
+	rm -rf pico-sdk obj src/boot2.S

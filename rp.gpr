@@ -4,11 +4,10 @@ project RP is
 
    for Languages use ("Ada", "ASM_CPP"); -- ASM_CPP to compile the startup code
    for Source_Dirs use
-       ("pico-sdk/src/rp2040/hardware_regs/include",
-        "pico-sdk/src/common/pico_binary_info/include",
-        "src/rp2040",
+       ("src/rp2040",
         "src");
    for Object_Dir use "obj";
+   for Create_Missing_Dirs use "true";
    for Main use ("main.adb");
 
    for Target use "arm-eabi";
