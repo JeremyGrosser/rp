@@ -5,7 +5,7 @@ main: pico-sdk src/boot2.S
 	gprbuild -P rp.gpr -j0 -f
 
 pico-sdk:
-	git submodule update
+	git clone https://github.com/raspberrypi/pico-sdk
 	cd pico-sdk && cmake . && make
 
 src/boot2.S: pico-sdk
