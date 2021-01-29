@@ -1,12 +1,21 @@
-with RP2.GPIO; use RP2.GPIO;
+with RP.GPIO; use RP.GPIO;
+with RP.ROM;
+with RP2040_SVD; use RP2040_SVD;
+with Ada.Assertions; use Ada.Assertions;
 
 procedure Main is
    LED : constant GPIO_Pin := 15;
+   X   : UInt32 with Volatile;
 begin
-   RP2.GPIO.Enable;
+   RP.GPIO.Enable;
    Configure (LED, Output);
+   Set (LED);
+
+   X := RP.ROM.popcount32 (2#1110#);
+   Assert (X = 3);
+
    loop
-      Set (LED);
       Clear (LED);
+      Set (LED);
    end loop;
 end Main;

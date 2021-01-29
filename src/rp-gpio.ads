@@ -3,7 +3,7 @@ with RP2040_SVD.PADS_BANK0; use RP2040_SVD.PADS_BANK0;
 with RP2040_SVD;            use RP2040_SVD;
 with System;
 
-package RP2.GPIO is
+package RP.GPIO is
    type GPIO_Pin is range 0 .. 29;
    type GPIO_Direction is (Input, Output);
    type GPIO_Function is
@@ -124,4 +124,4 @@ private
       with Import, Address => IO_BANK0_Base;
    PADS_BANK_Periph : aliased PADS_BANK
       with Import, Address => PADS_BANK0_Base;
-end RP2.GPIO;
+end RP.GPIO;

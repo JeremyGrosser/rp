@@ -1,7 +1,7 @@
 with RP2040_SVD.RESETS; use RP2040_SVD.RESETS;
 with RP2040_SVD.SIO;    use RP2040_SVD.SIO;
 
-package body RP2.GPIO is
+package body RP.GPIO is
    function Pin_Mask (Pin : GPIO_Pin)
       return GPIO_Pin_Mask
    is (GPIO_Pin_Mask (Shift_Left (UInt32 (1), GPIO_Pin'Pos (Pin))));
@@ -58,4 +58,4 @@ package body RP2.GPIO is
       return Boolean
    is ((SIO_Periph.GPIO_IN.GPIO_IN and Pin_Mask (Pin)) /= 0);
 
-end RP2.GPIO;
+end RP.GPIO;
