@@ -8,14 +8,14 @@ package body RP2.GPIO is
 
    procedure Enable is
    begin
-      if RESETS_Periph.Reset.io_bank0 then
+      if RESETS_Periph.RESET.io_bank0 then
          RESETS_Periph.RESET.io_bank0 := False;
          while not RESETS_Periph.RESET_DONE.io_bank0 loop
             null;
          end loop;
       end if;
 
-      if RESETS_Periph.Reset.pads_bank0 then
+      if RESETS_Periph.RESET.pads_bank0 then
          RESETS_Periph.RESET.pads_bank0 := False;
          while not RESETS_Periph.RESET_DONE.pads_bank0 loop
             null;
