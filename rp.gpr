@@ -1,3 +1,8 @@
+--
+--  Copyright 2021 (C) Jeremy Grosser
+--
+--  SPDX-License-Identifier: BSD-3-Clause
+--
 project RP is
 
    for Languages use ("Ada", "ASM_CPP"); -- ASM_CPP to compile the startup code

@@ -1,3 +1,9 @@
+--
+--  Copyright 2021 (C) Jeremy Grosser
+--
+--  SPDX-License-Identifier: BSD-3-Clause
+--
+
 with Ada.Assertions; use Ada.Assertions;
 with RP2040_SVD; use RP2040_SVD;
 with RP.GPIO;    use RP.GPIO;

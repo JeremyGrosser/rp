@@ -1,3 +1,9 @@
+--
+--  Copyright 2021 (C) Jeremy Grosser
+--
+--  SPDX-License-Identifier: BSD-3-Clause
+--
+
 with RP2040_SVD.IO_BANK0;   use RP2040_SVD.IO_BANK0;
 with RP2040_SVD.PADS_BANK0; use RP2040_SVD.PADS_BANK0;
 with RP2040_SVD;            use RP2040_SVD;

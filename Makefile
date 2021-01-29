@@ -1,3 +1,7 @@
+#
+# Copyright (C) 2021 Jeremy Grosser
+# SPDX-License-Identifier: BSD-3-Clause
+#
 uf2: main
 	pico-sdk/elf2uf2/elf2uf2 obj/main obj/main.uf2
 

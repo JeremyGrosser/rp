@@ -1,3 +1,9 @@
+--
+--  Copyright 2021 (C) Jeremy Grosser
+--
+--  SPDX-License-Identifier: BSD-3-Clause
+--
+
 package body RP.ROM is
    --  2.8.3.1. Bootrom Functions
    function rom_hword_as_ptr
