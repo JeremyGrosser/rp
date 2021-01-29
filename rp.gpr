@@ -1,5 +1,3 @@
---with "boot_stage2";
-
 project RP is
 
    for Languages use ("Ada", "ASM_CPP"); -- ASM_CPP to compile the startup code
