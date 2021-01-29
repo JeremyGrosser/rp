@@ -20,7 +20,11 @@ project RP is
             "-ffunction-sections",
             "-fdata-sections",
             "-fstack-usage",
-            "-Wstack-usage=4096");
+            "-Wstack-usage=4096",
+            "-gnatyg",    -- GNAT Style checks
+            "-gnaty-d",   -- Disable no DOS line terminators
+            "-gnatyM120", -- Maximum line length
+            "-gnatyO");   -- Overriding subprograms explicitly marked as such
    end Compiler;
 
    package Linker is
