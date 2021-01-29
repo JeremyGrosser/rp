@@ -4,10 +4,8 @@ with RP2040_SVD;            use RP2040_SVD;
 with System;
 
 package RP2.GPIO is
-   subtype GPIO_Pin is Integer range 0 .. 29;
-
+   type GPIO_Pin is range 0 .. 29;
    type GPIO_Direction is (Input, Output);
-
    type GPIO_Function is
       (SPI, UART, I2C, PWM, SIO, PIO_0, PIO_1, CLOCK, USB, None);
 
