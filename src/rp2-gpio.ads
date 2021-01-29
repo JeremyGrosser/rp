@@ -34,6 +34,10 @@ package RP2.GPIO is
    procedure Clear
       (Pin : GPIO_Pin);
 
+   function Get
+      (Pin : GPIO_Pin)
+      return Boolean;
+
 private
 
    function Pin_Mask (Pin : GPIO_Pin)

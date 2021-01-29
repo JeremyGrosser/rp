@@ -53,4 +53,10 @@ package body RP2.GPIO is
    begin
       SIO_Periph.GPIO_OUT_CLR.GPIO_OUT_CLR := Pin_Mask (Pin);
    end Clear;
+
+   function Get
+      (Pin : GPIO_Pin)
+      return Boolean
+   is ((SIO_Periph.GPIO_IN.GPIO_IN and Pin_Mask (Pin)) /= 0);
+
 end RP2.GPIO;
