@@ -3,6 +3,10 @@ with Interfaces.C;
 with System;
 
 package RP.ROM is
+   rom_id : constant array (0 .. 2) of UInt8
+   with Import     => True,
+        Address    => System'To_Address (16#00000010#);
+
    --  2.8.3.1. Bootrom Functions
    function rom_hword_as_ptr
       (Address : System.Address)
@@ -133,4 +137,18 @@ package RP.ROM is
 
    --  2.8.3.2. Fast Floating Point Library
    --  TODO
+
+   --  2.8.3.3. Bootrom Data
+   --  TODO these read as null strings?
+   copyright_string : access Interfaces.C.char_array
+   with Import     => True,
+        Address    => rom_data_lookup (rom_table_code ('C', 'R'));
+
+   git_revision : access Interfaces.C.char_array
+   with Import     => True,
+        Address    => rom_data_lookup (rom_table_code ('G', 'R'));
+
+   fplib_start : System.Address
+   with Import     => True,
+        Address    => rom_data_lookup (rom_table_code ('F', 'S'));
 end RP.ROM;

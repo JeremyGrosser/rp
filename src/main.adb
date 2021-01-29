@@ -1,7 +1,7 @@
-with RP.GPIO; use RP.GPIO;
-with RP.ROM;
-with RP2040_SVD; use RP2040_SVD;
 with Ada.Assertions; use Ada.Assertions;
+with RP2040_SVD; use RP2040_SVD;
+with RP.GPIO;    use RP.GPIO;
+with RP.ROM;     use RP.ROM;
 
 procedure Main is
    LED : constant GPIO_Pin := 15;
@@ -11,7 +11,8 @@ begin
    Configure (LED, Output);
    Set (LED);
 
-   X := RP.ROM.popcount32 (2#1110#);
+   Assert (rom_id = (16#4d#, 16#75#, 16#01#));
+   X := popcount32 (2#1110#);
    Assert (X = 3);
 
    loop
