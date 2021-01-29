@@ -40,8 +40,10 @@ package RP2.GPIO is
 
 private
 
+   subtype GPIO_Pin_Mask is UInt30;
+
    function Pin_Mask (Pin : GPIO_Pin)
-      return UInt30;
+      return GPIO_Pin_Mask;
 
    type GPIO_CTRL_Register is record
       FUNCSEL : GPIO_Function := None;

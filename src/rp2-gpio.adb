@@ -3,8 +3,8 @@ with RP2040_SVD.SIO;    use RP2040_SVD.SIO;
 
 package body RP2.GPIO is
    function Pin_Mask (Pin : GPIO_Pin)
-      return UInt30
-   is (UInt30 (Shift_Left (UInt32 (1), GPIO_Pin'Pos (Pin))));
+      return GPIO_Pin_Mask
+   is (GPIO_Pin_Mask (Shift_Left (UInt32 (1), GPIO_Pin'Pos (Pin))));
 
    procedure Enable is
    begin
@@ -28,7 +28,7 @@ package body RP2.GPIO is
        Direction : GPIO_Direction;
        Func      : GPIO_Function := SIO)
    is
-      Mask : constant UInt30 := Pin_Mask (Pin);
+      Mask : constant GPIO_Pin_Mask := Pin_Mask (Pin);
    begin
       IO_BANK_Periph.GPIO (Pin).CTRL.FUNCSEL := Func;
       PADS_BANK_Periph.GPIO (Pin).IE := True;
