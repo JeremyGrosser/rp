@@ -38,6 +38,9 @@ package RP2.GPIO is
 
 private
 
+   function Pin_Mask (Pin : GPIO_Pin)
+      return UInt30;
+
    type GPIO_CTRL_Register is record
       FUNCSEL : GPIO_Function := None;
       OUTOVER : GPIO0_CTRL_OUTOVER_Field := NORMAL;
