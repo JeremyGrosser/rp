@@ -15,9 +15,9 @@ src/boot2.S: pico-sdk
 #src/crt0.S: pico-sdk
 #	arm-eabi-gcc -Ipico-sdk/src/rp2040/hardware_regs/include -Ipico-sdk/src/common/pico_binary_info/include -E -o src/crt0.S pico-sdk/src/rp2_common/pico_standard_link/crt0.S
 
-svd:
-	svd2ada -o src/rp2040 -p RP2040_SVD --boolean --gen-interrupts --gen-uint-always src/rp2040.svd
-	svd2ada -o src/rp2040 -p Cortex_M_SVD --base-types-package=RP2040_SVD --boolean --gen-uint-always src/cm0.svd
+svd-defs:
+	svd2ada -o svd -p RP2040_SVD --boolean --gen-interrupts --gen-uint-always svd/rp2040.svd
+	svd2ada -o svd -p Cortex_M_SVD --base-types-package=RP2040_SVD --boolean --gen-uint-always svd/cm0.svd
 
 clean:
 	rm -rf pico-sdk obj src/boot2.S
