@@ -1,11 +1,12 @@
 with RP2.GPIO; use RP2.GPIO;
 
 procedure Main is
+   LED : constant GPIO_Pin := 15;
 begin
-   Enable;
-   Configure (15, Output);
+   RP2.GPIO.Enable;
+   Configure (LED, Output);
    loop
-      Set (15);
-      Clear (15);
+      Set (LED);
+      Clear (LED);
    end loop;
 end Main;
