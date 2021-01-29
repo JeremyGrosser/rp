@@ -31,12 +31,11 @@ package body RP2.GPIO is
       Mask : constant UInt30 := Pin_Mask (Pin);
    begin
       IO_BANK_Periph.GPIO (Pin).CTRL.FUNCSEL := Func;
+      PADS_BANK_Periph.GPIO (Pin).IE := True;
       if Direction = Output then
          PADS_BANK_Periph.GPIO (Pin).OD := False;
          SIO_Periph.GPIO_OUT_CLR.GPIO_OUT_CLR := Mask;
          SIO_Periph.GPIO_OE_SET.GPIO_OE_SET := Mask;
-      elsif Direction = Input then
-         PADS_BANK_Periph.GPIO (Pin).IE := True;
       end if;
    end Configure;
 
