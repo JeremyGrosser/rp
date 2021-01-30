@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.WATCHDOG is
@@ -17,7 +18,7 @@ package RP2040_SVD.WATCHDOG is
    -- Registers --
    ---------------
 
-   subtype CTRL_TIME_Field is RP2040_SVD.UInt24;
+   subtype CTRL_TIME_Field is HAL.UInt24;
 
    --  CTRL_PAUSE_DBG array
    type CTRL_PAUSE_DBG_Field_Array is array (0 .. 1) of Boolean
@@ -30,7 +31,7 @@ package RP2040_SVD.WATCHDOG is
       case As_Array is
          when False =>
             --  PAUSE_DBG as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  PAUSE_DBG as an array
             Arr : CTRL_PAUSE_DBG_Field_Array;
@@ -56,7 +57,7 @@ package RP2040_SVD.WATCHDOG is
       PAUSE_DBG      : CTRL_PAUSE_DBG_Field :=
                         (As_Array => False, Val => 16#1#);
       --  unspecified
-      Reserved_27_29 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_27_29 : HAL.UInt3 := 16#0#;
       --  When not enabled the watchdog timer is paused
       ENABLE         : Boolean := False;
       --  After a write operation all bits in the field are cleared (set to
@@ -75,7 +76,7 @@ package RP2040_SVD.WATCHDOG is
       TRIGGER        at 0 range 31 .. 31;
    end record;
 
-   subtype LOAD_LOAD_Field is RP2040_SVD.UInt24;
+   subtype LOAD_LOAD_Field is HAL.UInt24;
 
    --  Load the watchdog timer. The maximum setting is 0xffffff which
    --  corresponds to 0xffffff / 2 ticks before triggering a watchdog reset
@@ -84,7 +85,7 @@ package RP2040_SVD.WATCHDOG is
       --  Write-only.
       LOAD           : LOAD_LOAD_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -102,7 +103,7 @@ package RP2040_SVD.WATCHDOG is
       --  Read-only.
       FORCE         : Boolean;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30;
+      Reserved_2_31 : HAL.UInt30;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -113,8 +114,8 @@ package RP2040_SVD.WATCHDOG is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype TICK_CYCLES_Field is RP2040_SVD.UInt9;
-   subtype TICK_COUNT_Field is RP2040_SVD.UInt9;
+   subtype TICK_CYCLES_Field is HAL.UInt9;
+   subtype TICK_COUNT_Field is HAL.UInt9;
 
    --  Controls the tick generator
    type TICK_Register is record
@@ -128,7 +129,7 @@ package RP2040_SVD.WATCHDOG is
       --  before the next tick is generated.
       COUNT          : TICK_COUNT_Field := 16#0#;
       --  unspecified
-      Reserved_20_31 : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_20_31 : HAL.UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -159,28 +160,28 @@ package RP2040_SVD.WATCHDOG is
       REASON   : aliased REASON_Register;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH0 : aliased RP2040_SVD.UInt32;
+      SCRATCH0 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH1 : aliased RP2040_SVD.UInt32;
+      SCRATCH1 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH2 : aliased RP2040_SVD.UInt32;
+      SCRATCH2 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH3 : aliased RP2040_SVD.UInt32;
+      SCRATCH3 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH4 : aliased RP2040_SVD.UInt32;
+      SCRATCH4 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH5 : aliased RP2040_SVD.UInt32;
+      SCRATCH5 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH6 : aliased RP2040_SVD.UInt32;
+      SCRATCH6 : aliased HAL.UInt32;
       --  Scratch register. Information persists through soft reset of the
       --  chip.
-      SCRATCH7 : aliased RP2040_SVD.UInt32;
+      SCRATCH7 : aliased HAL.UInt32;
       --  Controls the tick generator
       TICK     : aliased TICK_Register;
    end record

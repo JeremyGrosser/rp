@@ -7,11 +7,14 @@
 with RP2040_SVD.IO_BANK0;   use RP2040_SVD.IO_BANK0;
 with RP2040_SVD.PADS_BANK0; use RP2040_SVD.PADS_BANK0;
 with RP2040_SVD;            use RP2040_SVD;
+with HAL;                   use HAL;
+with HAL.GPIO;
 with System;
 
 package RP.GPIO is
-   type GPIO_Pin is range 0 .. 29;
-   type GPIO_Direction is (Input, Output);
+   subtype GPIO_Pin is Natural range 0 .. 29;
+   type GPIO_Point (Pin : GPIO_Pin) is new HAL.GPIO.GPIO_Point with null record;
+
    type GPIO_Function is
       (SPI, UART, I2C, PWM, SIO, PIO_0, PIO_1, CLOCK, USB, None);
 
@@ -30,19 +33,53 @@ package RP.GPIO is
    procedure Enable;
 
    procedure Configure
-      (Pin       : GPIO_Pin;
-       Direction : GPIO_Direction;
-       Func      : GPIO_Function := SIO);
+      (This : in out GPIO_Point;
+       Mode : HAL.GPIO.GPIO_Config_Mode;
+       Pull : HAL.GPIO.GPIO_Pull_Resistor := HAL.GPIO.Floating;
+       Func : GPIO_Function := SIO);
 
-   procedure Set
-      (Pin : GPIO_Pin);
+   overriding
+   function Support
+      (This : GPIO_Point;
+       Capa : HAL.GPIO.Capability)
+       return Boolean;
 
-   procedure Clear
-      (Pin : GPIO_Pin);
+   overriding
+   function Mode
+      (This : GPIO_Point)
+      return HAL.GPIO.GPIO_Mode;
 
-   function Get
-      (Pin : GPIO_Pin)
+   overriding
+   procedure Set_Mode
+      (This : in out GPIO_Point;
+       Mode : HAL.GPIO.GPIO_Config_Mode);
+
+   overriding
+   function Pull_Resistor
+      (This : GPIO_Point)
+      return HAL.GPIO.GPIO_Pull_Resistor;
+
+   overriding
+   procedure Set_Pull_Resistor
+      (This : in out GPIO_Point;
+       Pull : HAL.GPIO.GPIO_Pull_Resistor);
+
+   overriding
+   function Set
+      (This : GPIO_Point)
       return Boolean;
+
+   overriding
+   procedure Set
+      (This : in out GPIO_Point);
+
+   overriding
+   procedure Clear
+      (This : in out GPIO_Point);
+
+   overriding
+   procedure Toggle
+      (This : in out GPIO_Point);
 
 private
 

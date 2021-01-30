@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Control and data interface to SAR ADC
@@ -18,8 +19,8 @@ package RP2040_SVD.ADC is
    -- Registers --
    ---------------
 
-   subtype CS_AINSEL_Field is RP2040_SVD.UInt3;
-   subtype CS_RROBIN_Field is RP2040_SVD.UInt5;
+   subtype CS_AINSEL_Field is HAL.UInt3;
+   subtype CS_RROBIN_Field is HAL.UInt5;
 
    --  ADC Control and Status
    type CS_Register is record
@@ -35,7 +36,7 @@ package RP2040_SVD.ADC is
       --  conversion will start immediately after the previous finishes.
       START_MANY     : Boolean := False;
       --  unspecified
-      Reserved_4_7   : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_4_7   : HAL.UInt4 := 16#0#;
       --  Read-only. 1 if the ADC is ready to start a new conversion. Implies
       --  any previous conversion has completed.\n 0 whilst conversion in
       --  progress.
@@ -48,11 +49,11 @@ package RP2040_SVD.ADC is
       --  to clear.
       ERR_STICKY     : Boolean := False;
       --  unspecified
-      Reserved_11_11 : RP2040_SVD.Bit := 16#0#;
+      Reserved_11_11 : HAL.Bit := 16#0#;
       --  Select analog mux input. Updated automatically in round-robin mode.
       AINSEL         : CS_AINSEL_Field := 16#0#;
       --  unspecified
-      Reserved_15_15 : RP2040_SVD.Bit := 16#0#;
+      Reserved_15_15 : HAL.Bit := 16#0#;
       --  Round-robin sampling. 1 bit per channel. Set all bits to 0 to
       --  disable.\n Otherwise, the ADC will cycle through each enabled channel
       --  in a round-robin fashion.\n The first channel to be sampled will be
@@ -60,7 +61,7 @@ package RP2040_SVD.ADC is
       --  each conversion with the newly-selected channel.
       RROBIN         : CS_RROBIN_Field := 16#0#;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -81,14 +82,14 @@ package RP2040_SVD.ADC is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype RESULT_RESULT_Field is RP2040_SVD.UInt12;
+   subtype RESULT_RESULT_Field is HAL.UInt12;
 
    --  Result of most recent ADC conversion
    type RESULT_Register is record
       --  Read-only.
       RESULT         : RESULT_RESULT_Field;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20;
+      Reserved_12_31 : HAL.UInt20;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -98,8 +99,8 @@ package RP2040_SVD.ADC is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype FCS_LEVEL_Field is RP2040_SVD.UInt4;
-   subtype FCS_THRESH_Field is RP2040_SVD.UInt4;
+   subtype FCS_LEVEL_Field is HAL.UInt4;
+   subtype FCS_THRESH_Field is HAL.UInt4;
 
    --  FIFO control and status
    type FCS_Register is record
@@ -113,7 +114,7 @@ package RP2040_SVD.ADC is
       --  If 1: assert DMA requests when FIFO contains data
       DREQ_EN        : Boolean := False;
       --  unspecified
-      Reserved_4_7   : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_4_7   : HAL.UInt4 := 16#0#;
       --  Read-only.
       EMPTY          : Boolean := False;
       --  Read-only.
@@ -125,16 +126,16 @@ package RP2040_SVD.ADC is
       --  in the field. 1 if the FIFO has been overflowed. Write 1 to clear.
       OVER           : Boolean := False;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_12_15 : HAL.UInt4 := 16#0#;
       --  Read-only. The number of conversion results currently waiting in the
       --  FIFO
       LEVEL          : FCS_LEVEL_Field := 16#0#;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_20_23 : HAL.UInt4 := 16#0#;
       --  DREQ/IRQ asserted when level >= threshold
       THRESH         : FCS_THRESH_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_28_31 : HAL.UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -156,19 +157,19 @@ package RP2040_SVD.ADC is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype FIFO_VAL_Field is RP2040_SVD.UInt12;
+   subtype FIFO_VAL_Field is HAL.UInt12;
 
    --  Conversion result FIFO
    type FIFO_Register is record
       --  Read-only.
       VAL            : FIFO_VAL_Field;
       --  unspecified
-      Reserved_12_14 : RP2040_SVD.UInt3;
+      Reserved_12_14 : HAL.UInt3;
       --  Read-only. 1 if this particular sample experienced a conversion
       --  error. Remains in the same location if the sample is shifted.
       ERR            : Boolean;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16;
+      Reserved_16_31 : HAL.UInt16;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -180,8 +181,8 @@ package RP2040_SVD.ADC is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype DIV_INT_Field is RP2040_SVD.UInt16;
+   subtype DIV_FRAC_Field is HAL.UInt8;
+   subtype DIV_INT_Field is HAL.UInt16;
 
    --  Clock divider. If non-zero, CS_START_MANY will start conversions\n at
    --  regular intervals rather than back-to-back.\n The divider is reset when
@@ -193,7 +194,7 @@ package RP2040_SVD.ADC is
       --  Integer part of clock divisor.
       INT            : DIV_INT_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -210,7 +211,7 @@ package RP2040_SVD.ADC is
       --  This level can be programmed via the FCS_THRESH field.
       FIFO          : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -226,7 +227,7 @@ package RP2040_SVD.ADC is
       --  can be programmed via the FCS_THRESH field.
       FIFO          : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -242,7 +243,7 @@ package RP2040_SVD.ADC is
       --  can be programmed via the FCS_THRESH field.
       FIFO          : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -258,7 +259,7 @@ package RP2040_SVD.ADC is
       --  This level can be programmed via the FCS_THRESH field.
       FIFO          : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Controls time and alarms\n
@@ -31,7 +32,7 @@ package RP2040_SVD.TIMER is
    -- Registers --
    ---------------
 
-   subtype ARMED_ARMED_Field is RP2040_SVD.UInt4;
+   subtype ARMED_ARMED_Field is HAL.UInt4;
 
    --  Indicates the armed/disarmed status of each alarm.\n A write to the
    --  corresponding ALARMx register arms the alarm.\n Alarms automatically
@@ -42,7 +43,7 @@ package RP2040_SVD.TIMER is
       --  in the field.
       ARMED         : ARMED_ARMED_Field := 16#0#;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -63,7 +64,7 @@ package RP2040_SVD.TIMER is
       case As_Array is
          when False =>
             --  DBG as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  DBG as an array
             Arr : DBGPAUSE_DBG_Field_Array;
@@ -80,11 +81,11 @@ package RP2040_SVD.TIMER is
    --  active
    type DBGPAUSE_Register is record
       --  unspecified
-      Reserved_0_0  : RP2040_SVD.Bit := 16#1#;
+      Reserved_0_0  : HAL.Bit := 16#1#;
       --  Pause when processor 0 is in debug mode
       DBG           : DBGPAUSE_DBG_Field := (As_Array => False, Val => 16#1#);
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_3_31 : HAL.UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -99,7 +100,7 @@ package RP2040_SVD.TIMER is
    type PAUSE_Register is record
       PAUSE         : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -124,7 +125,7 @@ package RP2040_SVD.TIMER is
       --  in the field.
       ALARM_3       : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -144,7 +145,7 @@ package RP2040_SVD.TIMER is
       ALARM_2       : Boolean := False;
       ALARM_3       : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -164,7 +165,7 @@ package RP2040_SVD.TIMER is
       ALARM_2       : Boolean := False;
       ALARM_3       : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -188,7 +189,7 @@ package RP2040_SVD.TIMER is
       --  Read-only.
       ALARM_3       : Boolean;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28;
+      Reserved_4_31 : HAL.UInt28;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -217,43 +218,43 @@ package RP2040_SVD.TIMER is
    --  corresponding alarm_irq
    type TIMER_Peripheral is record
       --  Write to bits 63:32 of time\n always write timelw before timehw
-      TIMEHW   : aliased RP2040_SVD.UInt32;
+      TIMEHW   : aliased HAL.UInt32;
       --  Write to bits 31:0 of time\n writes do not get copied to time until
       --  timehw is written
-      TIMELW   : aliased RP2040_SVD.UInt32;
+      TIMELW   : aliased HAL.UInt32;
       --  Read from bits 63:32 of time\n always read timelr before timehr
-      TIMEHR   : aliased RP2040_SVD.UInt32;
+      TIMEHR   : aliased HAL.UInt32;
       --  Read from bits 31:0 of time
-      TIMELR   : aliased RP2040_SVD.UInt32;
+      TIMELR   : aliased HAL.UInt32;
       --  Arm alarm 0, and configure the time it will fire.\n Once armed, the
       --  alarm fires when TIMER_ALARM0 == TIMELR.\n The alarm will disarm
       --  itself once it fires, and can\n be disarmed early using the ARMED
       --  status register.
-      ALARM0   : aliased RP2040_SVD.UInt32;
+      ALARM0   : aliased HAL.UInt32;
       --  Arm alarm 1, and configure the time it will fire.\n Once armed, the
       --  alarm fires when TIMER_ALARM1 == TIMELR.\n The alarm will disarm
       --  itself once it fires, and can\n be disarmed early using the ARMED
       --  status register.
-      ALARM1   : aliased RP2040_SVD.UInt32;
+      ALARM1   : aliased HAL.UInt32;
       --  Arm alarm 2, and configure the time it will fire.\n Once armed, the
       --  alarm fires when TIMER_ALARM2 == TIMELR.\n The alarm will disarm
       --  itself once it fires, and can\n be disarmed early using the ARMED
       --  status register.
-      ALARM2   : aliased RP2040_SVD.UInt32;
+      ALARM2   : aliased HAL.UInt32;
       --  Arm alarm 3, and configure the time it will fire.\n Once armed, the
       --  alarm fires when TIMER_ALARM3 == TIMELR.\n The alarm will disarm
       --  itself once it fires, and can\n be disarmed early using the ARMED
       --  status register.
-      ALARM3   : aliased RP2040_SVD.UInt32;
+      ALARM3   : aliased HAL.UInt32;
       --  Indicates the armed/disarmed status of each alarm.\n A write to the
       --  corresponding ALARMx register arms the alarm.\n Alarms automatically
       --  disarm upon firing, but writing ones here\n will disarm immediately
       --  without waiting to fire.
       ARMED    : aliased ARMED_Register;
       --  Raw read from bits 63:32 of time (no side effects)
-      TIMERAWH : aliased RP2040_SVD.UInt32;
+      TIMERAWH : aliased HAL.UInt32;
       --  Raw read from bits 31:0 of time (no side effects)
-      TIMERAWL : aliased RP2040_SVD.UInt32;
+      TIMERAWL : aliased HAL.UInt32;
       --  Set bits high to enable pause when the corresponding debug ports are
       --  active
       DBGPAUSE : aliased DBGPAUSE_Register;

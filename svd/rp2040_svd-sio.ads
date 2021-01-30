@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Single-cycle IO block\n
@@ -20,14 +21,14 @@ package RP2040_SVD.SIO is
    -- Registers --
    ---------------
 
-   subtype GPIO_IN_GPIO_IN_Field is RP2040_SVD.UInt30;
+   subtype GPIO_IN_GPIO_IN_Field is HAL.UInt30;
 
    --  Input value for GPIO pins
    type GPIO_IN_Register is record
       --  Read-only. Input value for GPIO0...29
       GPIO_IN        : GPIO_IN_GPIO_IN_Field;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2;
+      Reserved_30_31 : HAL.UInt2;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -37,7 +38,7 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_HI_IN_GPIO_HI_IN_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_IN_GPIO_HI_IN_Field is HAL.UInt6;
 
    --  Input value for QSPI pins
    type GPIO_HI_IN_Register is record
@@ -45,7 +46,7 @@ package RP2040_SVD.SIO is
       --  SD2, SD3
       GPIO_HI_IN    : GPIO_HI_IN_GPIO_HI_IN_Field;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26;
+      Reserved_6_31 : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -55,7 +56,7 @@ package RP2040_SVD.SIO is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_OUT_GPIO_OUT_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OUT_GPIO_OUT_Field is HAL.UInt30;
 
    --  GPIO output value
    type GPIO_OUT_Register is record
@@ -67,7 +68,7 @@ package RP2040_SVD.SIO is
       --  that intermediate result.
       GPIO_OUT       : GPIO_OUT_GPIO_OUT_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -77,14 +78,14 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OUT_SET_GPIO_OUT_SET_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OUT_SET_GPIO_OUT_SET_Field is HAL.UInt30;
 
    --  GPIO output value set
    type GPIO_OUT_SET_Register is record
       --  Perform an atomic bit-set on GPIO_OUT, i.e. `GPIO_OUT |= wdata`
       GPIO_OUT_SET   : GPIO_OUT_SET_GPIO_OUT_SET_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -94,14 +95,14 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OUT_CLR_GPIO_OUT_CLR_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OUT_CLR_GPIO_OUT_CLR_Field is HAL.UInt30;
 
    --  GPIO output value clear
    type GPIO_OUT_CLR_Register is record
       --  Perform an atomic bit-clear on GPIO_OUT, i.e. `GPIO_OUT &= ~wdata`
       GPIO_OUT_CLR   : GPIO_OUT_CLR_GPIO_OUT_CLR_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -111,14 +112,14 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OUT_XOR_GPIO_OUT_XOR_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OUT_XOR_GPIO_OUT_XOR_Field is HAL.UInt30;
 
    --  GPIO output value XOR
    type GPIO_OUT_XOR_Register is record
       --  Perform an atomic bitwise XOR on GPIO_OUT, i.e. `GPIO_OUT ^= wdata`
       GPIO_OUT_XOR   : GPIO_OUT_XOR_GPIO_OUT_XOR_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -128,7 +129,7 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OE_GPIO_OE_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OE_GPIO_OE_Field is HAL.UInt30;
 
    --  GPIO output enable
    type GPIO_OE_Register is record
@@ -139,7 +140,7 @@ package RP2040_SVD.SIO is
       --  from core 1 was then applied to that intermediate result.
       GPIO_OE        : GPIO_OE_GPIO_OE_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -149,14 +150,14 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OE_SET_GPIO_OE_SET_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OE_SET_GPIO_OE_SET_Field is HAL.UInt30;
 
    --  GPIO output enable set
    type GPIO_OE_SET_Register is record
       --  Perform an atomic bit-set on GPIO_OE, i.e. `GPIO_OE |= wdata`
       GPIO_OE_SET    : GPIO_OE_SET_GPIO_OE_SET_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -166,14 +167,14 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OE_CLR_GPIO_OE_CLR_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OE_CLR_GPIO_OE_CLR_Field is HAL.UInt30;
 
    --  GPIO output enable clear
    type GPIO_OE_CLR_Register is record
       --  Perform an atomic bit-clear on GPIO_OE, i.e. `GPIO_OE &= ~wdata`
       GPIO_OE_CLR    : GPIO_OE_CLR_GPIO_OE_CLR_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -183,14 +184,14 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_OE_XOR_GPIO_OE_XOR_Field is RP2040_SVD.UInt30;
+   subtype GPIO_OE_XOR_GPIO_OE_XOR_Field is HAL.UInt30;
 
    --  GPIO output enable XOR
    type GPIO_OE_XOR_Register is record
       --  Perform an atomic bitwise XOR on GPIO_OE, i.e. `GPIO_OE ^= wdata`
       GPIO_OE_XOR    : GPIO_OE_XOR_GPIO_OE_XOR_Field := 16#0#;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -200,7 +201,7 @@ package RP2040_SVD.SIO is
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
 
-   subtype GPIO_HI_OUT_GPIO_HI_OUT_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OUT_GPIO_HI_OUT_Field is HAL.UInt6;
 
    --  QSPI output value
    type GPIO_HI_OUT_Register is record
@@ -212,7 +213,7 @@ package RP2040_SVD.SIO is
       --  that intermediate result.
       GPIO_HI_OUT   : GPIO_HI_OUT_GPIO_HI_OUT_Field := 16#0#;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31 : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -222,14 +223,14 @@ package RP2040_SVD.SIO is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OUT_SET_GPIO_HI_OUT_SET_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OUT_SET_GPIO_HI_OUT_SET_Field is HAL.UInt6;
 
    --  QSPI output value set
    type GPIO_HI_OUT_SET_Register is record
       --  Perform an atomic bit-set on GPIO_HI_OUT, i.e. `GPIO_HI_OUT |= wdata`
       GPIO_HI_OUT_SET : GPIO_HI_OUT_SET_GPIO_HI_OUT_SET_Field := 16#0#;
       --  unspecified
-      Reserved_6_31   : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31   : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -239,7 +240,7 @@ package RP2040_SVD.SIO is
       Reserved_6_31   at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OUT_CLR_GPIO_HI_OUT_CLR_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OUT_CLR_GPIO_HI_OUT_CLR_Field is HAL.UInt6;
 
    --  QSPI output value clear
    type GPIO_HI_OUT_CLR_Register is record
@@ -247,7 +248,7 @@ package RP2040_SVD.SIO is
       --  ~wdata`
       GPIO_HI_OUT_CLR : GPIO_HI_OUT_CLR_GPIO_HI_OUT_CLR_Field := 16#0#;
       --  unspecified
-      Reserved_6_31   : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31   : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -257,7 +258,7 @@ package RP2040_SVD.SIO is
       Reserved_6_31   at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OUT_XOR_GPIO_HI_OUT_XOR_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OUT_XOR_GPIO_HI_OUT_XOR_Field is HAL.UInt6;
 
    --  QSPI output value XOR
    type GPIO_HI_OUT_XOR_Register is record
@@ -265,7 +266,7 @@ package RP2040_SVD.SIO is
       --  wdata`
       GPIO_HI_OUT_XOR : GPIO_HI_OUT_XOR_GPIO_HI_OUT_XOR_Field := 16#0#;
       --  unspecified
-      Reserved_6_31   : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31   : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -275,7 +276,7 @@ package RP2040_SVD.SIO is
       Reserved_6_31   at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OE_GPIO_HI_OE_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OE_GPIO_HI_OE_Field is HAL.UInt6;
 
    --  QSPI output enable
    type GPIO_HI_OE_Register is record
@@ -286,7 +287,7 @@ package RP2040_SVD.SIO is
       --  write from core 1 was then applied to that intermediate result.
       GPIO_HI_OE    : GPIO_HI_OE_GPIO_HI_OE_Field := 16#0#;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31 : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -296,14 +297,14 @@ package RP2040_SVD.SIO is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OE_SET_GPIO_HI_OE_SET_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OE_SET_GPIO_HI_OE_SET_Field is HAL.UInt6;
 
    --  QSPI output enable set
    type GPIO_HI_OE_SET_Register is record
       --  Perform an atomic bit-set on GPIO_HI_OE, i.e. `GPIO_HI_OE |= wdata`
       GPIO_HI_OE_SET : GPIO_HI_OE_SET_GPIO_HI_OE_SET_Field := 16#0#;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31  : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -313,7 +314,7 @@ package RP2040_SVD.SIO is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OE_CLR_GPIO_HI_OE_CLR_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OE_CLR_GPIO_HI_OE_CLR_Field is HAL.UInt6;
 
    --  QSPI output enable clear
    type GPIO_HI_OE_CLR_Register is record
@@ -321,7 +322,7 @@ package RP2040_SVD.SIO is
       --  ~wdata`
       GPIO_HI_OE_CLR : GPIO_HI_OE_CLR_GPIO_HI_OE_CLR_Field := 16#0#;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31  : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -331,7 +332,7 @@ package RP2040_SVD.SIO is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype GPIO_HI_OE_XOR_GPIO_HI_OE_XOR_Field is RP2040_SVD.UInt6;
+   subtype GPIO_HI_OE_XOR_GPIO_HI_OE_XOR_Field is HAL.UInt6;
 
    --  QSPI output enable XOR
    type GPIO_HI_OE_XOR_Register is record
@@ -339,7 +340,7 @@ package RP2040_SVD.SIO is
       --  wdata`
       GPIO_HI_OE_XOR : GPIO_HI_OE_XOR_GPIO_HI_OE_XOR_Field := 16#0#;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31  : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -372,7 +373,7 @@ package RP2040_SVD.SIO is
       --  This read was ignored by the FIFO.
       ROE           : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -400,7 +401,7 @@ package RP2040_SVD.SIO is
       --  REMAINDER and then QUOTIENT, to prevent data loss on context switch.
       DIRTY         : Boolean;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30;
+      Reserved_2_31 : HAL.UInt30;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -411,10 +412,10 @@ package RP2040_SVD.SIO is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype INTERP0_CTRL_LANE0_SHIFT_Field is RP2040_SVD.UInt5;
-   subtype INTERP0_CTRL_LANE0_MASK_LSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP0_CTRL_LANE0_MASK_MSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP0_CTRL_LANE0_FORCE_MSB_Field is RP2040_SVD.UInt2;
+   subtype INTERP0_CTRL_LANE0_SHIFT_Field is HAL.UInt5;
+   subtype INTERP0_CTRL_LANE0_MASK_LSB_Field is HAL.UInt5;
+   subtype INTERP0_CTRL_LANE0_MASK_MSB_Field is HAL.UInt5;
+   subtype INTERP0_CTRL_LANE0_FORCE_MSB_Field is HAL.UInt2;
 
    --  INTERP0_CTRL_LANE0_OVERF array
    type INTERP0_CTRL_LANE0_OVERF_Field_Array is array (0 .. 2) of Boolean
@@ -427,7 +428,7 @@ package RP2040_SVD.SIO is
       case As_Array is
          when False =>
             --  OVERF as a value
-            Val : RP2040_SVD.UInt3;
+            Val : HAL.UInt3;
          when True =>
             --  OVERF as an array
             Arr : INTERP0_CTRL_LANE0_OVERF_Field_Array;
@@ -477,12 +478,12 @@ package RP2040_SVD.SIO is
       --  interpolation is signed or unsigned.
       BLEND          : Boolean := False;
       --  unspecified
-      Reserved_22_22 : RP2040_SVD.Bit := 16#0#;
+      Reserved_22_22 : HAL.Bit := 16#0#;
       --  Read-only. Indicates if any masked-off MSBs in ACCUM0 are set.
       OVERF          : INTERP0_CTRL_LANE0_OVERF_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_26_31 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_26_31 : HAL.UInt6 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -502,10 +503,10 @@ package RP2040_SVD.SIO is
       Reserved_26_31 at 0 range 26 .. 31;
    end record;
 
-   subtype INTERP0_CTRL_LANE1_SHIFT_Field is RP2040_SVD.UInt5;
-   subtype INTERP0_CTRL_LANE1_MASK_LSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP0_CTRL_LANE1_MASK_MSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP0_CTRL_LANE1_FORCE_MSB_Field is RP2040_SVD.UInt2;
+   subtype INTERP0_CTRL_LANE1_SHIFT_Field is HAL.UInt5;
+   subtype INTERP0_CTRL_LANE1_MASK_LSB_Field is HAL.UInt5;
+   subtype INTERP0_CTRL_LANE1_MASK_MSB_Field is HAL.UInt5;
+   subtype INTERP0_CTRL_LANE1_FORCE_MSB_Field is HAL.UInt2;
 
    --  Control register for lane 1
    type INTERP0_CTRL_LANE1_Register is record
@@ -535,7 +536,7 @@ package RP2040_SVD.SIO is
       --  a lane to generate sequence\n of pointers into flash or SRAM.
       FORCE_MSB      : INTERP0_CTRL_LANE1_FORCE_MSB_Field := 16#0#;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -552,7 +553,7 @@ package RP2040_SVD.SIO is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype INTERP0_ACCUM0_ADD_INTERP0_ACCUM0_ADD_Field is RP2040_SVD.UInt24;
+   subtype INTERP0_ACCUM0_ADD_INTERP0_ACCUM0_ADD_Field is HAL.UInt24;
 
    --  Values written here are atomically added to ACCUM0\n Reading yields lane
    --  0's raw shift and mask value (BASE0 not added).
@@ -560,7 +561,7 @@ package RP2040_SVD.SIO is
       INTERP0_ACCUM0_ADD : INTERP0_ACCUM0_ADD_INTERP0_ACCUM0_ADD_Field :=
                             16#0#;
       --  unspecified
-      Reserved_24_31     : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31     : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -570,7 +571,7 @@ package RP2040_SVD.SIO is
       Reserved_24_31     at 0 range 24 .. 31;
    end record;
 
-   subtype INTERP0_ACCUM1_ADD_INTERP0_ACCUM1_ADD_Field is RP2040_SVD.UInt24;
+   subtype INTERP0_ACCUM1_ADD_INTERP0_ACCUM1_ADD_Field is HAL.UInt24;
 
    --  Values written here are atomically added to ACCUM1\n Reading yields lane
    --  1's raw shift and mask value (BASE1 not added).
@@ -578,7 +579,7 @@ package RP2040_SVD.SIO is
       INTERP0_ACCUM1_ADD : INTERP0_ACCUM1_ADD_INTERP0_ACCUM1_ADD_Field :=
                             16#0#;
       --  unspecified
-      Reserved_24_31     : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31     : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -588,10 +589,10 @@ package RP2040_SVD.SIO is
       Reserved_24_31     at 0 range 24 .. 31;
    end record;
 
-   subtype INTERP1_CTRL_LANE0_SHIFT_Field is RP2040_SVD.UInt5;
-   subtype INTERP1_CTRL_LANE0_MASK_LSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP1_CTRL_LANE0_MASK_MSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP1_CTRL_LANE0_FORCE_MSB_Field is RP2040_SVD.UInt2;
+   subtype INTERP1_CTRL_LANE0_SHIFT_Field is HAL.UInt5;
+   subtype INTERP1_CTRL_LANE0_MASK_LSB_Field is HAL.UInt5;
+   subtype INTERP1_CTRL_LANE0_MASK_MSB_Field is HAL.UInt5;
+   subtype INTERP1_CTRL_LANE0_FORCE_MSB_Field is HAL.UInt2;
 
    --  INTERP1_CTRL_LANE0_OVERF array
    type INTERP1_CTRL_LANE0_OVERF_Field_Array is array (0 .. 2) of Boolean
@@ -604,7 +605,7 @@ package RP2040_SVD.SIO is
       case As_Array is
          when False =>
             --  OVERF as a value
-            Val : RP2040_SVD.UInt3;
+            Val : HAL.UInt3;
          when True =>
             --  OVERF as an array
             Arr : INTERP1_CTRL_LANE0_OVERF_Field_Array;
@@ -645,7 +646,7 @@ package RP2040_SVD.SIO is
       --  a lane to generate sequence\n of pointers into flash or SRAM.
       FORCE_MSB      : INTERP1_CTRL_LANE0_FORCE_MSB_Field := 16#0#;
       --  unspecified
-      Reserved_21_21 : RP2040_SVD.Bit := 16#0#;
+      Reserved_21_21 : HAL.Bit := 16#0#;
       --  Only present on INTERP1 on each core. If CLAMP mode is enabled:\n -
       --  LANE0 result is shifted and masked ACCUM0, clamped by a lower bound
       --  of\n BASE0 and an upper bound of BASE1.\n - Signedness of these
@@ -655,7 +656,7 @@ package RP2040_SVD.SIO is
       OVERF          : INTERP1_CTRL_LANE0_OVERF_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_26_31 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_26_31 : HAL.UInt6 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -675,10 +676,10 @@ package RP2040_SVD.SIO is
       Reserved_26_31 at 0 range 26 .. 31;
    end record;
 
-   subtype INTERP1_CTRL_LANE1_SHIFT_Field is RP2040_SVD.UInt5;
-   subtype INTERP1_CTRL_LANE1_MASK_LSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP1_CTRL_LANE1_MASK_MSB_Field is RP2040_SVD.UInt5;
-   subtype INTERP1_CTRL_LANE1_FORCE_MSB_Field is RP2040_SVD.UInt2;
+   subtype INTERP1_CTRL_LANE1_SHIFT_Field is HAL.UInt5;
+   subtype INTERP1_CTRL_LANE1_MASK_LSB_Field is HAL.UInt5;
+   subtype INTERP1_CTRL_LANE1_MASK_MSB_Field is HAL.UInt5;
+   subtype INTERP1_CTRL_LANE1_FORCE_MSB_Field is HAL.UInt2;
 
    --  Control register for lane 1
    type INTERP1_CTRL_LANE1_Register is record
@@ -708,7 +709,7 @@ package RP2040_SVD.SIO is
       --  a lane to generate sequence\n of pointers into flash or SRAM.
       FORCE_MSB      : INTERP1_CTRL_LANE1_FORCE_MSB_Field := 16#0#;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -725,7 +726,7 @@ package RP2040_SVD.SIO is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype INTERP1_ACCUM0_ADD_INTERP1_ACCUM0_ADD_Field is RP2040_SVD.UInt24;
+   subtype INTERP1_ACCUM0_ADD_INTERP1_ACCUM0_ADD_Field is HAL.UInt24;
 
    --  Values written here are atomically added to ACCUM0\n Reading yields lane
    --  0's raw shift and mask value (BASE0 not added).
@@ -733,7 +734,7 @@ package RP2040_SVD.SIO is
       INTERP1_ACCUM0_ADD : INTERP1_ACCUM0_ADD_INTERP1_ACCUM0_ADD_Field :=
                             16#0#;
       --  unspecified
-      Reserved_24_31     : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31     : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -743,7 +744,7 @@ package RP2040_SVD.SIO is
       Reserved_24_31     at 0 range 24 .. 31;
    end record;
 
-   subtype INTERP1_ACCUM1_ADD_INTERP1_ACCUM1_ADD_Field is RP2040_SVD.UInt24;
+   subtype INTERP1_ACCUM1_ADD_INTERP1_ACCUM1_ADD_Field is HAL.UInt24;
 
    --  Values written here are atomically added to ACCUM1\n Reading yields lane
    --  1's raw shift and mask value (BASE1 not added).
@@ -751,7 +752,7 @@ package RP2040_SVD.SIO is
       INTERP1_ACCUM1_ADD : INTERP1_ACCUM1_ADD_INTERP1_ACCUM1_ADD_Field :=
                             16#0#;
       --  unspecified
-      Reserved_24_31     : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31     : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -770,7 +771,7 @@ package RP2040_SVD.SIO is
    type SIO_Peripheral is record
       --  Processor core identifier\n Value is 0 when read from processor core
       --  0, and 1 when read from processor core 1.
-      CPUID              : aliased RP2040_SVD.UInt32;
+      CPUID              : aliased HAL.UInt32;
       --  Input value for GPIO pins
       GPIO_IN            : aliased GPIO_IN_Register;
       --  Input value for QSPI pins
@@ -816,32 +817,32 @@ package RP2040_SVD.SIO is
       --  WOF and ROE fields of its FIFO_ST register.
       FIFO_ST            : aliased FIFO_ST_Register;
       --  Write access to this core's TX FIFO
-      FIFO_WR            : aliased RP2040_SVD.UInt32;
+      FIFO_WR            : aliased HAL.UInt32;
       --  Read access to this core's RX FIFO
-      FIFO_RD            : aliased RP2040_SVD.UInt32;
+      FIFO_RD            : aliased HAL.UInt32;
       --  Spinlock state\n A bitmap containing the state of all 32 spinlocks
       --  (1=locked).\n Mainly intended for debugging.
-      SPINLOCK_ST        : aliased RP2040_SVD.UInt32;
+      SPINLOCK_ST        : aliased HAL.UInt32;
       --  Divider unsigned dividend\n Write to the DIVIDEND operand of the
       --  divider, i.e. the p in `p / q`.\n Any operand write starts a new
       --  calculation. The results appear in QUOTIENT, REMAINDER.\n
       --  UDIVIDEND/SDIVIDEND are aliases of the same internal register. The U
       --  alias starts an\n unsigned calculation, and the S alias starts a
       --  signed calculation.
-      DIV_UDIVIDEND      : aliased RP2040_SVD.UInt32;
+      DIV_UDIVIDEND      : aliased HAL.UInt32;
       --  Divider unsigned divisor\n Write to the DIVISOR operand of the
       --  divider, i.e. the q in `p / q`.\n Any operand write starts a new
       --  calculation. The results appear in QUOTIENT, REMAINDER.\n
       --  UDIVIDEND/SDIVIDEND are aliases of the same internal register. The U
       --  alias starts an\n unsigned calculation, and the S alias starts a
       --  signed calculation.
-      DIV_UDIVISOR       : aliased RP2040_SVD.UInt32;
+      DIV_UDIVISOR       : aliased HAL.UInt32;
       --  Divider signed dividend\n The same as UDIVIDEND, but starts a signed
       --  calculation, rather than unsigned.
-      DIV_SDIVIDEND      : aliased RP2040_SVD.UInt32;
+      DIV_SDIVIDEND      : aliased HAL.UInt32;
       --  Divider signed divisor\n The same as UDIVISOR, but starts a signed
       --  calculation, rather than unsigned.
-      DIV_SDIVISOR       : aliased RP2040_SVD.UInt32;
+      DIV_SDIVISOR       : aliased HAL.UInt32;
       --  Divider result quotient\n The result of `DIVIDEND / DIVISOR`
       --  (division). Contents undefined while CSR_READY is low.\n For signed
       --  calculations, QUOTIENT is negative when the signs of DIVIDEND and
@@ -850,41 +851,41 @@ package RP2040_SVD.SIO is
       --  calculation and sets the CSR_READY and CSR_DIRTY flags.\n Reading
       --  from QUOTIENT clears the CSR_DIRTY flag, so should read results in
       --  the order\n REMAINDER, QUOTIENT if CSR_DIRTY is used.
-      DIV_QUOTIENT       : aliased RP2040_SVD.UInt32;
+      DIV_QUOTIENT       : aliased HAL.UInt32;
       --  Divider result remainder\n The result of `DIVIDEND % DIVISOR`
       --  (modulo). Contents undefined while CSR_READY is low.\n For signed
       --  calculations, REMAINDER is negative only when DIVIDEND is negative.\n
       --  This register can be written to directly, for context save/restore
       --  purposes. This halts any\n in-progress calculation and sets the
       --  CSR_READY and CSR_DIRTY flags.
-      DIV_REMAINDER      : aliased RP2040_SVD.UInt32;
+      DIV_REMAINDER      : aliased HAL.UInt32;
       --  Control and status register for divider.
       DIV_CSR            : aliased DIV_CSR_Register;
       --  Read/write access to accumulator 0
-      INTERP0_ACCUM0     : aliased RP2040_SVD.UInt32;
+      INTERP0_ACCUM0     : aliased HAL.UInt32;
       --  Read/write access to accumulator 1
-      INTERP0_ACCUM1     : aliased RP2040_SVD.UInt32;
+      INTERP0_ACCUM1     : aliased HAL.UInt32;
       --  Read/write access to BASE0 register.
-      INTERP0_BASE0      : aliased RP2040_SVD.UInt32;
+      INTERP0_BASE0      : aliased HAL.UInt32;
       --  Read/write access to BASE1 register.
-      INTERP0_BASE1      : aliased RP2040_SVD.UInt32;
+      INTERP0_BASE1      : aliased HAL.UInt32;
       --  Read/write access to BASE2 register.
-      INTERP0_BASE2      : aliased RP2040_SVD.UInt32;
+      INTERP0_BASE2      : aliased HAL.UInt32;
       --  Read LANE0 result, and simultaneously write lane results to both
       --  accumulators (POP).
-      INTERP0_POP_LANE0  : aliased RP2040_SVD.UInt32;
+      INTERP0_POP_LANE0  : aliased HAL.UInt32;
       --  Read LANE1 result, and simultaneously write lane results to both
       --  accumulators (POP).
-      INTERP0_POP_LANE1  : aliased RP2040_SVD.UInt32;
+      INTERP0_POP_LANE1  : aliased HAL.UInt32;
       --  Read FULL result, and simultaneously write lane results to both
       --  accumulators (POP).
-      INTERP0_POP_FULL   : aliased RP2040_SVD.UInt32;
+      INTERP0_POP_FULL   : aliased HAL.UInt32;
       --  Read LANE0 result, without altering any internal state (PEEK).
-      INTERP0_PEEK_LANE0 : aliased RP2040_SVD.UInt32;
+      INTERP0_PEEK_LANE0 : aliased HAL.UInt32;
       --  Read LANE1 result, without altering any internal state (PEEK).
-      INTERP0_PEEK_LANE1 : aliased RP2040_SVD.UInt32;
+      INTERP0_PEEK_LANE1 : aliased HAL.UInt32;
       --  Read FULL result, without altering any internal state (PEEK).
-      INTERP0_PEEK_FULL  : aliased RP2040_SVD.UInt32;
+      INTERP0_PEEK_FULL  : aliased HAL.UInt32;
       --  Control register for lane 0
       INTERP0_CTRL_LANE0 : aliased INTERP0_CTRL_LANE0_Register;
       --  Control register for lane 1
@@ -898,32 +899,32 @@ package RP2040_SVD.SIO is
       --  On write, the lower 16 bits go to BASE0, upper bits to BASE1
       --  simultaneously.\n Each half is sign-extended to 32 bits if that
       --  lane's SIGNED flag is set.
-      INTERP0_BASE_1AND0 : aliased RP2040_SVD.UInt32;
+      INTERP0_BASE_1AND0 : aliased HAL.UInt32;
       --  Read/write access to accumulator 0
-      INTERP1_ACCUM0     : aliased RP2040_SVD.UInt32;
+      INTERP1_ACCUM0     : aliased HAL.UInt32;
       --  Read/write access to accumulator 1
-      INTERP1_ACCUM1     : aliased RP2040_SVD.UInt32;
+      INTERP1_ACCUM1     : aliased HAL.UInt32;
       --  Read/write access to BASE0 register.
-      INTERP1_BASE0      : aliased RP2040_SVD.UInt32;
+      INTERP1_BASE0      : aliased HAL.UInt32;
       --  Read/write access to BASE1 register.
-      INTERP1_BASE1      : aliased RP2040_SVD.UInt32;
+      INTERP1_BASE1      : aliased HAL.UInt32;
       --  Read/write access to BASE2 register.
-      INTERP1_BASE2      : aliased RP2040_SVD.UInt32;
+      INTERP1_BASE2      : aliased HAL.UInt32;
       --  Read LANE0 result, and simultaneously write lane results to both
       --  accumulators (POP).
-      INTERP1_POP_LANE0  : aliased RP2040_SVD.UInt32;
+      INTERP1_POP_LANE0  : aliased HAL.UInt32;
       --  Read LANE1 result, and simultaneously write lane results to both
       --  accumulators (POP).
-      INTERP1_POP_LANE1  : aliased RP2040_SVD.UInt32;
+      INTERP1_POP_LANE1  : aliased HAL.UInt32;
       --  Read FULL result, and simultaneously write lane results to both
       --  accumulators (POP).
-      INTERP1_POP_FULL   : aliased RP2040_SVD.UInt32;
+      INTERP1_POP_FULL   : aliased HAL.UInt32;
       --  Read LANE0 result, without altering any internal state (PEEK).
-      INTERP1_PEEK_LANE0 : aliased RP2040_SVD.UInt32;
+      INTERP1_PEEK_LANE0 : aliased HAL.UInt32;
       --  Read LANE1 result, without altering any internal state (PEEK).
-      INTERP1_PEEK_LANE1 : aliased RP2040_SVD.UInt32;
+      INTERP1_PEEK_LANE1 : aliased HAL.UInt32;
       --  Read FULL result, without altering any internal state (PEEK).
-      INTERP1_PEEK_FULL  : aliased RP2040_SVD.UInt32;
+      INTERP1_PEEK_FULL  : aliased HAL.UInt32;
       --  Control register for lane 0
       INTERP1_CTRL_LANE0 : aliased INTERP1_CTRL_LANE0_Register;
       --  Control register for lane 1
@@ -937,199 +938,199 @@ package RP2040_SVD.SIO is
       --  On write, the lower 16 bits go to BASE0, upper bits to BASE1
       --  simultaneously.\n Each half is sign-extended to 32 bits if that
       --  lane's SIGNED flag is set.
-      INTERP1_BASE_1AND0 : aliased RP2040_SVD.UInt32;
+      INTERP1_BASE_1AND0 : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK0          : aliased RP2040_SVD.UInt32;
+      SPINLOCK0          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK1          : aliased RP2040_SVD.UInt32;
+      SPINLOCK1          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK2          : aliased RP2040_SVD.UInt32;
+      SPINLOCK2          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK3          : aliased RP2040_SVD.UInt32;
+      SPINLOCK3          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK4          : aliased RP2040_SVD.UInt32;
+      SPINLOCK4          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK5          : aliased RP2040_SVD.UInt32;
+      SPINLOCK5          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK6          : aliased RP2040_SVD.UInt32;
+      SPINLOCK6          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK7          : aliased RP2040_SVD.UInt32;
+      SPINLOCK7          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK8          : aliased RP2040_SVD.UInt32;
+      SPINLOCK8          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK9          : aliased RP2040_SVD.UInt32;
+      SPINLOCK9          : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK10         : aliased RP2040_SVD.UInt32;
+      SPINLOCK10         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK11         : aliased RP2040_SVD.UInt32;
+      SPINLOCK11         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK12         : aliased RP2040_SVD.UInt32;
+      SPINLOCK12         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK13         : aliased RP2040_SVD.UInt32;
+      SPINLOCK13         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK14         : aliased RP2040_SVD.UInt32;
+      SPINLOCK14         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK15         : aliased RP2040_SVD.UInt32;
+      SPINLOCK15         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK16         : aliased RP2040_SVD.UInt32;
+      SPINLOCK16         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK17         : aliased RP2040_SVD.UInt32;
+      SPINLOCK17         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK18         : aliased RP2040_SVD.UInt32;
+      SPINLOCK18         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK19         : aliased RP2040_SVD.UInt32;
+      SPINLOCK19         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK20         : aliased RP2040_SVD.UInt32;
+      SPINLOCK20         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK21         : aliased RP2040_SVD.UInt32;
+      SPINLOCK21         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK22         : aliased RP2040_SVD.UInt32;
+      SPINLOCK22         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK23         : aliased RP2040_SVD.UInt32;
+      SPINLOCK23         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK24         : aliased RP2040_SVD.UInt32;
+      SPINLOCK24         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK25         : aliased RP2040_SVD.UInt32;
+      SPINLOCK25         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK26         : aliased RP2040_SVD.UInt32;
+      SPINLOCK26         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK27         : aliased RP2040_SVD.UInt32;
+      SPINLOCK27         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK28         : aliased RP2040_SVD.UInt32;
+      SPINLOCK28         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK29         : aliased RP2040_SVD.UInt32;
+      SPINLOCK29         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK30         : aliased RP2040_SVD.UInt32;
+      SPINLOCK30         : aliased HAL.UInt32;
       --  Reading from a spinlock address will:\n - Return 0 if lock is already
       --  locked\n - Otherwise return nonzero, and simultaneously claim the
       --  lock\n\n Writing (any value) releases the lock.\n If core 0 and core
       --  1 attempt to claim the same lock simultaneously, core 0 wins.\n The
       --  value returned on success is 0x1 << lock number.
-      SPINLOCK31         : aliased RP2040_SVD.UInt32;
+      SPINLOCK31         : aliased HAL.UInt32;
    end record
      with Volatile;
 

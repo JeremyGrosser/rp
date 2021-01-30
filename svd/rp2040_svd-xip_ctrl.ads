@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  QSPI flash execute-in-place block
@@ -34,7 +35,7 @@ package RP2040_SVD.XIP_CTRL is
       --  tag match,\n as usual.
       ERR_BADWRITE  : Boolean := True;
       --  unspecified
-      Reserved_2_2  : RP2040_SVD.Bit := 16#0#;
+      Reserved_2_2  : HAL.Bit := 16#0#;
       --  When 1, the cache memories are powered down. They retain state,\n but
       --  can not be accessed. This reduces static power dissipation.\n Writing
       --  1 to this bit forces CTRL_EN to 0, i.e. the cache cannot\n be enabled
@@ -42,7 +43,7 @@ package RP2040_SVD.XIP_CTRL is
       --  response when\n the cache is powered down.
       POWER_DOWN    : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -65,7 +66,7 @@ package RP2040_SVD.XIP_CTRL is
       --  STAT can be polled until completion.
       FLUSH         : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -89,7 +90,7 @@ package RP2040_SVD.XIP_CTRL is
       --  flag allow its level to be ascertained.
       FIFO_FULL     : Boolean;
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29;
+      Reserved_3_31 : HAL.UInt29;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -101,12 +102,12 @@ package RP2040_SVD.XIP_CTRL is
       Reserved_3_31 at 0 range 3 .. 31;
    end record;
 
-   subtype STREAM_ADDR_STREAM_ADDR_Field is RP2040_SVD.UInt30;
+   subtype STREAM_ADDR_STREAM_ADDR_Field is HAL.UInt30;
 
    --  FIFO stream address
    type STREAM_ADDR_Register is record
       --  unspecified
-      Reserved_0_1 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_0_1 : HAL.UInt2 := 16#0#;
       --  The address of the next word to be streamed from flash to the
       --  streaming FIFO.\n Increments automatically after each flash access.\n
       --  Write the initial access address here before starting a streaming
@@ -121,7 +122,7 @@ package RP2040_SVD.XIP_CTRL is
       STREAM_ADDR  at 0 range 2 .. 31;
    end record;
 
-   subtype STREAM_CTR_STREAM_CTR_Field is RP2040_SVD.UInt22;
+   subtype STREAM_CTR_STREAM_CTR_Field is HAL.UInt22;
 
    --  FIFO stream control
    type STREAM_CTR_Register is record
@@ -134,7 +135,7 @@ package RP2040_SVD.XIP_CTRL is
       --  (after\n draining the FIFO and reinitialising STREAM_ADDR)
       STREAM_CTR     : STREAM_CTR_STREAM_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_22_31 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_22_31 : HAL.UInt10 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -159,11 +160,11 @@ package RP2040_SVD.XIP_CTRL is
       --  Cache Hit counter\n A 32 bit saturating counter that increments upon
       --  each cache hit,\n i.e. when an XIP access is serviced directly from
       --  cached data.\n Write any value to clear.
-      CTR_HIT     : aliased RP2040_SVD.UInt32;
+      CTR_HIT     : aliased HAL.UInt32;
       --  Cache Access counter\n A 32 bit saturating counter that increments
       --  upon each XIP access,\n whether the cache is hit or not. This
       --  includes noncacheable accesses.\n Write any value to clear.
-      CTR_ACC     : aliased RP2040_SVD.UInt32;
+      CTR_ACC     : aliased HAL.UInt32;
       --  FIFO stream address
       STREAM_ADDR : aliased STREAM_ADDR_Register;
       --  FIFO stream control
@@ -172,7 +173,7 @@ package RP2040_SVD.XIP_CTRL is
       --  the system DMA.\n This FIFO can also be accessed via the XIP_AUX
       --  slave, to avoid exposing\n the DMA to bus stalls caused by other XIP
       --  traffic.
-      STREAM_FIFO : aliased RP2040_SVD.UInt32;
+      STREAM_FIFO : aliased HAL.UInt32;
    end record
      with Volatile;
 

@@ -4,7 +4,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
-with RP2040_SVD;
+with HAL;
 with System;
 
 --  Data Watchpoint Trace
@@ -15,8 +15,8 @@ package Cortex_M_SVD.DWT is
    -- Registers --
    ---------------
 
-   subtype CTRL_Reserved_0_27_Field is RP2040_SVD.UInt28;
-   subtype CTRL_NUMCOMP_Field is RP2040_SVD.UInt4;
+   subtype CTRL_Reserved_0_27_Field is HAL.UInt28;
+   subtype CTRL_NUMCOMP_Field is HAL.UInt4;
 
    --  Control Register
    type CTRL_Register is record
@@ -42,13 +42,13 @@ package Cortex_M_SVD.DWT is
       --  Control Register
       CTRL      : aliased CTRL_Register;
       --  Program Counter Sample Register
-      PCSR      : aliased RP2040_SVD.UInt32;
+      PCSR      : aliased HAL.UInt32;
       --  Comparator Register 0
-      COMP0     : aliased RP2040_SVD.UInt32;
+      COMP0     : aliased HAL.UInt32;
       --  Mask Register 0
-      MASK0     : aliased RP2040_SVD.UInt32;
+      MASK0     : aliased HAL.UInt32;
       --  Function Register 0
-      FUNCTION0 : aliased RP2040_SVD.UInt32;
+      FUNCTION0 : aliased HAL.UInt32;
    end record
      with Volatile;
 

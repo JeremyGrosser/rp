@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.SYSINFO is
@@ -17,9 +18,9 @@ package RP2040_SVD.SYSINFO is
    -- Registers --
    ---------------
 
-   subtype CHIP_ID_MANUFACTURER_Field is RP2040_SVD.UInt12;
-   subtype CHIP_ID_PART_Field is RP2040_SVD.UInt16;
-   subtype CHIP_ID_REVISION_Field is RP2040_SVD.UInt4;
+   subtype CHIP_ID_MANUFACTURER_Field is HAL.UInt12;
+   subtype CHIP_ID_PART_Field is HAL.UInt16;
+   subtype CHIP_ID_REVISION_Field is HAL.UInt4;
 
    --  JEDEC JEP-106 compliant chip identifier.
    type CHIP_ID_Register is record
@@ -47,7 +48,7 @@ package RP2040_SVD.SYSINFO is
       --  Read-only.
       ASIC          : Boolean;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30;
+      Reserved_2_31 : HAL.UInt30;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -69,7 +70,7 @@ package RP2040_SVD.SYSINFO is
       --  running in.
       PLATFORM      : aliased PLATFORM_Register;
       --  Git hash of the chip source. Used to identify chip version.
-      GITREF_RP2040 : aliased RP2040_SVD.UInt32;
+      GITREF_RP2040 : aliased HAL.UInt32;
    end record
      with Volatile;
 

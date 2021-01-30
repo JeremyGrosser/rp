@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  DW_apb_ssi has the following features:\n
@@ -72,8 +73,8 @@ package RP2040_SVD.XIP_SSI is
    -- Registers --
    ---------------
 
-   subtype CTRLR0_DFS_Field is RP2040_SVD.UInt4;
-   subtype CTRLR0_FRF_Field is RP2040_SVD.UInt2;
+   subtype CTRLR0_DFS_Field is HAL.UInt4;
+   subtype CTRLR0_FRF_Field is HAL.UInt2;
 
    --  Transfer mode
    type CTRLR0_TMOD_Field is
@@ -92,8 +93,8 @@ package RP2040_SVD.XIP_SSI is
       RX_ONLY => 2,
       EEPROM_READ => 3);
 
-   subtype CTRLR0_CFS_Field is RP2040_SVD.UInt4;
-   subtype CTRLR0_DFS_32_Field is RP2040_SVD.UInt5;
+   subtype CTRLR0_CFS_Field is HAL.UInt4;
+   subtype CTRLR0_DFS_32_Field is HAL.UInt5;
 
    --  SPI frame format
    type CTRLR0_SPI_FRF_Field is
@@ -133,11 +134,11 @@ package RP2040_SVD.XIP_SSI is
       --  SPI frame format
       SPI_FRF        : CTRLR0_SPI_FRF_Field := RP2040_SVD.XIP_SSI.STD;
       --  unspecified
-      Reserved_23_23 : RP2040_SVD.Bit := 16#0#;
+      Reserved_23_23 : HAL.Bit := 16#0#;
       --  Slave select toggle enable
       SSTE           : Boolean := False;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -158,14 +159,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_25_31 at 0 range 25 .. 31;
    end record;
 
-   subtype CTRLR1_NDF_Field is RP2040_SVD.UInt16;
+   subtype CTRLR1_NDF_Field is HAL.UInt16;
 
    --  Master Control register 1
    type CTRLR1_Register is record
       --  Number of data frames
       NDF            : CTRLR1_NDF_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -180,7 +181,7 @@ package RP2040_SVD.XIP_SSI is
       --  SSI enable
       SSI_EN        : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -199,7 +200,7 @@ package RP2040_SVD.XIP_SSI is
       --  Microwire handshaking
       MHS           : Boolean := False;
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_3_31 : HAL.UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -216,7 +217,7 @@ package RP2040_SVD.XIP_SSI is
       --  For each bit:\n 0 -> slave not selected\n 1 -> slave selected
       SER           : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -226,14 +227,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_1_31 at 0 range 1 .. 31;
    end record;
 
-   subtype BAUDR_SCKDV_Field is RP2040_SVD.UInt16;
+   subtype BAUDR_SCKDV_Field is HAL.UInt16;
 
    --  Baud rate
    type BAUDR_Register is record
       --  SSI clock divider
       SCKDV          : BAUDR_SCKDV_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -243,14 +244,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype TXFTLR_TFT_Field is RP2040_SVD.UInt8;
+   subtype TXFTLR_TFT_Field is HAL.UInt8;
 
    --  TX FIFO threshold level
    type TXFTLR_Register is record
       --  Transmit FIFO threshold
       TFT           : TXFTLR_TFT_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -260,14 +261,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype RXFTLR_RFT_Field is RP2040_SVD.UInt8;
+   subtype RXFTLR_RFT_Field is HAL.UInt8;
 
    --  RX FIFO threshold level
    type RXFTLR_Register is record
       --  Receive FIFO threshold
       RFT           : RXFTLR_RFT_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -277,14 +278,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype TXFLR_TFTFL_Field is RP2040_SVD.UInt8;
+   subtype TXFLR_TFTFL_Field is HAL.UInt8;
 
    --  TX FIFO level
    type TXFLR_Register is record
       --  Read-only. Transmit FIFO level
       TFTFL         : TXFLR_TFTFL_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -294,14 +295,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype RXFLR_RXTFL_Field is RP2040_SVD.UInt8;
+   subtype RXFLR_RXTFL_Field is HAL.UInt8;
 
    --  RX FIFO level
    type RXFLR_Register is record
       --  Read-only. Receive FIFO level
       RXTFL         : RXFLR_RXTFL_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -328,7 +329,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Data collision error
       DCOL          : Boolean;
       --  unspecified
-      Reserved_7_31 : RP2040_SVD.UInt25;
+      Reserved_7_31 : HAL.UInt25;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -359,7 +360,7 @@ package RP2040_SVD.XIP_SSI is
       --  Multi-master contention interrupt mask
       MSTIM         : Boolean := False;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31 : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -389,7 +390,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Multi-master contention interrupt status
       MSTIS         : Boolean;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26;
+      Reserved_6_31 : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -419,7 +420,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Multi-master contention raw interrupt status
       MSTIR         : Boolean;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26;
+      Reserved_6_31 : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -439,7 +440,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Clear-on-read transmit FIFO overflow interrupt
       TXOICR        : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -454,7 +455,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Clear-on-read receive FIFO overflow interrupt
       RXOICR        : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -469,7 +470,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Clear-on-read receive FIFO underflow interrupt
       RXUICR        : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -484,7 +485,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Clear-on-read multi-master contention interrupt
       MSTICR        : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -499,7 +500,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read-only. Clear-on-read all active interrupts
       ICR           : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -516,7 +517,7 @@ package RP2040_SVD.XIP_SSI is
       --  Transmit DMA enable
       TDMAE         : Boolean := False;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30 := 16#0#;
+      Reserved_2_31 : HAL.UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -527,14 +528,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype DMATDLR_DMATDL_Field is RP2040_SVD.UInt8;
+   subtype DMATDLR_DMATDL_Field is HAL.UInt8;
 
    --  DMA TX data level
    type DMATDLR_Register is record
       --  Transmit data watermark level
       DMATDL        : DMATDLR_DMATDL_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -544,14 +545,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype DMARDLR_DMARDL_Field is RP2040_SVD.UInt8;
+   subtype DMARDLR_DMARDL_Field is HAL.UInt8;
 
    --  DMA RX data level
    type DMARDLR_Register is record
       --  Receive data watermark level (DMARDLR+1)
       DMARDL        : DMARDLR_DMARDL_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -561,14 +562,14 @@ package RP2040_SVD.XIP_SSI is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype RX_SAMPLE_DLY_RSD_Field is RP2040_SVD.UInt8;
+   subtype RX_SAMPLE_DLY_RSD_Field is HAL.UInt8;
 
    --  RX sample delay
    type RX_SAMPLE_DLY_Register is record
       --  RXD sample delay (in SCLK cycles)
       RSD           : RX_SAMPLE_DLY_RSD_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -592,7 +593,7 @@ package RP2040_SVD.XIP_SSI is
       Val_1C2A => 1,
       Val_2C2A => 2);
 
-   subtype SPI_CTRLR0_ADDR_L_Field is RP2040_SVD.UInt4;
+   subtype SPI_CTRLR0_ADDR_L_Field is HAL.UInt4;
 
    --  Instruction length (0/4/8/16b)
    type SPI_CTRLR0_INST_L_Field is
@@ -611,8 +612,8 @@ package RP2040_SVD.XIP_SSI is
       Val_8B => 2,
       Val_16B => 3);
 
-   subtype SPI_CTRLR0_WAIT_CYCLES_Field is RP2040_SVD.UInt5;
-   subtype SPI_CTRLR0_XIP_CMD_Field is RP2040_SVD.UInt8;
+   subtype SPI_CTRLR0_WAIT_CYCLES_Field is HAL.UInt5;
+   subtype SPI_CTRLR0_XIP_CMD_Field is HAL.UInt8;
 
    --  SPI control
    type SPI_CTRLR0_Register is record
@@ -622,11 +623,11 @@ package RP2040_SVD.XIP_SSI is
       --  Address length (0b-60b in 4b increments)
       ADDR_L         : SPI_CTRLR0_ADDR_L_Field := 16#0#;
       --  unspecified
-      Reserved_6_7   : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_6_7   : HAL.UInt2 := 16#0#;
       --  Instruction length (0/4/8/16b)
       INST_L         : SPI_CTRLR0_INST_L_Field := RP2040_SVD.XIP_SSI.NONE;
       --  unspecified
-      Reserved_10_10 : RP2040_SVD.Bit := 16#0#;
+      Reserved_10_10 : HAL.Bit := 16#0#;
       --  Wait cycles between control frame transmit and data reception (in
       --  SCLK cycles)
       WAIT_CYCLES    : SPI_CTRLR0_WAIT_CYCLES_Field := 16#0#;
@@ -637,7 +638,7 @@ package RP2040_SVD.XIP_SSI is
       --  Read data strobe enable
       SPI_RXDS_EN    : Boolean := False;
       --  unspecified
-      Reserved_19_23 : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_19_23 : HAL.UInt5 := 16#0#;
       --  SPI Command to send in XIP mode (INST_L = 8-bit) or to append to
       --  Address (INST_L = 0-bit)
       XIP_CMD        : SPI_CTRLR0_XIP_CMD_Field := 16#3#;
@@ -659,14 +660,14 @@ package RP2040_SVD.XIP_SSI is
       XIP_CMD        at 0 range 24 .. 31;
    end record;
 
-   subtype TXD_DRIVE_EDGE_TDE_Field is RP2040_SVD.UInt8;
+   subtype TXD_DRIVE_EDGE_TDE_Field is HAL.UInt8;
 
    --  TX drive edge
    type TXD_DRIVE_EDGE_Register is record
       --  TXD drive edge
       TDE           : TXD_DRIVE_EDGE_TDE_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -768,11 +769,11 @@ package RP2040_SVD.XIP_SSI is
       --  DMA RX data level
       DMARDLR        : aliased DMARDLR_Register;
       --  Identification register
-      IDR            : aliased RP2040_SVD.UInt32;
+      IDR            : aliased HAL.UInt32;
       --  Version ID
-      SSI_VERSION_ID : aliased RP2040_SVD.UInt32;
+      SSI_VERSION_ID : aliased HAL.UInt32;
       --  Data Register 0 (of 36)
-      DR0            : aliased RP2040_SVD.UInt32;
+      DR0            : aliased HAL.UInt32;
       --  RX sample delay
       RX_SAMPLE_DLY  : aliased RX_SAMPLE_DLY_Register;
       --  SPI control

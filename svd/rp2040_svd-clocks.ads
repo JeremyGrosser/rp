@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.CLOCKS is
@@ -44,17 +45,17 @@ package RP2040_SVD.CLOCKS is
       clk_rtc => 9,
       clk_ref => 10);
 
-   subtype CLK_GPOUT0_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_GPOUT0_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_GPOUT0_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_GPOUT0_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_sys;
       --  unspecified
-      Reserved_9_9   : RP2040_SVD.Bit := 16#0#;
+      Reserved_9_9   : HAL.Bit := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
@@ -62,17 +63,17 @@ package RP2040_SVD.CLOCKS is
       --  Enables duty cycle correction for odd divisors
       DC50           : Boolean := False;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_GPOUT0_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -91,8 +92,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_GPOUT0_DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype CLK_GPOUT0_DIV_INT_Field is RP2040_SVD.UInt24;
+   subtype CLK_GPOUT0_DIV_FRAC_Field is HAL.UInt8;
+   subtype CLK_GPOUT0_DIV_INT_Field is HAL.UInt24;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_GPOUT0_DIV_Register is record
@@ -136,17 +137,17 @@ package RP2040_SVD.CLOCKS is
       clk_rtc => 9,
       clk_ref => 10);
 
-   subtype CLK_GPOUT1_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_GPOUT1_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_GPOUT1_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_GPOUT1_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_sys;
       --  unspecified
-      Reserved_9_9   : RP2040_SVD.Bit := 16#0#;
+      Reserved_9_9   : HAL.Bit := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
@@ -154,17 +155,17 @@ package RP2040_SVD.CLOCKS is
       --  Enables duty cycle correction for odd divisors
       DC50           : Boolean := False;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_GPOUT1_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -183,8 +184,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_GPOUT1_DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype CLK_GPOUT1_DIV_INT_Field is RP2040_SVD.UInt24;
+   subtype CLK_GPOUT1_DIV_FRAC_Field is HAL.UInt8;
+   subtype CLK_GPOUT1_DIV_INT_Field is HAL.UInt24;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_GPOUT1_DIV_Register is record
@@ -228,17 +229,17 @@ package RP2040_SVD.CLOCKS is
       clk_rtc => 9,
       clk_ref => 10);
 
-   subtype CLK_GPOUT2_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_GPOUT2_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_GPOUT2_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_GPOUT2_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_sys;
       --  unspecified
-      Reserved_9_9   : RP2040_SVD.Bit := 16#0#;
+      Reserved_9_9   : HAL.Bit := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
@@ -246,17 +247,17 @@ package RP2040_SVD.CLOCKS is
       --  Enables duty cycle correction for odd divisors
       DC50           : Boolean := False;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_GPOUT2_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -275,8 +276,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_GPOUT2_DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype CLK_GPOUT2_DIV_INT_Field is RP2040_SVD.UInt24;
+   subtype CLK_GPOUT2_DIV_FRAC_Field is HAL.UInt8;
+   subtype CLK_GPOUT2_DIV_INT_Field is HAL.UInt24;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_GPOUT2_DIV_Register is record
@@ -320,17 +321,17 @@ package RP2040_SVD.CLOCKS is
       clk_rtc => 9,
       clk_ref => 10);
 
-   subtype CLK_GPOUT3_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_GPOUT3_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_GPOUT3_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_GPOUT3_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_sys;
       --  unspecified
-      Reserved_9_9   : RP2040_SVD.Bit := 16#0#;
+      Reserved_9_9   : HAL.Bit := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
@@ -338,17 +339,17 @@ package RP2040_SVD.CLOCKS is
       --  Enables duty cycle correction for odd divisors
       DC50           : Boolean := False;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_GPOUT3_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -367,8 +368,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_GPOUT3_DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype CLK_GPOUT3_DIV_INT_Field is RP2040_SVD.UInt24;
+   subtype CLK_GPOUT3_DIV_FRAC_Field is HAL.UInt8;
+   subtype CLK_GPOUT3_DIV_INT_Field is HAL.UInt24;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_GPOUT3_DIV_Register is record
@@ -413,12 +414,12 @@ package RP2040_SVD.CLOCKS is
       SRC           : CLK_REF_CTRL_SRC_Field :=
                        RP2040_SVD.CLOCKS.rosc_clksrc_ph;
       --  unspecified
-      Reserved_2_4  : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_2_4  : HAL.UInt3 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC        : CLK_REF_CTRL_AUXSRC_Field :=
                        RP2040_SVD.CLOCKS.clksrc_pll_usb;
       --  unspecified
-      Reserved_7_31 : RP2040_SVD.UInt25 := 16#0#;
+      Reserved_7_31 : HAL.UInt25 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -430,16 +431,16 @@ package RP2040_SVD.CLOCKS is
       Reserved_7_31 at 0 range 7 .. 31;
    end record;
 
-   subtype CLK_REF_DIV_INT_Field is RP2040_SVD.UInt2;
+   subtype CLK_REF_DIV_INT_Field is HAL.UInt2;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_REF_DIV_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7   : HAL.UInt8 := 16#0#;
       --  Integer component of the divisor, 0 -> divide by 2^16
       INT            : CLK_REF_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_10_31 : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_10_31 : HAL.UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -481,12 +482,12 @@ package RP2040_SVD.CLOCKS is
       --  Selects the clock source glitchlessly, can be changed on-the-fly
       SRC           : CLK_SYS_CTRL_SRC_Field := RP2040_SVD.CLOCKS.clk_ref;
       --  unspecified
-      Reserved_1_4  : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_1_4  : HAL.UInt4 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC        : CLK_SYS_CTRL_AUXSRC_Field :=
                        RP2040_SVD.CLOCKS.clksrc_pll_sys;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -498,8 +499,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CLK_SYS_DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype CLK_SYS_DIV_INT_Field is RP2040_SVD.UInt24;
+   subtype CLK_SYS_DIV_FRAC_Field is HAL.UInt8;
+   subtype CLK_SYS_DIV_INT_Field is HAL.UInt24;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_SYS_DIV_Register is record
@@ -538,18 +539,18 @@ package RP2040_SVD.CLOCKS is
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_PERI_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_PERI_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clk_sys;
       --  unspecified
-      Reserved_8_9   : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_8_9   : HAL.UInt2 := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
       ENABLE         : Boolean := False;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -580,33 +581,33 @@ package RP2040_SVD.CLOCKS is
       clksrc_gpin0 => 4,
       clksrc_gpin1 => 5);
 
-   subtype CLK_USB_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_USB_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_USB_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_USB_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_usb;
       --  unspecified
-      Reserved_8_9   : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_8_9   : HAL.UInt2 := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
       ENABLE         : Boolean := False;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_12_15 : HAL.UInt4 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_USB_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -624,16 +625,16 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_USB_DIV_INT_Field is RP2040_SVD.UInt2;
+   subtype CLK_USB_DIV_INT_Field is HAL.UInt2;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_USB_DIV_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7   : HAL.UInt8 := 16#0#;
       --  Integer component of the divisor, 0 -> divide by 2^16
       INT            : CLK_USB_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_10_31 : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_10_31 : HAL.UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -661,33 +662,33 @@ package RP2040_SVD.CLOCKS is
       clksrc_gpin0 => 4,
       clksrc_gpin1 => 5);
 
-   subtype CLK_ADC_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_ADC_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_ADC_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_ADC_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_usb;
       --  unspecified
-      Reserved_8_9   : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_8_9   : HAL.UInt2 := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
       ENABLE         : Boolean := False;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_12_15 : HAL.UInt4 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_ADC_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -705,16 +706,16 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_ADC_DIV_INT_Field is RP2040_SVD.UInt2;
+   subtype CLK_ADC_DIV_INT_Field is HAL.UInt2;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_ADC_DIV_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7   : HAL.UInt8 := 16#0#;
       --  Integer component of the divisor, 0 -> divide by 2^16
       INT            : CLK_ADC_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_10_31 : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_10_31 : HAL.UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -742,33 +743,33 @@ package RP2040_SVD.CLOCKS is
       clksrc_gpin0 => 4,
       clksrc_gpin1 => 5);
 
-   subtype CLK_RTC_CTRL_PHASE_Field is RP2040_SVD.UInt2;
+   subtype CLK_RTC_CTRL_PHASE_Field is HAL.UInt2;
 
    --  Clock control, can be changed on-the-fly (except for auxsrc)
    type CLK_RTC_CTRL_Register is record
       --  unspecified
-      Reserved_0_4   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_0_4   : HAL.UInt5 := 16#0#;
       --  Selects the auxiliary clock source, will glitch when switching
       AUXSRC         : CLK_RTC_CTRL_AUXSRC_Field :=
                         RP2040_SVD.CLOCKS.clksrc_pll_usb;
       --  unspecified
-      Reserved_8_9   : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_8_9   : HAL.UInt2 := 16#0#;
       --  Asynchronously kills the clock generator
       KILL           : Boolean := False;
       --  Starts and stops the clock generator cleanly
       ENABLE         : Boolean := False;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_12_15 : HAL.UInt4 := 16#0#;
       --  This delays the enable signal by up to 3 cycles of the input clock\n
       --  This must be set before the clock is enabled to have any effect
       PHASE          : CLK_RTC_CTRL_PHASE_Field := 16#0#;
       --  unspecified
-      Reserved_18_19 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_18_19 : HAL.UInt2 := 16#0#;
       --  An edge on this signal shifts the phase of the output by 1 cycle of
       --  the input clock\n This can be done at any time
       NUDGE          : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -786,8 +787,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype CLK_RTC_DIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype CLK_RTC_DIV_INT_Field is RP2040_SVD.UInt24;
+   subtype CLK_RTC_DIV_FRAC_Field is HAL.UInt8;
+   subtype CLK_RTC_DIV_INT_Field is HAL.UInt24;
 
    --  Clock divisor, can be changed on-the-fly
    type CLK_RTC_DIV_Register is record
@@ -804,7 +805,7 @@ package RP2040_SVD.CLOCKS is
       INT  at 0 range 8 .. 31;
    end record;
 
-   subtype CLK_SYS_RESUS_CTRL_TIMEOUT_Field is RP2040_SVD.UInt8;
+   subtype CLK_SYS_RESUS_CTRL_TIMEOUT_Field is HAL.UInt8;
 
    type CLK_SYS_RESUS_CTRL_Register is record
       --  This is expressed as a number of clk_ref cycles\n and must be >= 2x
@@ -813,16 +814,16 @@ package RP2040_SVD.CLOCKS is
       --  Enable resus
       ENABLE         : Boolean := False;
       --  unspecified
-      Reserved_9_11  : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_9_11  : HAL.UInt3 := 16#0#;
       --  Force a resus, for test purposes only
       FRCE           : Boolean := False;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
       --  For clearing the resus after the fault that triggered it has been
       --  corrected
       CLEAR          : Boolean := False;
       --  unspecified
-      Reserved_17_31 : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31 : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -842,7 +843,7 @@ package RP2040_SVD.CLOCKS is
       --  ctrl_clear=1
       RESUSSED      : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -852,13 +853,13 @@ package RP2040_SVD.CLOCKS is
       Reserved_1_31 at 0 range 1 .. 31;
    end record;
 
-   subtype FC0_REF_KHZ_FC0_REF_KHZ_Field is RP2040_SVD.UInt20;
+   subtype FC0_REF_KHZ_FC0_REF_KHZ_Field is HAL.UInt20;
 
    --  Reference clock frequency in kHz
    type FC0_REF_KHZ_Register is record
       FC0_REF_KHZ    : FC0_REF_KHZ_FC0_REF_KHZ_Field := 16#0#;
       --  unspecified
-      Reserved_20_31 : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_20_31 : HAL.UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -868,14 +869,14 @@ package RP2040_SVD.CLOCKS is
       Reserved_20_31 at 0 range 20 .. 31;
    end record;
 
-   subtype FC0_MIN_KHZ_FC0_MIN_KHZ_Field is RP2040_SVD.UInt25;
+   subtype FC0_MIN_KHZ_FC0_MIN_KHZ_Field is HAL.UInt25;
 
    --  Minimum pass frequency in kHz. This is optional. Set to 0 if you are not
    --  using the pass/fail flags
    type FC0_MIN_KHZ_Register is record
       FC0_MIN_KHZ    : FC0_MIN_KHZ_FC0_MIN_KHZ_Field := 16#0#;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -885,14 +886,14 @@ package RP2040_SVD.CLOCKS is
       Reserved_25_31 at 0 range 25 .. 31;
    end record;
 
-   subtype FC0_MAX_KHZ_FC0_MAX_KHZ_Field is RP2040_SVD.UInt25;
+   subtype FC0_MAX_KHZ_FC0_MAX_KHZ_Field is HAL.UInt25;
 
    --  Maximum pass frequency in kHz. This is optional. Set to 0x1ffffff if you
    --  are not using the pass/fail flags
    type FC0_MAX_KHZ_Register is record
       FC0_MAX_KHZ    : FC0_MAX_KHZ_FC0_MAX_KHZ_Field := 16#1FFFFFF#;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -902,14 +903,14 @@ package RP2040_SVD.CLOCKS is
       Reserved_25_31 at 0 range 25 .. 31;
    end record;
 
-   subtype FC0_DELAY_FC0_DELAY_Field is RP2040_SVD.UInt3;
+   subtype FC0_DELAY_FC0_DELAY_Field is HAL.UInt3;
 
    --  Delays the start of frequency counting to allow the mux to settle\n
    --  Delay is measured in multiples of the reference clock period
    type FC0_DELAY_Register is record
       FC0_DELAY     : FC0_DELAY_FC0_DELAY_Field := 16#1#;
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_3_31 : HAL.UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -919,14 +920,14 @@ package RP2040_SVD.CLOCKS is
       Reserved_3_31 at 0 range 3 .. 31;
    end record;
 
-   subtype FC0_INTERVAL_FC0_INTERVAL_Field is RP2040_SVD.UInt4;
+   subtype FC0_INTERVAL_FC0_INTERVAL_Field is HAL.UInt4;
 
    --  The test interval is 0.98us * 2**interval, but let's call it 1us *
    --  2**interval\n The default gives a test interval of 250us
    type FC0_INTERVAL_Register is record
       FC0_INTERVAL  : FC0_INTERVAL_FC0_INTERVAL_Field := 16#8#;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -973,7 +974,7 @@ package RP2040_SVD.CLOCKS is
    type FC0_SRC_Register is record
       FC0_SRC       : FC0_SRC_FC0_SRC_Field := RP2040_SVD.CLOCKS.NULL_k;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -988,37 +989,37 @@ package RP2040_SVD.CLOCKS is
       --  Read-only. Test passed
       PASS           : Boolean;
       --  unspecified
-      Reserved_1_3   : RP2040_SVD.UInt3;
+      Reserved_1_3   : HAL.UInt3;
       --  Read-only. Test complete
       DONE           : Boolean;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3;
+      Reserved_5_7   : HAL.UInt3;
       --  Read-only. Test running
       RUNNING        : Boolean;
       --  unspecified
-      Reserved_9_11  : RP2040_SVD.UInt3;
+      Reserved_9_11  : HAL.UInt3;
       --  Read-only. Waiting for test clock to start
       WAITING        : Boolean;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3;
+      Reserved_13_15 : HAL.UInt3;
       --  Read-only. Test failed
       FAIL           : Boolean;
       --  unspecified
-      Reserved_17_19 : RP2040_SVD.UInt3;
+      Reserved_17_19 : HAL.UInt3;
       --  Read-only. Test clock slower than expected, only valid when
       --  status_done=1
       SLOW           : Boolean;
       --  unspecified
-      Reserved_21_23 : RP2040_SVD.UInt3;
+      Reserved_21_23 : HAL.UInt3;
       --  Read-only. Test clock faster than expected, only valid when
       --  status_done=1
       FAST           : Boolean;
       --  unspecified
-      Reserved_25_27 : RP2040_SVD.UInt3;
+      Reserved_25_27 : HAL.UInt3;
       --  Read-only. Test clock stopped during test
       DIED           : Boolean;
       --  unspecified
-      Reserved_29_31 : RP2040_SVD.UInt3;
+      Reserved_29_31 : HAL.UInt3;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1042,8 +1043,8 @@ package RP2040_SVD.CLOCKS is
       Reserved_29_31 at 0 range 29 .. 31;
    end record;
 
-   subtype FC0_RESULT_FRAC_Field is RP2040_SVD.UInt5;
-   subtype FC0_RESULT_KHZ_Field is RP2040_SVD.UInt25;
+   subtype FC0_RESULT_FRAC_Field is HAL.UInt5;
+   subtype FC0_RESULT_KHZ_Field is HAL.UInt25;
 
    --  Result of frequency measurement, only valid when status_done=1
    type FC0_RESULT_Register is record
@@ -1052,7 +1053,7 @@ package RP2040_SVD.CLOCKS is
       --  Read-only.
       KHZ            : FC0_RESULT_KHZ_Field;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2;
+      Reserved_30_31 : HAL.UInt2;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1074,7 +1075,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_i2c as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_i2c as an array
             Arr : WAKE_EN0_clk_sys_i2c_Field_Array;
@@ -1098,7 +1099,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_pio as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_pio as an array
             Arr : WAKE_EN0_clk_sys_pio_Field_Array;
@@ -1122,7 +1123,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_sram as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  clk_sys_sram as an array
             Arr : WAKE_EN0_clk_sys_sram_Field_Array;
@@ -1212,7 +1213,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_sram as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_sram as an array
             Arr : WAKE_EN1_clk_sys_sram_Field_Array;
@@ -1243,7 +1244,7 @@ package RP2040_SVD.CLOCKS is
       clk_sys_xip      : Boolean := True;
       clk_sys_xosc     : Boolean := True;
       --  unspecified
-      Reserved_15_31   : RP2040_SVD.UInt17 := 16#0#;
+      Reserved_15_31   : HAL.UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1277,7 +1278,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_i2c as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_i2c as an array
             Arr : SLEEP_EN0_clk_sys_i2c_Field_Array;
@@ -1301,7 +1302,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_pio as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_pio as an array
             Arr : SLEEP_EN0_clk_sys_pio_Field_Array;
@@ -1325,7 +1326,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_sram as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  clk_sys_sram as an array
             Arr : SLEEP_EN0_clk_sys_sram_Field_Array;
@@ -1415,7 +1416,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_sram as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_sram as an array
             Arr : SLEEP_EN1_clk_sys_sram_Field_Array;
@@ -1446,7 +1447,7 @@ package RP2040_SVD.CLOCKS is
       clk_sys_xip      : Boolean := True;
       clk_sys_xosc     : Boolean := True;
       --  unspecified
-      Reserved_15_31   : RP2040_SVD.UInt17 := 16#0#;
+      Reserved_15_31   : HAL.UInt17 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1480,7 +1481,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_i2c as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_i2c as an array
             Arr : ENABLED0_clk_sys_i2c_Field_Array;
@@ -1504,7 +1505,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_pio as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_pio as an array
             Arr : ENABLED0_clk_sys_pio_Field_Array;
@@ -1528,7 +1529,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_sram as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  clk_sys_sram as an array
             Arr : ENABLED0_clk_sys_sram_Field_Array;
@@ -1642,7 +1643,7 @@ package RP2040_SVD.CLOCKS is
       case As_Array is
          when False =>
             --  clk_sys_sram as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  clk_sys_sram as an array
             Arr : ENABLED1_clk_sys_sram_Field_Array;
@@ -1686,7 +1687,7 @@ package RP2040_SVD.CLOCKS is
       --  Read-only.
       clk_sys_xosc     : Boolean;
       --  unspecified
-      Reserved_15_31   : RP2040_SVD.UInt17;
+      Reserved_15_31   : HAL.UInt17;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1714,7 +1715,7 @@ package RP2040_SVD.CLOCKS is
       --  Read-only.
       CLK_SYS_RESUS : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1728,7 +1729,7 @@ package RP2040_SVD.CLOCKS is
    type INTE_Register is record
       CLK_SYS_RESUS : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1742,7 +1743,7 @@ package RP2040_SVD.CLOCKS is
    type INTF_Register is record
       CLK_SYS_RESUS : Boolean := False;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1757,7 +1758,7 @@ package RP2040_SVD.CLOCKS is
       --  Read-only.
       CLK_SYS_RESUS : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1777,59 +1778,59 @@ package RP2040_SVD.CLOCKS is
       --  Clock divisor, can be changed on-the-fly
       CLK_GPOUT0_DIV       : aliased CLK_GPOUT0_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_GPOUT0_SELECTED  : aliased RP2040_SVD.UInt32;
+      CLK_GPOUT0_SELECTED  : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_GPOUT1_CTRL      : aliased CLK_GPOUT1_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_GPOUT1_DIV       : aliased CLK_GPOUT1_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_GPOUT1_SELECTED  : aliased RP2040_SVD.UInt32;
+      CLK_GPOUT1_SELECTED  : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_GPOUT2_CTRL      : aliased CLK_GPOUT2_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_GPOUT2_DIV       : aliased CLK_GPOUT2_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_GPOUT2_SELECTED  : aliased RP2040_SVD.UInt32;
+      CLK_GPOUT2_SELECTED  : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_GPOUT3_CTRL      : aliased CLK_GPOUT3_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_GPOUT3_DIV       : aliased CLK_GPOUT3_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_GPOUT3_SELECTED  : aliased RP2040_SVD.UInt32;
+      CLK_GPOUT3_SELECTED  : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_REF_CTRL         : aliased CLK_REF_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_REF_DIV          : aliased CLK_REF_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_REF_SELECTED     : aliased RP2040_SVD.UInt32;
+      CLK_REF_SELECTED     : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_SYS_CTRL         : aliased CLK_SYS_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_SYS_DIV          : aliased CLK_SYS_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_SYS_SELECTED     : aliased RP2040_SVD.UInt32;
+      CLK_SYS_SELECTED     : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_PERI_CTRL        : aliased CLK_PERI_CTRL_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_PERI_SELECTED    : aliased RP2040_SVD.UInt32;
+      CLK_PERI_SELECTED    : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_USB_CTRL         : aliased CLK_USB_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_USB_DIV          : aliased CLK_USB_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_USB_SELECTED     : aliased RP2040_SVD.UInt32;
+      CLK_USB_SELECTED     : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_ADC_CTRL         : aliased CLK_ADC_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_ADC_DIV          : aliased CLK_ADC_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_ADC_SELECTED     : aliased RP2040_SVD.UInt32;
+      CLK_ADC_SELECTED     : aliased HAL.UInt32;
       --  Clock control, can be changed on-the-fly (except for auxsrc)
       CLK_RTC_CTRL         : aliased CLK_RTC_CTRL_Register;
       --  Clock divisor, can be changed on-the-fly
       CLK_RTC_DIV          : aliased CLK_RTC_DIV_Register;
       --  Indicates which src is currently selected (one-hot)
-      CLK_RTC_SELECTED     : aliased RP2040_SVD.UInt32;
+      CLK_RTC_SELECTED     : aliased HAL.UInt32;
       CLK_SYS_RESUS_CTRL   : aliased CLK_SYS_RESUS_CTRL_Register;
       CLK_SYS_RESUS_STATUS : aliased CLK_SYS_RESUS_STATUS_Register;
       --  Reference clock frequency in kHz

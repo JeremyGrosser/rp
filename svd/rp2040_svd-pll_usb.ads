@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.PLL_USB is
@@ -17,7 +18,7 @@ package RP2040_SVD.PLL_USB is
    -- Registers --
    ---------------
 
-   subtype CS_REFDIV_Field is RP2040_SVD.UInt6;
+   subtype CS_REFDIV_Field is HAL.UInt6;
 
    --  Control and Status\n GENERAL CONSTRAINTS:\n Reference clock frequency
    --  min=5MHz, max=800MHz\n Feedback divider min=16, max=320\n VCO frequency
@@ -28,13 +29,13 @@ package RP2040_SVD.PLL_USB is
       --  for lock=1 before using it.
       REFDIV        : CS_REFDIV_Field := 16#1#;
       --  unspecified
-      Reserved_6_7  : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_6_7  : HAL.UInt2 := 16#0#;
       --  Passes the reference clock to the output instead of the divided VCO.
       --  The VCO continues to run so the user can switch between the reference
       --  clock and the divided VCO but the output will glitch when doing so.
       BYPASS        : Boolean := False;
       --  unspecified
-      Reserved_9_30 : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_9_30 : HAL.UInt22 := 16#0#;
       --  Read-only. PLL is locked
       LOCK          : Boolean := False;
    end record
@@ -54,19 +55,19 @@ package RP2040_SVD.PLL_USB is
       --  PLL powerdown\n To save power set high when PLL output not required.
       PD            : Boolean := True;
       --  unspecified
-      Reserved_1_1  : RP2040_SVD.Bit := 16#0#;
+      Reserved_1_1  : HAL.Bit := 16#0#;
       --  PLL DSM powerdown\n Nothing is achieved by setting this low.
       DSMPD         : Boolean := True;
       --  PLL post divider powerdown\n To save power set high when PLL output
       --  not required or bypass=1.
       POSTDIVPD     : Boolean := True;
       --  unspecified
-      Reserved_4_4  : RP2040_SVD.Bit := 16#0#;
+      Reserved_4_4  : HAL.Bit := 16#0#;
       --  PLL VCO powerdown\n To save power set high when PLL output not
       --  required or bypass=1.
       VCOPD         : Boolean := True;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31 : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -81,14 +82,14 @@ package RP2040_SVD.PLL_USB is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype FBDIV_INT_FBDIV_INT_Field is RP2040_SVD.UInt12;
+   subtype FBDIV_INT_FBDIV_INT_Field is HAL.UInt12;
 
    --  Feedback divisor\n (note: this PLL does not support fractional division)
    type FBDIV_INT_Register is record
       --  see ctrl reg description for constraints
       FBDIV_INT      : FBDIV_INT_FBDIV_INT_Field := 16#0#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -98,23 +99,23 @@ package RP2040_SVD.PLL_USB is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype PRIM_POSTDIV2_Field is RP2040_SVD.UInt3;
-   subtype PRIM_POSTDIV1_Field is RP2040_SVD.UInt3;
+   subtype PRIM_POSTDIV2_Field is HAL.UInt3;
+   subtype PRIM_POSTDIV1_Field is HAL.UInt3;
 
    --  Controls the PLL post dividers for the primary output\n (note: this PLL
    --  does not have a secondary output)\n the primary output is driven from
    --  VCO divided by postdiv1*postdiv2
    type PRIM_Register is record
       --  unspecified
-      Reserved_0_11  : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_0_11  : HAL.UInt12 := 16#0#;
       --  divide by 1-7
       POSTDIV2       : PRIM_POSTDIV2_Field := 16#7#;
       --  unspecified
-      Reserved_15_15 : RP2040_SVD.Bit := 16#0#;
+      Reserved_15_15 : HAL.Bit := 16#0#;
       --  divide by 1-7
       POSTDIV1       : PRIM_POSTDIV1_Field := 16#7#;
       --  unspecified
-      Reserved_19_31 : RP2040_SVD.UInt13 := 16#0#;
+      Reserved_19_31 : HAL.UInt13 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

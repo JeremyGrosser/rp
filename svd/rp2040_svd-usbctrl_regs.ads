@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  USB FS/LS controller device registers
@@ -18,8 +19,8 @@ package RP2040_SVD.USBCTRL_REGS is
    -- Registers --
    ---------------
 
-   subtype ADDR_ENDP_ADDRESS_Field is RP2040_SVD.UInt7;
-   subtype ADDR_ENDP_ENDPOINT_Field is RP2040_SVD.UInt4;
+   subtype ADDR_ENDP_ADDRESS_Field is HAL.UInt7;
+   subtype ADDR_ENDP_ENDPOINT_Field is HAL.UInt4;
 
    --  Device address and endpoint control
    type ADDR_ENDP_Register is record
@@ -28,11 +29,11 @@ package RP2040_SVD.USBCTRL_REGS is
       --  to the address of the device to communicate with.
       ADDRESS        : ADDR_ENDP_ADDRESS_Field := 16#0#;
       --  unspecified
-      Reserved_7_15  : RP2040_SVD.UInt9 := 16#0#;
+      Reserved_7_15  : HAL.UInt9 := 16#0#;
       --  Device endpoint to send data to. Only valid for HOST mode.
       ENDPOINT       : ADDR_ENDP_ENDPOINT_Field := 16#0#;
       --  unspecified
-      Reserved_20_31 : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_20_31 : HAL.UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -49,18 +50,18 @@ package RP2040_SVD.USBCTRL_REGS is
       --  Device address
       ADDRESS        : ADDR_ENDP_ADDRESS_Field := 16#0#;
       --  unspecified
-      Reserved_7_15  : RP2040_SVD.UInt9 := 16#0#;
+      Reserved_7_15  : HAL.UInt9 := 16#0#;
       --  Endpoint number of the interrupt endpoint
       ENDPOINT       : ADDR_ENDP_ENDPOINT_Field := 16#0#;
       --  unspecified
-      Reserved_20_24 : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_20_24 : HAL.UInt5 := 16#0#;
       --  Direction of the interrupt endpoint. In=0, Out=1
       INTEP_DIR      : Boolean := False;
       --  Interrupt EP requires preamble (is a low speed device on a full speed
       --  hub)
       INTEP_PREAMBLE : Boolean := False;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_27_31 : HAL.UInt5 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -82,7 +83,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  Device mode = 0, Host mode = 1
       HOST_NDEVICE  : Boolean := False;
       --  unspecified
-      Reserved_2_30 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_2_30 : HAL.UInt29 := 16#0#;
       --  Reduced timings for simulation
       SIM_TIMING    : Boolean := False;
    end record
@@ -96,7 +97,7 @@ package RP2040_SVD.USBCTRL_REGS is
       SIM_TIMING    at 0 range 31 .. 31;
    end record;
 
-   subtype SOF_WR_COUNT_Field is RP2040_SVD.UInt11;
+   subtype SOF_WR_COUNT_Field is HAL.UInt11;
 
    --  Set the SOF (Start of Frame) frame number in the host controller. The
    --  SOF packet is sent every 1ms and the host will increment the frame
@@ -105,7 +106,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  Write-only.
       COUNT          : SOF_WR_COUNT_Field := 16#0#;
       --  unspecified
-      Reserved_11_31 : RP2040_SVD.UInt21 := 16#0#;
+      Reserved_11_31 : HAL.UInt21 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -115,7 +116,7 @@ package RP2040_SVD.USBCTRL_REGS is
       Reserved_11_31 at 0 range 11 .. 31;
    end record;
 
-   subtype SOF_RD_COUNT_Field is RP2040_SVD.UInt11;
+   subtype SOF_RD_COUNT_Field is HAL.UInt11;
 
    --  Read the last SOF (Start of Frame) frame number seen. In device mode the
    --  last SOF received from the host. In host mode the last SOF sent by the
@@ -124,7 +125,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  Read-only.
       COUNT          : SOF_RD_COUNT_Field;
       --  unspecified
-      Reserved_11_31 : RP2040_SVD.UInt21;
+      Reserved_11_31 : HAL.UInt21;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -149,11 +150,11 @@ package RP2040_SVD.USBCTRL_REGS is
       --  zero). Host: Stop transaction
       STOP_TRANS     : Boolean := False;
       --  unspecified
-      Reserved_5_5   : RP2040_SVD.Bit := 16#0#;
+      Reserved_5_5   : HAL.Bit := 16#0#;
       --  Host: Preable enable for LS device on FS hub
       PREAMBLE_EN    : Boolean := False;
       --  unspecified
-      Reserved_7_7   : RP2040_SVD.Bit := 16#0#;
+      Reserved_7_7   : HAL.Bit := 16#0#;
       --  Host: Delay packet(s) until after SOF
       SOF_SYNC       : Boolean := False;
       --  Host: Enable SOF generation (for full speed bus)
@@ -170,7 +171,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  zero). Host: Reset bus
       RESET_BUS      : Boolean := False;
       --  unspecified
-      Reserved_14_14 : RP2040_SVD.Bit := 16#0#;
+      Reserved_14_14 : HAL.Bit := 16#0#;
       --  Host: Enable pull down resistors
       PULLDOWN_EN    : Boolean := False;
       --  Device: Enable pull up resistor
@@ -180,7 +181,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  Power down bus transceiver
       TRANSCEIVER_PD : Boolean := False;
       --  unspecified
-      Reserved_19_23 : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_19_23 : HAL.UInt5 := 16#0#;
       --  Direct control of DM
       DIRECT_DM      : Boolean := False;
       --  Direct control of DP
@@ -232,15 +233,15 @@ package RP2040_SVD.USBCTRL_REGS is
       EP0_INT_STALL  at 0 range 31 .. 31;
    end record;
 
-   subtype SIE_STATUS_LINE_STATE_Field is RP2040_SVD.UInt2;
-   subtype SIE_STATUS_SPEED_Field is RP2040_SVD.UInt2;
+   subtype SIE_STATUS_LINE_STATE_Field is HAL.UInt2;
+   subtype SIE_STATUS_SPEED_Field is HAL.UInt2;
 
    --  SIE status register
    type SIE_STATUS_Register is record
       --  Read-only. Device: VBUS Detected
       VBUS_DETECTED   : Boolean := False;
       --  unspecified
-      Reserved_1_1    : RP2040_SVD.Bit := 16#0#;
+      Reserved_1_1    : HAL.Bit := 16#0#;
       --  Read-only. USB bus line state
       LINE_STATE      : SIE_STATUS_LINE_STATE_Field := 16#0#;
       --  Read-only. Bus in suspended state. Valid for device and host. Host
@@ -248,7 +249,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  are enabled.
       SUSPENDED       : Boolean := False;
       --  unspecified
-      Reserved_5_7    : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7    : HAL.UInt3 := 16#0#;
       --  Read-only. Host: device speed. Disconnected = 00, LS = 01, FS = 10
       SPEED           : SIE_STATUS_SPEED_Field := 16#0#;
       --  Read-only. VBUS over current detected
@@ -258,7 +259,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  host has initiated a resume.
       RESUME          : Boolean := False;
       --  unspecified
-      Reserved_12_15  : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_12_15  : HAL.UInt4 := 16#0#;
       --  Read-only. Device: connected
       CONNECTED       : Boolean := False;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
@@ -277,7 +278,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  in the field. Device: bus reset received
       BUS_RESET       : Boolean := False;
       --  unspecified
-      Reserved_20_23  : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_20_23  : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. CRC Error. Raised by the Serial RX engine.
       CRC_ERROR       : Boolean := False;
@@ -339,16 +340,16 @@ package RP2040_SVD.USBCTRL_REGS is
       DATA_SEQ_ERROR  at 0 range 31 .. 31;
    end record;
 
-   subtype INT_EP_CTRL_INT_EP_ACTIVE_Field is RP2040_SVD.UInt15;
+   subtype INT_EP_CTRL_INT_EP_ACTIVE_Field is HAL.UInt15;
 
    --  interrupt endpoint control register
    type INT_EP_CTRL_Register is record
       --  unspecified
-      Reserved_0_0   : RP2040_SVD.Bit := 16#0#;
+      Reserved_0_0   : HAL.Bit := 16#0#;
       --  Host: Enable interrupt endpoint 1 -> 15
       INT_EP_ACTIVE  : INT_EP_CTRL_INT_EP_ACTIVE_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -799,7 +800,7 @@ package RP2040_SVD.USBCTRL_REGS is
       EP0_IN        : Boolean := False;
       EP0_OUT       : Boolean := False;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30 := 16#0#;
+      Reserved_2_31 : HAL.UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -810,8 +811,8 @@ package RP2040_SVD.USBCTRL_REGS is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype NAK_POLL_DELAY_LS_Field is RP2040_SVD.UInt10;
-   subtype NAK_POLL_DELAY_FS_Field is RP2040_SVD.UInt10;
+   subtype NAK_POLL_DELAY_LS_Field is HAL.UInt10;
+   subtype NAK_POLL_DELAY_FS_Field is HAL.UInt10;
 
    --  Used by the host controller. Sets the wait time in microseconds before
    --  trying again if the device replies with a NAK.
@@ -819,11 +820,11 @@ package RP2040_SVD.USBCTRL_REGS is
       --  NAK polling interval for a low speed device
       DELAY_LS       : NAK_POLL_DELAY_LS_Field := 16#10#;
       --  unspecified
-      Reserved_10_15 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_10_15 : HAL.UInt6 := 16#0#;
       --  NAK polling interval for a full speed device
       DELAY_FS       : NAK_POLL_DELAY_FS_Field := 16#10#;
       --  unspecified
-      Reserved_26_31 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_26_31 : HAL.UInt6 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -981,7 +982,7 @@ package RP2040_SVD.USBCTRL_REGS is
       TO_DIGITAL_PAD : Boolean := False;
       SOFTCON        : Boolean := False;
       --  unspecified
-      Reserved_4_31  : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31  : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1005,7 +1006,7 @@ package RP2040_SVD.USBCTRL_REGS is
       OVERCURR_DETECT         : Boolean := False;
       OVERCURR_DETECT_EN      : Boolean := False;
       --  unspecified
-      Reserved_6_31           : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31           : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1032,7 +1033,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  DP pull down enable
       DP_PULLDN_EN    : Boolean := False;
       --  unspecified
-      Reserved_3_3    : RP2040_SVD.Bit := 16#0#;
+      Reserved_3_3    : HAL.Bit := 16#0#;
       --  Enable the second DM pull up resistor. 0 - Pull = Rpu2; 1 - Pull =
       --  Rpu1 + Rpu2
       DM_PULLUP_HISEL : Boolean := False;
@@ -1041,7 +1042,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  DM pull down enable
       DM_PULLDN_EN    : Boolean := False;
       --  unspecified
-      Reserved_7_7    : RP2040_SVD.Bit := 16#0#;
+      Reserved_7_7    : HAL.Bit := 16#0#;
       --  Output enable. If TX_DIFFMODE=1, OE for DPP/DPM diff pair. 0 -
       --  DPP/DPM in Hi-Z state; 1 - DPP/DPM driving\n If TX_DIFFMODE=0, OE for
       --  DPP only. 0 - DPP in Hi-Z state; 1 - DPP driving
@@ -1080,7 +1081,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  Read-only. DM over voltage
       DM_OVV          : Boolean := False;
       --  unspecified
-      Reserved_23_31  : RP2040_SVD.UInt9 := 16#0#;
+      Reserved_23_31  : HAL.UInt9 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1128,10 +1129,10 @@ package RP2040_SVD.USBCTRL_REGS is
       TX_FSSLEW_OVERRIDE_EN       : Boolean := False;
       DM_PULLUP_OVERRIDE_EN       : Boolean := False;
       --  unspecified
-      Reserved_13_14              : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_13_14              : HAL.UInt2 := 16#0#;
       TX_DIFFMODE_OVERRIDE_EN     : Boolean := False;
       --  unspecified
-      Reserved_16_31              : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31              : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1155,8 +1156,8 @@ package RP2040_SVD.USBCTRL_REGS is
       Reserved_16_31              at 0 range 16 .. 31;
    end record;
 
-   subtype USBPHY_TRIM_DP_PULLDN_TRIM_Field is RP2040_SVD.UInt5;
-   subtype USBPHY_TRIM_DM_PULLDN_TRIM_Field is RP2040_SVD.UInt5;
+   subtype USBPHY_TRIM_DP_PULLDN_TRIM_Field is HAL.UInt5;
+   subtype USBPHY_TRIM_DM_PULLDN_TRIM_Field is HAL.UInt5;
 
    --  Used to adjust trim values of USB phy pull down resistors.
    type USBPHY_TRIM_Register is record
@@ -1165,13 +1166,13 @@ package RP2040_SVD.USBCTRL_REGS is
       --  register allows adjustment if required
       DP_PULLDN_TRIM : USBPHY_TRIM_DP_PULLDN_TRIM_Field := 16#1F#;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       --  Value to drive to USB PHY\n DM pulldown resistor trim control\n
       --  Experimental data suggests that the reset value will work, but this
       --  register allows adjustment if required
       DM_PULLDN_TRIM : USBPHY_TRIM_DM_PULLDN_TRIM_Field := 16#1F#;
       --  unspecified
-      Reserved_13_31 : RP2040_SVD.UInt19 := 16#0#;
+      Reserved_13_31 : HAL.UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1238,7 +1239,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  by clearing all bits in EP_STATUS_STALL_NAK.
       EP_STALL_NAK         : Boolean;
       --  unspecified
-      Reserved_20_31       : RP2040_SVD.UInt12;
+      Reserved_20_31       : HAL.UInt12;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1321,7 +1322,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  all bits in EP_STATUS_STALL_NAK.
       EP_STALL_NAK         : Boolean := False;
       --  unspecified
-      Reserved_20_31       : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_20_31       : HAL.UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1404,7 +1405,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  all bits in EP_STATUS_STALL_NAK.
       EP_STALL_NAK         : Boolean := False;
       --  unspecified
-      Reserved_20_31       : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_20_31       : HAL.UInt12 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1488,7 +1489,7 @@ package RP2040_SVD.USBCTRL_REGS is
       --  by clearing all bits in EP_STATUS_STALL_NAK.
       EP_STALL_NAK         : Boolean;
       --  unspecified
-      Reserved_20_31       : RP2040_SVD.UInt12;
+      Reserved_20_31       : HAL.UInt12;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

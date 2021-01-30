@@ -5,21 +5,23 @@ pragma Style_Checks (Off);
 --  SPDX-License-Identifier: BSD-3-Clause
 
 --  This spec has been automatically generated from rp2040.svd
+--  and modified to suit both SPI0 and SPI1 with a single definition.
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
-package RP2040_SVD.SPI0 is
+package RP2040_SVD.SPI is
    pragma Preelaborate;
 
    ---------------
    -- Registers --
    ---------------
 
-   subtype SSPCR0_DSS_Field is RP2040_SVD.UInt4;
-   subtype SSPCR0_FRF_Field is RP2040_SVD.UInt2;
-   subtype SSPCR0_SCR_Field is RP2040_SVD.UInt8;
+   subtype SSPCR0_DSS_Field is HAL.UInt4;
+   subtype SSPCR0_FRF_Field is HAL.UInt2;
+   subtype SSPCR0_SCR_Field is HAL.UInt8;
 
    --  Control register 0, SSPCR0 on page 3-4
    type SSPCR0_Register is record
@@ -47,7 +49,7 @@ package RP2040_SVD.SPI0 is
       --  0-255.
       SCR            : SSPCR0_SCR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -85,7 +87,7 @@ package RP2040_SVD.SPI0 is
       --  the SSPTXD output in slave mode.
       SOD           : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -98,7 +100,7 @@ package RP2040_SVD.SPI0 is
       Reserved_4_31 at 0 range 4 .. 31;
    end record;
 
-   subtype SSPDR_DATA_Field is RP2040_SVD.UInt16;
+   subtype SSPDR_DATA_Field is HAL.UInt16;
 
    --  Data register, SSPDR on page 3-6
    type SSPDR_Register is record
@@ -109,7 +111,7 @@ package RP2040_SVD.SPI0 is
       --  right-justifies.
       DATA           : SSPDR_DATA_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -138,7 +140,7 @@ package RP2040_SVD.SPI0 is
       --  is not empty.
       BSY           : Boolean;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -152,7 +154,7 @@ package RP2040_SVD.SPI0 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype SSPCPSR_CPSDVSR_Field is RP2040_SVD.UInt8;
+   subtype SSPCPSR_CPSDVSR_Field is HAL.UInt8;
 
    --  Clock prescale register, SSPCPSR on page 3-8
    type SSPCPSR_Register is record
@@ -161,7 +163,7 @@ package RP2040_SVD.SPI0 is
       --  zero on reads.
       CPSDVSR       : SSPCPSR_CPSDVSR_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -190,7 +192,7 @@ package RP2040_SVD.SPI0 is
       --  condition interrupt is not masked.
       TXIM          : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -218,7 +220,7 @@ package RP2040_SVD.SPI0 is
       --  SSPTXINTR interrupt
       TXRIS         : Boolean;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28;
+      Reserved_4_31 : HAL.UInt28;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -246,7 +248,7 @@ package RP2040_SVD.SPI0 is
       --  masking, of the SSPTXINTR interrupt
       TXMIS         : Boolean;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28;
+      Reserved_4_31 : HAL.UInt28;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -268,7 +270,7 @@ package RP2040_SVD.SPI0 is
       --  in the field. Clears the SSPRTINTR interrupt
       RTIC          : Boolean := False;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30 := 16#0#;
+      Reserved_2_31 : HAL.UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -288,7 +290,7 @@ package RP2040_SVD.SPI0 is
       --  FIFO is enabled.
       TXDMAE        : Boolean := False;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30 := 16#0#;
+      Reserved_2_31 : HAL.UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -299,14 +301,14 @@ package RP2040_SVD.SPI0 is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype SSPPERIPHID0_PARTNUMBER0_Field is RP2040_SVD.UInt8;
+   subtype SSPPERIPHID0_PARTNUMBER0_Field is HAL.UInt8;
 
    --  Peripheral identification registers, SSPPeriphID0-3 on page 3-13
    type SSPPERIPHID0_Register is record
       --  Read-only. These bits read back as 0x22
       PARTNUMBER0   : SSPPERIPHID0_PARTNUMBER0_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -316,8 +318,8 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPERIPHID1_PARTNUMBER1_Field is RP2040_SVD.UInt4;
-   subtype SSPPERIPHID1_DESIGNER0_Field is RP2040_SVD.UInt4;
+   subtype SSPPERIPHID1_PARTNUMBER1_Field is HAL.UInt4;
+   subtype SSPPERIPHID1_DESIGNER0_Field is HAL.UInt4;
 
    --  Peripheral identification registers, SSPPeriphID0-3 on page 3-13
    type SSPPERIPHID1_Register is record
@@ -326,7 +328,7 @@ package RP2040_SVD.SPI0 is
       --  Read-only. These bits read back as 0x1
       DESIGNER0     : SSPPERIPHID1_DESIGNER0_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -337,8 +339,8 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPERIPHID2_DESIGNER1_Field is RP2040_SVD.UInt4;
-   subtype SSPPERIPHID2_REVISION_Field is RP2040_SVD.UInt4;
+   subtype SSPPERIPHID2_DESIGNER1_Field is HAL.UInt4;
+   subtype SSPPERIPHID2_REVISION_Field is HAL.UInt4;
 
    --  Peripheral identification registers, SSPPeriphID0-3 on page 3-13
    type SSPPERIPHID2_Register is record
@@ -347,7 +349,7 @@ package RP2040_SVD.SPI0 is
       --  Read-only. These bits return the peripheral revision
       REVISION      : SSPPERIPHID2_REVISION_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -358,14 +360,14 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPERIPHID3_CONFIGURATION_Field is RP2040_SVD.UInt8;
+   subtype SSPPERIPHID3_CONFIGURATION_Field is HAL.UInt8;
 
    --  Peripheral identification registers, SSPPeriphID0-3 on page 3-13
    type SSPPERIPHID3_Register is record
       --  Read-only. These bits read back as 0x00
       CONFIGURATION : SSPPERIPHID3_CONFIGURATION_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -375,14 +377,14 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPCELLID0_SSPPCELLID0_Field is RP2040_SVD.UInt8;
+   subtype SSPPCELLID0_SSPPCELLID0_Field is HAL.UInt8;
 
    --  PrimeCell identification registers, SSPPCellID0-3 on page 3-16
    type SSPPCELLID0_Register is record
       --  Read-only. These bits read back as 0x0D
       SSPPCELLID0   : SSPPCELLID0_SSPPCELLID0_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -392,14 +394,14 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPCELLID1_SSPPCELLID1_Field is RP2040_SVD.UInt8;
+   subtype SSPPCELLID1_SSPPCELLID1_Field is HAL.UInt8;
 
    --  PrimeCell identification registers, SSPPCellID0-3 on page 3-16
    type SSPPCELLID1_Register is record
       --  Read-only. These bits read back as 0xF0
       SSPPCELLID1   : SSPPCELLID1_SSPPCELLID1_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -409,14 +411,14 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPCELLID2_SSPPCELLID2_Field is RP2040_SVD.UInt8;
+   subtype SSPPCELLID2_SSPPCELLID2_Field is HAL.UInt8;
 
    --  PrimeCell identification registers, SSPPCellID0-3 on page 3-16
    type SSPPCELLID2_Register is record
       --  Read-only. These bits read back as 0x05
       SSPPCELLID2   : SSPPCELLID2_SSPPCELLID2_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -426,14 +428,14 @@ package RP2040_SVD.SPI0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype SSPPCELLID3_SSPPCELLID3_Field is RP2040_SVD.UInt8;
+   subtype SSPPCELLID3_SSPPCELLID3_Field is HAL.UInt8;
 
    --  PrimeCell identification registers, SSPPCellID0-3 on page 3-16
    type SSPPCELLID3_Register is record
       --  Read-only. These bits read back as 0xB1
       SSPPCELLID3   : SSPPCELLID3_SSPPCELLID3_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -447,7 +449,7 @@ package RP2040_SVD.SPI0 is
    -- Peripherals --
    -----------------
 
-   type SPI0_Peripheral is record
+   type SPI_Peripheral is record
       --  Control register 0, SSPCR0 on page 3-4
       SSPCR0       : aliased SSPCR0_Register;
       --  Control register 1, SSPCR1 on page 3-5
@@ -487,7 +489,7 @@ package RP2040_SVD.SPI0 is
    end record
      with Volatile;
 
-   for SPI0_Peripheral use record
+   for SPI_Peripheral use record
       SSPCR0       at 16#0# range 0 .. 31;
       SSPCR1       at 16#4# range 0 .. 31;
       SSPDR        at 16#8# range 0 .. 31;
@@ -508,7 +510,9 @@ package RP2040_SVD.SPI0 is
       SSPPCELLID3  at 16#FFC# range 0 .. 31;
    end record;
 
-   SPI0_Periph : aliased SPI0_Peripheral
+   SPI0_Periph : aliased SPI_Peripheral
      with Import, Address => SPI0_Base;
+   SPI1_Periph : aliased SPI_Peripheral
+     with Import, Address => SPI1_Base;
 
-end RP2040_SVD.SPI0;
+end RP2040_SVD.SPI;

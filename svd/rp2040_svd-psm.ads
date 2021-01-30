@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.PSM is
@@ -28,7 +29,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  sram as a value
-            Val : RP2040_SVD.UInt6;
+            Val : HAL.UInt6;
          when True =>
             --  sram as an array
             Arr : FRCE_ON_sram_Field_Array;
@@ -52,7 +53,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  proc as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  proc as an array
             Arr : FRCE_ON_proc_Field_Array;
@@ -81,7 +82,7 @@ package RP2040_SVD.PSM is
       proc                : FRCE_ON_proc_Field :=
                              (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_17_31      : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31      : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -112,7 +113,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  sram as a value
-            Val : RP2040_SVD.UInt6;
+            Val : HAL.UInt6;
          when True =>
             --  sram as an array
             Arr : FRCE_OFF_sram_Field_Array;
@@ -136,7 +137,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  proc as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  proc as an array
             Arr : FRCE_OFF_proc_Field_Array;
@@ -165,7 +166,7 @@ package RP2040_SVD.PSM is
       proc                : FRCE_OFF_proc_Field :=
                              (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_17_31      : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31      : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -196,7 +197,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  sram as a value
-            Val : RP2040_SVD.UInt6;
+            Val : HAL.UInt6;
          when True =>
             --  sram as an array
             Arr : WDSEL_sram_Field_Array;
@@ -220,7 +221,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  proc as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  proc as an array
             Arr : WDSEL_proc_Field_Array;
@@ -249,7 +250,7 @@ package RP2040_SVD.PSM is
       proc                : WDSEL_proc_Field :=
                              (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_17_31      : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31      : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -280,7 +281,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  sram as a value
-            Val : RP2040_SVD.UInt6;
+            Val : HAL.UInt6;
          when True =>
             --  sram as an array
             Arr : DONE_sram_Field_Array;
@@ -304,7 +305,7 @@ package RP2040_SVD.PSM is
       case As_Array is
          when False =>
             --  proc as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  proc as an array
             Arr : DONE_proc_Field_Array;
@@ -342,7 +343,7 @@ package RP2040_SVD.PSM is
       --  Read-only.
       proc                : DONE_proc_Field;
       --  unspecified
-      Reserved_17_31      : RP2040_SVD.UInt15;
+      Reserved_17_31      : HAL.UInt15;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

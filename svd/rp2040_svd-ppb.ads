@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.PPB is
@@ -32,12 +33,12 @@ package RP2040_SVD.PPB is
       --  reference clock.\n 1 = Processor clock.
       CLKSOURCE      : Boolean := False;
       --  unspecified
-      Reserved_3_15  : RP2040_SVD.UInt13 := 16#0#;
+      Reserved_3_15  : HAL.UInt13 := 16#0#;
       --  Read-only. Returns 1 if timer counted to 0 since last time this was
       --  read. Clears on read by application or debugger.
       COUNTFLAG      : Boolean := False;
       --  unspecified
-      Reserved_17_31 : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31 : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -51,7 +52,7 @@ package RP2040_SVD.PPB is
       Reserved_17_31 at 0 range 17 .. 31;
    end record;
 
-   subtype SYST_RVR_RELOAD_Field is RP2040_SVD.UInt24;
+   subtype SYST_RVR_RELOAD_Field is HAL.UInt24;
 
    --  Use the SysTick Reload Value Register to specify the start value to load
    --  into the current value register when the counter reaches 0. It can be
@@ -66,7 +67,7 @@ package RP2040_SVD.PPB is
       --  counter reaches 0.
       RELOAD         : SYST_RVR_RELOAD_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -76,7 +77,7 @@ package RP2040_SVD.PPB is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype SYST_CVR_CURRENT_Field is RP2040_SVD.UInt24;
+   subtype SYST_CVR_CURRENT_Field is HAL.UInt24;
 
    --  Use the SysTick Current Value Register to find the current value in the
    --  register. The reset value of this register is UNKNOWN.
@@ -87,7 +88,7 @@ package RP2040_SVD.PPB is
       --  SysTick Control and Status Register.
       CURRENT        : SYST_CVR_CURRENT_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -97,7 +98,7 @@ package RP2040_SVD.PPB is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype SYST_CALIB_TENMS_Field is RP2040_SVD.UInt24;
+   subtype SYST_CALIB_TENMS_Field is HAL.UInt24;
 
    --  Use the SysTick Calibration Value Register to enable software to scale
    --  to any required speed using divide and multiply.
@@ -107,7 +108,7 @@ package RP2040_SVD.PPB is
       --  the calibration value is not known.
       TENMS          : SYST_CALIB_TENMS_Field;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6;
+      Reserved_24_29 : HAL.UInt6;
       --  Read-only. If reads as 1, the calibration value for 10ms is inexact
       --  (due to clock frequency).
       SKEW           : Boolean;
@@ -126,10 +127,10 @@ package RP2040_SVD.PPB is
       NOREF          at 0 range 31 .. 31;
    end record;
 
-   subtype NVIC_IPR0_IP_0_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR0_IP_1_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR0_IP_2_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR0_IP_3_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR0_IP_0_Field is HAL.UInt2;
+   subtype NVIC_IPR0_IP_1_Field is HAL.UInt2;
+   subtype NVIC_IPR0_IP_2_Field is HAL.UInt2;
+   subtype NVIC_IPR0_IP_3_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
@@ -138,19 +139,19 @@ package RP2040_SVD.PPB is
    --  word-accessible
    type NVIC_IPR0_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 0
       IP_0           : NVIC_IPR0_IP_0_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 1
       IP_1           : NVIC_IPR0_IP_1_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 2
       IP_2           : NVIC_IPR0_IP_2_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 3
       IP_3           : NVIC_IPR0_IP_3_Field := 16#0#;
    end record
@@ -168,29 +169,29 @@ package RP2040_SVD.PPB is
       IP_3           at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR1_IP_4_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR1_IP_5_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR1_IP_6_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR1_IP_7_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR1_IP_4_Field is HAL.UInt2;
+   subtype NVIC_IPR1_IP_5_Field is HAL.UInt2;
+   subtype NVIC_IPR1_IP_6_Field is HAL.UInt2;
+   subtype NVIC_IPR1_IP_7_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR1_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 4
       IP_4           : NVIC_IPR1_IP_4_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 5
       IP_5           : NVIC_IPR1_IP_5_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 6
       IP_6           : NVIC_IPR1_IP_6_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 7
       IP_7           : NVIC_IPR1_IP_7_Field := 16#0#;
    end record
@@ -208,29 +209,29 @@ package RP2040_SVD.PPB is
       IP_7           at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR2_IP_8_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR2_IP_9_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR2_IP_10_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR2_IP_11_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR2_IP_8_Field is HAL.UInt2;
+   subtype NVIC_IPR2_IP_9_Field is HAL.UInt2;
+   subtype NVIC_IPR2_IP_10_Field is HAL.UInt2;
+   subtype NVIC_IPR2_IP_11_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR2_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 8
       IP_8           : NVIC_IPR2_IP_8_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 9
       IP_9           : NVIC_IPR2_IP_9_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 10
       IP_10          : NVIC_IPR2_IP_10_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 11
       IP_11          : NVIC_IPR2_IP_11_Field := 16#0#;
    end record
@@ -248,29 +249,29 @@ package RP2040_SVD.PPB is
       IP_11          at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR3_IP_12_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR3_IP_13_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR3_IP_14_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR3_IP_15_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR3_IP_12_Field is HAL.UInt2;
+   subtype NVIC_IPR3_IP_13_Field is HAL.UInt2;
+   subtype NVIC_IPR3_IP_14_Field is HAL.UInt2;
+   subtype NVIC_IPR3_IP_15_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR3_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 12
       IP_12          : NVIC_IPR3_IP_12_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 13
       IP_13          : NVIC_IPR3_IP_13_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 14
       IP_14          : NVIC_IPR3_IP_14_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 15
       IP_15          : NVIC_IPR3_IP_15_Field := 16#0#;
    end record
@@ -288,29 +289,29 @@ package RP2040_SVD.PPB is
       IP_15          at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR4_IP_16_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR4_IP_17_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR4_IP_18_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR4_IP_19_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR4_IP_16_Field is HAL.UInt2;
+   subtype NVIC_IPR4_IP_17_Field is HAL.UInt2;
+   subtype NVIC_IPR4_IP_18_Field is HAL.UInt2;
+   subtype NVIC_IPR4_IP_19_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR4_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 16
       IP_16          : NVIC_IPR4_IP_16_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 17
       IP_17          : NVIC_IPR4_IP_17_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 18
       IP_18          : NVIC_IPR4_IP_18_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 19
       IP_19          : NVIC_IPR4_IP_19_Field := 16#0#;
    end record
@@ -328,29 +329,29 @@ package RP2040_SVD.PPB is
       IP_19          at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR5_IP_20_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR5_IP_21_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR5_IP_22_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR5_IP_23_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR5_IP_20_Field is HAL.UInt2;
+   subtype NVIC_IPR5_IP_21_Field is HAL.UInt2;
+   subtype NVIC_IPR5_IP_22_Field is HAL.UInt2;
+   subtype NVIC_IPR5_IP_23_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR5_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 20
       IP_20          : NVIC_IPR5_IP_20_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 21
       IP_21          : NVIC_IPR5_IP_21_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 22
       IP_22          : NVIC_IPR5_IP_22_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 23
       IP_23          : NVIC_IPR5_IP_23_Field := 16#0#;
    end record
@@ -368,29 +369,29 @@ package RP2040_SVD.PPB is
       IP_23          at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR6_IP_24_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR6_IP_25_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR6_IP_26_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR6_IP_27_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR6_IP_24_Field is HAL.UInt2;
+   subtype NVIC_IPR6_IP_25_Field is HAL.UInt2;
+   subtype NVIC_IPR6_IP_26_Field is HAL.UInt2;
+   subtype NVIC_IPR6_IP_27_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR6_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 24
       IP_24          : NVIC_IPR6_IP_24_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 25
       IP_25          : NVIC_IPR6_IP_25_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 26
       IP_26          : NVIC_IPR6_IP_26_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 27
       IP_27          : NVIC_IPR6_IP_27_Field := 16#0#;
    end record
@@ -408,29 +409,29 @@ package RP2040_SVD.PPB is
       IP_27          at 0 range 30 .. 31;
    end record;
 
-   subtype NVIC_IPR7_IP_28_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR7_IP_29_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR7_IP_30_Field is RP2040_SVD.UInt2;
-   subtype NVIC_IPR7_IP_31_Field is RP2040_SVD.UInt2;
+   subtype NVIC_IPR7_IP_28_Field is HAL.UInt2;
+   subtype NVIC_IPR7_IP_29_Field is HAL.UInt2;
+   subtype NVIC_IPR7_IP_30_Field is HAL.UInt2;
+   subtype NVIC_IPR7_IP_31_Field is HAL.UInt2;
 
    --  Use the Interrupt Priority Registers to assign a priority from 0 to 3 to
    --  each of the available interrupts. 0 is the highest priority, and 3 is
    --  the lowest.
    type NVIC_IPR7_Register is record
       --  unspecified
-      Reserved_0_5   : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_0_5   : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 28
       IP_28          : NVIC_IPR7_IP_28_Field := 16#0#;
       --  unspecified
-      Reserved_8_13  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_8_13  : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 29
       IP_29          : NVIC_IPR7_IP_29_Field := 16#0#;
       --  unspecified
-      Reserved_16_21 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_16_21 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 30
       IP_30          : NVIC_IPR7_IP_30_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of interrupt 31
       IP_31          : NVIC_IPR7_IP_31_Field := 16#0#;
    end record
@@ -448,11 +449,11 @@ package RP2040_SVD.PPB is
       IP_31          at 0 range 30 .. 31;
    end record;
 
-   subtype CPUID_REVISION_Field is RP2040_SVD.UInt4;
-   subtype CPUID_PARTNO_Field is RP2040_SVD.UInt12;
-   subtype CPUID_ARCHITECTURE_Field is RP2040_SVD.UInt4;
-   subtype CPUID_VARIANT_Field is RP2040_SVD.UInt4;
-   subtype CPUID_IMPLEMENTER_Field is RP2040_SVD.UInt8;
+   subtype CPUID_REVISION_Field is HAL.UInt4;
+   subtype CPUID_PARTNO_Field is HAL.UInt12;
+   subtype CPUID_ARCHITECTURE_Field is HAL.UInt4;
+   subtype CPUID_VARIANT_Field is HAL.UInt4;
+   subtype CPUID_IMPLEMENTER_Field is HAL.UInt8;
 
    --  Read the CPU ID Base Register to determine: the ID number of the
    --  processor core, the version number of the processor core, the
@@ -483,8 +484,8 @@ package RP2040_SVD.PPB is
       IMPLEMENTER  at 0 range 24 .. 31;
    end record;
 
-   subtype ICSR_VECTACTIVE_Field is RP2040_SVD.UInt9;
-   subtype ICSR_VECTPENDING_Field is RP2040_SVD.UInt9;
+   subtype ICSR_VECTACTIVE_Field is HAL.UInt9;
+   subtype ICSR_VECTPENDING_Field is HAL.UInt9;
 
    --  Use the Interrupt Control State Register to set a pending Non-Maskable
    --  Interrupt (NMI), set or clear a pending PendSV, set or clear a pending
@@ -496,14 +497,14 @@ package RP2040_SVD.PPB is
       --  field.
       VECTACTIVE     : ICSR_VECTACTIVE_Field := 16#0#;
       --  unspecified
-      Reserved_9_11  : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_9_11  : HAL.UInt3 := 16#0#;
       --  Read-only. Indicates the exception number for the highest priority
       --  pending exception: 0 = no pending exceptions. Non zero = The pending
       --  state includes the effect of memory-mapped enable and mask registers.
       --  It does not include the PRIMASK special-purpose register qualifier.
       VECTPENDING    : ICSR_VECTPENDING_Field := 16#0#;
       --  unspecified
-      Reserved_21_21 : RP2040_SVD.Bit := 16#0#;
+      Reserved_21_21 : HAL.Bit := 16#0#;
       --  Read-only. External interrupt pending flag
       ISRPENDING     : Boolean := False;
       --  Read-only. The system can only access this bit when the core is
@@ -512,7 +513,7 @@ package RP2040_SVD.PPB is
       --  Control and Status Register, the interrupt is serviced.
       ISRPREEMPT     : Boolean := False;
       --  unspecified
-      Reserved_24_24 : RP2040_SVD.Bit := 16#0#;
+      Reserved_24_24 : HAL.Bit := 16#0#;
       --  SysTick exception clear-pending bit.\n Write:\n 0 = No effect.\n 1 =
       --  Removes the pending state from the SysTick exception.\n This bit is
       --  WO. On a register read its value is Unknown.
@@ -530,7 +531,7 @@ package RP2040_SVD.PPB is
       --  bit is the only way to set the PendSV exception state to pending.
       PENDSVSET      : Boolean := False;
       --  unspecified
-      Reserved_29_30 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_29_30 : HAL.UInt2 := 16#0#;
       --  Setting this bit will activate an NMI. Since NMI is the highest
       --  priority exception, it will activate as soon as it is registered.\n
       --  NMI set-pending bit.\n Write:\n 0 = No effect.\n 1 = Changes NMI
@@ -562,12 +563,12 @@ package RP2040_SVD.PPB is
       NMIPENDSET     at 0 range 31 .. 31;
    end record;
 
-   subtype VTOR_TBLOFF_Field is RP2040_SVD.UInt24;
+   subtype VTOR_TBLOFF_Field is HAL.UInt24;
 
    --  The VTOR holds the vector table offset address.
    type VTOR_Register is record
       --  unspecified
-      Reserved_0_7 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7 : HAL.UInt8 := 16#0#;
       --  Bits [31:8] of the indicate the vector table offset address.
       TBLOFF       : VTOR_TBLOFF_Field := 16#0#;
    end record
@@ -579,14 +580,14 @@ package RP2040_SVD.PPB is
       TBLOFF       at 0 range 8 .. 31;
    end record;
 
-   subtype AIRCR_VECTKEY_Field is RP2040_SVD.UInt16;
+   subtype AIRCR_VECTKEY_Field is HAL.UInt16;
 
    --  Use the Application Interrupt and Reset Control Register to: determine
    --  data endianness, clear all active state information from debug halt
    --  mode, request a system reset.
    type AIRCR_Register is record
       --  unspecified
-      Reserved_0_0  : RP2040_SVD.Bit := 16#0#;
+      Reserved_0_0  : HAL.Bit := 16#0#;
       --  Clears all active state information for fixed and configurable
       --  exceptions. This bit: is self-clearing, can only be set by the DAP
       --  when the core is halted. When set: clears all active exception status
@@ -600,7 +601,7 @@ package RP2040_SVD.PPB is
       --  requested. The debugger does not lose contact with the device.
       SYSRESETREQ   : Boolean := False;
       --  unspecified
-      Reserved_3_14 : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_3_14 : HAL.UInt12 := 16#0#;
       --  Read-only. Data endianness implemented:\n 0 = Little-endian.
       ENDIANESS     : Boolean := False;
       --  Register key:\n Reads as Unknown\n On writes, write 0x05FA to
@@ -625,7 +626,7 @@ package RP2040_SVD.PPB is
    --  power states.
    type SCR_Register is record
       --  unspecified
-      Reserved_0_0  : RP2040_SVD.Bit := 16#0#;
+      Reserved_0_0  : HAL.Bit := 16#0#;
       --  Indicates sleep-on-exit when returning from Handler mode to Thread
       --  mode:\n 0 = Do not sleep when returning to Thread mode.\n 1 = Enter
       --  sleep, or deep sleep, on return from an ISR to Thread mode.\n Setting
@@ -636,7 +637,7 @@ package RP2040_SVD.PPB is
       --  power mode:\n 0 = Sleep.\n 1 = Deep sleep.
       SLEEPDEEP     : Boolean := False;
       --  unspecified
-      Reserved_3_3  : RP2040_SVD.Bit := 16#0#;
+      Reserved_3_3  : HAL.Bit := 16#0#;
       --  Send Event on Pending bit:\n 0 = Only enabled interrupts or events
       --  can wakeup the processor, disabled interrupts are excluded.\n 1 =
       --  Enabled events and all interrupts, including disabled interrupts, can
@@ -647,7 +648,7 @@ package RP2040_SVD.PPB is
       --  instruction or an external event.
       SEVONPEND     : Boolean := False;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -665,12 +666,12 @@ package RP2040_SVD.PPB is
    --  alignment and causes unaligned accesses to result in a Hard Fault.
    type CCR_Register is record
       --  unspecified
-      Reserved_0_2   : RP2040_SVD.UInt3;
+      Reserved_0_2   : HAL.UInt3;
       --  Read-only. Always reads as one, indicates that all unaligned accesses
       --  generate a HardFault.
       UNALIGN_TRP    : Boolean;
       --  unspecified
-      Reserved_4_8   : RP2040_SVD.UInt5;
+      Reserved_4_8   : HAL.UInt5;
       --  Read-only. Always reads as one, indicates 8-byte stack alignment on
       --  exception entry. On exception entry, the processor uses bit[9] of the
       --  stacked PSR to indicate the stack alignment. On return from the
@@ -678,7 +679,7 @@ package RP2040_SVD.PPB is
       --  alignment.
       STKALIGN       : Boolean;
       --  unspecified
-      Reserved_10_31 : RP2040_SVD.UInt22;
+      Reserved_10_31 : HAL.UInt22;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -691,14 +692,14 @@ package RP2040_SVD.PPB is
       Reserved_10_31 at 0 range 10 .. 31;
    end record;
 
-   subtype SHPR2_PRI_11_Field is RP2040_SVD.UInt2;
+   subtype SHPR2_PRI_11_Field is HAL.UInt2;
 
    --  System handlers are a special class of exception handler that can have
    --  their priority set to any of the priority levels. Use the System Handler
    --  Priority Register 2 to set the priority of SVCall.
    type SHPR2_Register is record
       --  unspecified
-      Reserved_0_29 : RP2040_SVD.UInt30 := 16#0#;
+      Reserved_0_29 : HAL.UInt30 := 16#0#;
       --  Priority of system handler 11, SVCall
       PRI_11        : SHPR2_PRI_11_Field := 16#0#;
    end record
@@ -710,19 +711,19 @@ package RP2040_SVD.PPB is
       PRI_11        at 0 range 30 .. 31;
    end record;
 
-   subtype SHPR3_PRI_14_Field is RP2040_SVD.UInt2;
-   subtype SHPR3_PRI_15_Field is RP2040_SVD.UInt2;
+   subtype SHPR3_PRI_14_Field is HAL.UInt2;
+   subtype SHPR3_PRI_15_Field is HAL.UInt2;
 
    --  System handlers are a special class of exception handler that can have
    --  their priority set to any of the priority levels. Use the System Handler
    --  Priority Register 3 to set the priority of PendSV and SysTick.
    type SHPR3_Register is record
       --  unspecified
-      Reserved_0_21  : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_0_21  : HAL.UInt22 := 16#0#;
       --  Priority of system handler 14, PendSV
       PRI_14         : SHPR3_PRI_14_Field := 16#0#;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_24_29 : HAL.UInt6 := 16#0#;
       --  Priority of system handler 15, SysTick
       PRI_15         : SHPR3_PRI_15_Field := 16#0#;
    end record
@@ -740,12 +741,12 @@ package RP2040_SVD.PPB is
    --  the pending status of SVCall.
    type SHCSR_Register is record
       --  unspecified
-      Reserved_0_14  : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_0_14  : HAL.UInt15 := 16#0#;
       --  Reads as 1 if SVCall is Pending. Write 1 to set pending SVCall, write
       --  0 to clear pending SVCall.
       SVCALLPENDED   : Boolean := False;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -756,8 +757,8 @@ package RP2040_SVD.PPB is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype MPU_TYPE_DREGION_Field is RP2040_SVD.UInt8;
-   subtype MPU_TYPE_IREGION_Field is RP2040_SVD.UInt8;
+   subtype MPU_TYPE_DREGION_Field is HAL.UInt8;
+   subtype MPU_TYPE_IREGION_Field is HAL.UInt8;
 
    --  Read the MPU Type Register to determine if the processor implements an
    --  MPU, and how many regions the MPU supports.
@@ -766,14 +767,14 @@ package RP2040_SVD.PPB is
       --  address maps. Reads as 0 as ARMv6-M only supports a unified MPU.
       SEPARATE_k     : Boolean;
       --  unspecified
-      Reserved_1_7   : RP2040_SVD.UInt7;
+      Reserved_1_7   : HAL.UInt7;
       --  Read-only. Number of regions supported by the MPU.
       DREGION        : MPU_TYPE_DREGION_Field;
       --  Read-only. Instruction region. Reads as zero as ARMv6-M only supports
       --  a unified MPU.
       IREGION        : MPU_TYPE_IREGION_Field;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8;
+      Reserved_24_31 : HAL.UInt8;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -812,7 +813,7 @@ package RP2040_SVD.PPB is
       --  priority over this default map.
       PRIVDEFENA    : Boolean := False;
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_3_31 : HAL.UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -824,7 +825,7 @@ package RP2040_SVD.PPB is
       Reserved_3_31 at 0 range 3 .. 31;
    end record;
 
-   subtype MPU_RNR_REGION_Field is RP2040_SVD.UInt4;
+   subtype MPU_RNR_REGION_Field is HAL.UInt4;
 
    --  Use the MPU Region Number Register to select the region currently
    --  accessed by MPU_RBAR and MPU_RASR.
@@ -834,7 +835,7 @@ package RP2040_SVD.PPB is
       --  values of this field are 0-7.
       REGION        : MPU_RNR_REGION_Field := 16#0#;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -844,8 +845,8 @@ package RP2040_SVD.PPB is
       Reserved_4_31 at 0 range 4 .. 31;
    end record;
 
-   subtype MPU_RBAR_REGION_Field is RP2040_SVD.UInt4;
-   subtype MPU_RBAR_ADDR_Field is RP2040_SVD.UInt24;
+   subtype MPU_RBAR_REGION_Field is HAL.UInt4;
+   subtype MPU_RBAR_ADDR_Field is HAL.UInt24;
 
    --  Read the MPU Region Base Address Register to determine the base address
    --  of the region identified by MPU_RNR. Write to update the base address of
@@ -866,7 +867,7 @@ package RP2040_SVD.PPB is
       --  the REGION field.\n Always reads as zero.
       VALID        : Boolean := False;
       --  unspecified
-      Reserved_5_7 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7 : HAL.UInt3 := 16#0#;
       --  Base address of the region.
       ADDR         : MPU_RBAR_ADDR_Field := 16#0#;
    end record
@@ -880,9 +881,9 @@ package RP2040_SVD.PPB is
       ADDR         at 0 range 8 .. 31;
    end record;
 
-   subtype MPU_RASR_SIZE_Field is RP2040_SVD.UInt5;
-   subtype MPU_RASR_SRD_Field is RP2040_SVD.UInt8;
-   subtype MPU_RASR_ATTRS_Field is RP2040_SVD.UInt16;
+   subtype MPU_RASR_SIZE_Field is HAL.UInt5;
+   subtype MPU_RASR_SRD_Field is HAL.UInt8;
+   subtype MPU_RASR_ATTRS_Field is HAL.UInt16;
 
    --  Use the MPU Region Attribute and Size Register to define the size,
    --  access behaviour and memory type of the region identified by MPU_RNR,
@@ -894,7 +895,7 @@ package RP2040_SVD.PPB is
       --  minimum permitted value is 7 (b00111) = 256Bytes
       SIZE         : MPU_RASR_SIZE_Field := 16#0#;
       --  unspecified
-      Reserved_6_7 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_6_7 : HAL.UInt2 := 16#0#;
       --  Subregion Disable. For regions of 256 bytes or larger, each bit of
       --  this field controls whether one of the eight equal subregions is
       --  enabled.
@@ -947,16 +948,16 @@ package RP2040_SVD.PPB is
       --  priority. If an interrupt is not enabled, asserting its interrupt
       --  signal changes the interrupt state to pending, but the NVIC never
       --  activates the interrupt, regardless of its priority.
-      NVIC_ISER  : aliased RP2040_SVD.UInt32;
+      NVIC_ISER  : aliased HAL.UInt32;
       --  Use the Interrupt Clear-Enable Registers to disable interrupts and
       --  determine which interrupts are currently enabled.
-      NVIC_ICER  : aliased RP2040_SVD.UInt32;
+      NVIC_ICER  : aliased HAL.UInt32;
       --  The NVIC_ISPR forces interrupts into the pending state, and shows
       --  which interrupts are pending.
-      NVIC_ISPR  : aliased RP2040_SVD.UInt32;
+      NVIC_ISPR  : aliased HAL.UInt32;
       --  Use the Interrupt Clear-Pending Register to clear pending interrupts
       --  and determine which interrupts are currently pending.
-      NVIC_ICPR  : aliased RP2040_SVD.UInt32;
+      NVIC_ICPR  : aliased HAL.UInt32;
       --  Use the Interrupt Priority Registers to assign a priority from 0 to 3
       --  to each of the available interrupts. 0 is the highest priority, and 3
       --  is the lowest.\n Note: Writing 1 to an NVIC_ICPR bit does not affect

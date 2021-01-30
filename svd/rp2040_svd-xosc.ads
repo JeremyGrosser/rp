@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Controls the crystal oscillator
@@ -65,7 +66,7 @@ package RP2040_SVD.XOSC is
       --  will enable the oscillator.
       ENABLE         : CTRL_ENABLE_Field := CTRL_ENABLE_Field_Reset;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -94,18 +95,18 @@ package RP2040_SVD.XOSC is
       --  Read-only. The current frequency range setting, always reads 0
       FREQ_RANGE     : STATUS_FREQ_RANGE_Field := RP2040_SVD.XOSC.Val_1_15MHZ;
       --  unspecified
-      Reserved_2_11  : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_2_11  : HAL.UInt10 := 16#0#;
       --  Read-only. Oscillator is enabled but not necessarily running and
       --  stable, resets to 0
       ENABLED        : Boolean := False;
       --  unspecified
-      Reserved_13_23 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_13_23 : HAL.UInt11 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. An invalid value has been written to CTRL_ENABLE or
       --  CTRL_FREQ_RANGE or DORMANT
       BADWRITE       : Boolean := False;
       --  unspecified
-      Reserved_25_30 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_25_30 : HAL.UInt6 := 16#0#;
       --  Read-only. Oscillator is running and stable
       STABLE         : Boolean := False;
    end record
@@ -122,19 +123,19 @@ package RP2040_SVD.XOSC is
       STABLE         at 0 range 31 .. 31;
    end record;
 
-   subtype STARTUP_DELAY_Field is RP2040_SVD.UInt14;
+   subtype STARTUP_DELAY_Field is HAL.UInt14;
 
    --  Controls the startup delay
    type STARTUP_Register is record
       --  in multiples of 256*xtal_period
       DELAY_k        : STARTUP_DELAY_Field := 16#0#;
       --  unspecified
-      Reserved_14_19 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_14_19 : HAL.UInt6 := 16#0#;
       --  Multiplies the startup_delay by 4. This is of little value to the
       --  user given that the delay can be programmed directly
       X4             : Boolean := False;
       --  unspecified
-      Reserved_21_31 : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_21_31 : HAL.UInt11 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -146,7 +147,7 @@ package RP2040_SVD.XOSC is
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
 
-   subtype COUNT_COUNT_Field is RP2040_SVD.UInt8;
+   subtype COUNT_COUNT_Field is HAL.UInt8;
 
    --  A down counter running at the xosc frequency which counts to zero and
    --  stops.\n To start the counter write a non-zero value.\n Can be used for
@@ -154,7 +155,7 @@ package RP2040_SVD.XOSC is
    type COUNT_Register is record
       COUNT         : COUNT_COUNT_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -179,7 +180,7 @@ package RP2040_SVD.XOSC is
       --  invalid write will also select WAKE\n WARNING: stop the PLLs before
       --  selecting dormant mode\n WARNING: setup the irq before selecting
       --  dormant mode
-      DORMANT : aliased RP2040_SVD.UInt32;
+      DORMANT : aliased HAL.UInt32;
       --  Controls the startup delay
       STARTUP : aliased STARTUP_Register;
       --  A down counter running at the xosc frequency which counts to zero and
