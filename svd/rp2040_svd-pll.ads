@@ -11,7 +11,7 @@ pragma Restrictions (No_Elaboration_Code);
 with HAL;
 with System;
 
-package RP2040_SVD.PLL_SYS is
+package RP2040_SVD.PLL is
    pragma Preelaborate;
 
    ---------------
@@ -132,7 +132,7 @@ package RP2040_SVD.PLL_SYS is
    -- Peripherals --
    -----------------
 
-   type PLL_SYS_Peripheral is record
+   type PLL_Peripheral is record
       --  Control and Status\n GENERAL CONSTRAINTS:\n Reference clock frequency
       --  min=5MHz, max=800MHz\n Feedback divider min=16, max=320\n VCO
       --  frequency min=400MHz, max=1600MHz
@@ -149,14 +149,16 @@ package RP2040_SVD.PLL_SYS is
    end record
      with Volatile;
 
-   for PLL_SYS_Peripheral use record
+   for PLL_Peripheral use record
       CS        at 16#0# range 0 .. 31;
       PWR       at 16#4# range 0 .. 31;
       FBDIV_INT at 16#8# range 0 .. 31;
       PRIM      at 16#C# range 0 .. 31;
    end record;
 
-   PLL_SYS_Periph : aliased PLL_SYS_Peripheral
+   PLL_SYS_Periph : aliased PLL_Peripheral
      with Import, Address => PLL_SYS_Base;
+   PLL_USB_Periph : aliased PLL_Peripheral
+     with Import, Address => PLL_USB_Base;
 
-end RP2040_SVD.PLL_SYS;
+end RP2040_SVD.PLL;

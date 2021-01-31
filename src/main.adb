@@ -5,12 +5,15 @@
 --
 
 with Ada.Assertions; use Ada.Assertions;
+with Ada.Text_IO; use Ada.Text_IO;
+
 with RP2040_SVD; use RP2040_SVD;
 with RP.Device;  use RP.Device;
 with RP.GPIO;    use RP.GPIO;
 with RP.SPI;     use RP.SPI;
 with RP.ROM;     use RP.ROM;
 with RP.Clock;
+with RP;
 with PCD8544;    use PCD8544;
 with Tiny_Text;
 with HAL;        use HAL;
@@ -39,6 +42,8 @@ procedure Main is
 
    X : UInt32;
 begin
+   RP.Clock.Initialize (XOSC_Frequency => 12_000_000);
+
    RP.GPIO.Enable;
    Configure (LED, Output);
    Set (LED);
@@ -50,6 +55,11 @@ begin
    Configure (LCD_DC, Output, Pull_Up);
 
    SPI_0.Enable;
+
+   Put_Line ("REF  = " & RP.Clock.Frequency (RP.Clock.REF)'Image);
+   Put_Line ("SYS  = " & RP.Clock.Frequency (RP.Clock.SYS)'Image);
+   Put_Line ("USB  = " & RP.Clock.Frequency (RP.Clock.USB)'Image);
+   Put_Line ("PERI = " & RP.Clock.Frequency (RP.Clock.PERI)'Image);
 
    Initialize (LCD);
    Set_Bias (LCD, 3);

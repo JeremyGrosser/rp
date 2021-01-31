@@ -3,6 +3,8 @@
 --
 --  SPDX-License-Identifier: BSD-3-Clause
 --
+with HAL;
 
 package RP is
+   subtype Hertz is Natural range 0 .. 2_000_000_000;
 end RP;

@@ -8,7 +8,7 @@ package body RP.SPI is
       (This : in out SPI_Port)
    is
    begin
-      RP.Clock.Enable (RP.Clock.clk_peri);
+      RP.Clock.Enable (RP.Clock.PERI);
 
       if RESETS_Periph.RESET.spi.Arr (This.Num) then
          RESETS_Periph.RESET.spi.Arr (This.Num) := False;

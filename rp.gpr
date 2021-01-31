@@ -25,12 +25,12 @@ project RP is
    package Compiler is
        for Switches ("Ada") use
            ("-g",
-            "-Os",
+            --"-Os",
             "-ffunction-sections",
             "-fdata-sections",
             "-fstack-usage",
-            "-Wstack-usage=4096",
-            "-gnatyg",    -- GNAT Style checks
+            --"-Wstack-usage=4096",
+            --"-gnatyg",    -- GNAT Style checks
             "-gnatyM120", -- Maximum line length
             "-gnatyO");   -- Overriding subprograms explicitly marked as such
    end Compiler;
@@ -40,8 +40,8 @@ project RP is
       for Switches ("Ada") use
           ("-T" & Project'Project_Dir & "pico-sdk/src/rp2_common/pico_standard_link/memmap_default.ld",
            "-Wl,-Map=link.map",
-           "-Wl,-print-memory-usage",
-           "-Wl,-gc-sections");
+           "-Wl,-print-memory-usage");
+           --"-Wl,-gc-sections");
    end Linker;
 
 end RP;
