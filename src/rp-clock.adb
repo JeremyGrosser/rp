@@ -213,31 +213,4 @@ package body RP.Clock is
          return Hertz (CLOCKS_Periph.FC0_RESULT.KHZ) * 1_000;
       end if;
    end Frequency;
-
-   overriding
-   procedure Delay_Microseconds
-      (This : in out Delays;
-       Us   : Integer)
-   is
-   begin
-      null;
-   end Delay_Microseconds;
-
-   overriding
-   procedure Delay_Milliseconds
-      (This : in out Delays;
-       Ms   : Integer)
-   is
-   begin
-      null;
-   end Delay_Milliseconds;
-
-   overriding
-   procedure Delay_Seconds
-      (This : in out Delays;
-       S    : Integer)
-   is
-   begin
-      null;
-   end Delay_Seconds;
 end RP.Clock;

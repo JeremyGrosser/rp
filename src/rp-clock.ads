@@ -4,14 +4,7 @@ with System;
 with HAL; use HAL;
 with HAL.Time;
 
--- TODO: implement
-
 package RP.Clock is
-   type Delay_Timer is (SysTick);
-
-   type Delays (Timer : Delay_Timer) is
-      new HAL.Time.Delays with null record;
-
    --  If XOSC_Frequency = 0 then the internal ROSC is used.
    subtype XOSC_Hertz is Hertz range 0 .. 15_000_000;
 
@@ -33,21 +26,6 @@ package RP.Clock is
       (CID : Clock_Id)
        return Hertz;
    No_Frequency_Counter : exception;
-
-   overriding
-   procedure Delay_Microseconds
-      (This : in out Delays;
-       Us   : Integer);
-
-   overriding
-   procedure Delay_Milliseconds
-      (This : in out Delays;
-       Ms   : Integer);
-
-   overriding
-   procedure Delay_Seconds
-      (This : in out Delays;
-       S    : Integer);
 
 private
 
