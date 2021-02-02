@@ -29,4 +29,4 @@ svd-defs:
 	svd2ada -o svd -p Cortex_M_SVD --base-types-package=HAL --boolean --gen-uint-always svd/cm0.svd
 
 clean:
-	rm -rf pico-sdk Ada_Drivers_Library tiny_text obj src/boot2.S
+	rm -rf pico-sdk Ada_Drivers_Library tiny_text obj src/boot2.S src/crt0.S
