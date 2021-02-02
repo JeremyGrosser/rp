@@ -155,47 +155,50 @@ __unhandled_user_irq:
 unhandled_user_irq_num_in_r0:
     bkpt #0
 
+
+
+.section .binary_info_header, "a"
+
+
+
+
+
+
+
+binary_info_header:
+.word 0x7188ebf2
+.word __binary_info_start
+.word __binary_info_end
+.word data_cpy_table
+.word 0xe71aa390
+
+
+
+
 .section .reset, "ax"
-
-
-
-
-
-
-    ldr r0, =__vectors
-    b __vector_entry
-
-
-
+# 182 "pico-sdk/src/rp2_common/pico_standard_link/crt0.S"
 .type _entry_point,%function
 .thumb_func
 .global _entry_point
 _entry_point:
-
-
-
-
-
-
-
+# 194 "pico-sdk/src/rp2_common/pico_standard_link/crt0.S"
     movs r0, #0
 
-
-__vector_entry:
-    ldr r1, =(0xe0000000 + 0x0000ed00)
-    str r0, [r1, #8]
+    ldr r1, =(0xe0000000 + 0x0000ed08)
+    str r0, [r1]
     ldmia r0!, {r1, r2}
     msr msp, r1
     bx r2
-# 188 "pico-sdk/src/rp2_common/pico_standard_link/crt0.S"
+# 209 "pico-sdk/src/rp2_common/pico_standard_link/crt0.S"
 .type _reset_handler,%function
 .thumb_func
 _reset_handler:
 
+
     ldr r0, =(0xd0000000 + 0x00000000)
     ldr r0, [r0]
     cmp r0, #0
-    //bne wait_for_vector
+    bne hold_non_core0_in_bootrom
 
     adr r4, data_cpy_table
 
@@ -226,7 +229,7 @@ platform_entry:
     blx r1
     ldr r1, =main
     blx r1
-    ldr r1, =_exit
+    ldr r1, =exit
     blx r1
 
 
@@ -245,15 +248,6 @@ data_cpy:
     cmp r2, r3
     blo data_cpy_loop
     bx lr
-
-
-binary_info_header:
-.word 0x7188ebf2
-.word __binary_info_start
-.word __binary_info_end
-.word data_cpy_table
-.word 0xe71aa390
-
 
 .align 2
 data_cpy_table:
@@ -291,12 +285,11 @@ runtime_init:
 
 
 
-/*
-wait_for_vector:
+
+hold_non_core0_in_bootrom:
     ldr r0, = 'W' | ('V' << 8)
     bl rom_func_lookup
     bx r0
-*/
 
 .global __get_current_exception
 .thumb_func

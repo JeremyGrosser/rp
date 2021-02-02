@@ -5,6 +5,7 @@
 --
 
 with Ada.Assertions; use Ada.Assertions;
+with Runtime;
 with RP2040_SVD; use RP2040_SVD;
 with RP.GPIO;    use RP.GPIO;
 with RP.ROM;     use RP.ROM;
