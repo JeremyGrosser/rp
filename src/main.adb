@@ -6,7 +6,7 @@
 
 with Ada.Assertions; use Ada.Assertions;
 with Ada.Text_IO; use Ada.Text_IO;
-
+with Runtime;
 with RP2040_SVD; use RP2040_SVD;
 with RP.Device;  use RP.Device;
 with RP.GPIO;    use RP.GPIO;

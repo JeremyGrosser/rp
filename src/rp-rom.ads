@@ -30,9 +30,15 @@ package RP.ROM is
    function rom_table_code
       (C1, C2 : Character)
       return UInt32;
+
+   --  called from crt0.S
    function rom_func_lookup
       (Code : UInt32)
-      return System.Address;
+      return System.Address
+   with Export        => True,
+        Convention    => C,
+        External_Name => "rom_func_lookup";
+
    function rom_data_lookup
       (Code : UInt32)
       return System.Address;
