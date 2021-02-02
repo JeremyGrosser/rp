@@ -35,6 +35,7 @@ package body RP.SysTick is
    is
       T : Time := Ticks + Time (Ms);
    begin
+      --  this will return early if T wraps around
       while Ticks < T loop
          Runtime.Wait_For_Interrupt;
       end loop;
