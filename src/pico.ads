@@ -32,5 +32,7 @@ package Pico is
    GP27 : aliased GPIO_Point := (Pin => 27);
    GP28 : aliased GPIO_Point := (Pin => 28);
 
+   LED  : GPIO_Point renames GP25;
+
    XOSC_Frequency : XOSC_Hertz := 12_000_000;
 end Pico;

@@ -23,7 +23,6 @@ with Tiny_Text;
 with Runtime;
 
 procedure Main is
-   LED      : RP.GPIO.GPIO_Point renames Pico.GP15;
    LCD_CS   : RP.GPIO.GPIO_Point renames Pico.GP17;
    LCD_SCK  : RP.GPIO.GPIO_Point renames Pico.GP18;
    LCD_MOSI : RP.GPIO.GPIO_Point renames Pico.GP19;
@@ -46,8 +45,8 @@ begin
    RP.Watchdog.Enable;
 
    RP.GPIO.Enable;
-   Configure (LED, Output);
-   Set (LED);
+   Configure (Pico.LED, Output);
+   Set (Pico.LED);
 
    Configure (LCD_RST, Output, Pull_Down);
    Clear (LCD_RST);
@@ -80,7 +79,7 @@ begin
 
    loop
       RP.Watchdog.Reload;
-      Toggle (LED);
+      Toggle (Pico.LED);
       RP.Device.SysTick.Delay_Milliseconds (100);
    end loop;
 end Main;
