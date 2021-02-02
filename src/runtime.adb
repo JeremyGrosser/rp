@@ -6,4 +6,11 @@ package body Runtime is
    begin
       null;
    end OS_Exit;
+
+   procedure HardFault_Handler is
+   begin
+      loop
+         null;
+      end loop;
+   end HardFault_Handler;
 end Runtime;

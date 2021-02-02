@@ -1,5 +1,6 @@
 with HAL.SPI; use HAL.SPI;
 with RP2040_SVD.SPI;
+with RP.Clock;
 
 package RP.SPI is
    type SPI_Port
@@ -9,6 +10,12 @@ package RP.SPI is
 
    procedure Enable
       (This : in out SPI_Port);
+
+   procedure Set_Speed
+      (This : in out SPI_Port;
+       Baud : Hertz)
+   with Pre => Baud < RP.Clock.Frequency (RP.Clock.PERI);
+   Clock_Speed_Error : exception;
 
    overriding
    function Data_Size

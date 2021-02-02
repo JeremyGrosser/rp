@@ -9,4 +9,9 @@ package body RP.Watchdog is
           ENABLE => True,
           others => <>);
    end Start;
+
+   procedure Reload is
+   begin
+      WATCHDOG_Periph.LOAD.LOAD := LOAD_LOAD_Field'Last;
+   end Reload;
 end RP.Watchdog;

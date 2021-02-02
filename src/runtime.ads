@@ -4,4 +4,9 @@ package Runtime is
       with Export        => True,
            Convention    => C,
            External_Name => "exit";
+
+   procedure HardFault_Handler
+      with Export         => True,
+           Convention     => C,
+           External_Name  => "isr_hardfault";
 end Runtime;

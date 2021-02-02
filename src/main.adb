@@ -12,11 +12,13 @@ with RP.Device;  use RP.Device;
 with RP.GPIO;    use RP.GPIO;
 with RP.SPI;     use RP.SPI;
 with RP.ROM;     use RP.ROM;
+with RP.Watchdog;
 with RP.Clock;
 with RP;
 with PCD8544;    use PCD8544;
 with Tiny_Text;
 with HAL;        use HAL;
+with HAL.Bitmap;
 with HAL.GPIO;
 
 procedure Main is
@@ -43,12 +45,14 @@ procedure Main is
    X : UInt32;
 begin
    RP.Clock.Initialize (XOSC_Frequency => 12_000_000);
+   RP.Watchdog.Reload;
 
    RP.GPIO.Enable;
    Configure (LED, Output);
    Set (LED);
 
-   Configure (LCD_RST, Output);
+   Configure (LCD_RST, Output, Pull_Down);
+   Clear (LCD_RST);
    Configure (LCD_CS, Output, Pull_Up, SPI);
    Configure (LCD_SCK, Output, Pull_Up, SPI);
    Configure (LCD_MOSI, Output, Pull_Up, SPI);
@@ -61,15 +65,27 @@ begin
    Put_Line ("USB  = " & RP.Clock.Frequency (RP.Clock.USB)'Image);
    Put_Line ("PERI = " & RP.Clock.Frequency (RP.Clock.PERI)'Image);
 
+   RP.Watchdog.Reload;
+
    Initialize (LCD);
+   LCD.Initialize_Layer
+      (Layer  => 1,
+       Mode   => HAL.Bitmap.M_1,
+       X      => 0,
+       Y      => 0,
+       Width  => LCD.Width,
+       Height => LCD.Height);
+
    Set_Bias (LCD, 3);
    Set_Contrast (LCD, 60);
    Set_Display_Mode (LCD,
        Enable => True,
        Invert => True);
+
    Text.Initialize;
    Text.Put_Line ("Hello, there!");
    LCD.Update_Layers;
+   RP.Watchdog.Reload;
 
    Assert (rom_id = (16#4d#, 16#75#, 16#01#));
    X := popcount32 (2#1110#);
@@ -78,5 +94,6 @@ begin
    loop
       Clear (LED);
       Set (LED);
+      RP.Watchdog.Reload;
    end loop;
 end Main;

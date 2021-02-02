@@ -24,9 +24,9 @@ package body RP.SPI is
       This.Periph.SSPCR0 :=
          (DSS    => 2#0111#, --  8 bits
           FRF    => 0,       --  Motorola format
-          SCR    => 0,
-          SPO    => False,
-          SPH    => False,
+          SCR    => 0,       --  No divider before Set_Speed is called
+          SPO    => False,   --  CPOL
+          SPH    => False,   --  CPHA
           others => <>);
 
       This.Periph.SSPCR1 :=
@@ -34,8 +34,42 @@ package body RP.SPI is
           SSE    => False,
           others => <>);
 
-      This.Periph.SSPCPSR.CPSDVSR := 0;
+      Set_Speed (This, 1_000_000);
+
+      --  Enable DMA request. Harmless if DMA is not used.
+      This.Periph.SSPDMACR :=
+         (RXDMAE => True,
+          TXDMAE => True,
+          others => <>);
+
+      This.Periph.SSPCR1.SSE := True;
    end Enable;
+
+   procedure Set_Speed
+      (This : in out SPI_Port;
+       Baud : Hertz)
+   is
+      Freq_In  : constant Hertz := RP.Clock.Frequency (RP.Clock.PERI);
+      Prescale : Hertz := 2;
+      Postdiv  : SSPCR0_SCR_Field := SSPCR0_SCR_Field'Last;
+   begin
+      loop
+         exit when Freq_In < ((Prescale + 2) * 256 * Baud);
+         Prescale := Prescale + 2;
+         if Prescale > 254 then
+            raise Clock_Speed_Error with "PERI frequency too low for requested SPI baud";
+         end if;
+      end loop;
+
+      loop
+         Postdiv := Postdiv - 1;
+         exit when Postdiv = 1 or else
+                   Freq_In / (Prescale * (Hertz (Postdiv) - 1)) > Baud;
+      end loop;
+
+      This.Periph.SSPCPSR.CPSDVSR := SSPCPSR_CPSDVSR_Field (Prescale);
+      This.Periph.SSPCR0.SCR := Postdiv - 1;
+   end Set_Speed;
 
    overriding
    function Data_Size
