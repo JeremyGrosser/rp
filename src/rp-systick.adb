@@ -1,7 +1,6 @@
 with Cortex_M_SVD.SysTick;  use Cortex_M_SVD.SysTick;
 with Cortex_M_SVD.NVIC;     use Cortex_M_SVD.NVIC;
 with RP.Clock;
-with HAL; use HAL;
 with Runtime;
 
 package body RP.SysTick is
@@ -35,7 +34,13 @@ package body RP.SysTick is
    is
       T : Time := Ticks + Time (Ms);
    begin
-      --  this will return early if T wraps around
+      -- Handle UInt32 overflow gracefully
+      if Ticks > T then
+         while Ticks > T loop
+            Runtime.Wait_For_Interrupt;
+         end loop;
+      end if;
+
       while Ticks < T loop
          Runtime.Wait_For_Interrupt;
       end loop;

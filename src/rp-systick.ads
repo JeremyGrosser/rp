@@ -1,5 +1,5 @@
+with HAL; use HAL;
 with HAL.Time;
-with HAL;
 
 package RP.SysTick is
    type Delays is new HAL.Time.Delays with null record;
@@ -23,7 +23,7 @@ package RP.SysTick is
 
 private
 
-   subtype Time is HAL.UInt32;
+   subtype Time is UInt32;
 
    Ticks : Time := 0
       with Volatile;
