@@ -1,5 +1,8 @@
 package RP.Watchdog is
    --  Watchdog is clocked by clk_ref
-   procedure Start (Cycles : Hertz);
+   procedure Configure
+      (Cycles : Hertz);
+   procedure Enable;
+   procedure Disable;
    procedure Reload;
 end RP.Watchdog;

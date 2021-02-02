@@ -98,14 +98,13 @@ package body RP.Clock is
       --  Enable watchdog and maybe XOSC
       if Has_XOSC then
          Reference := XOSC_Frequency;
-         RP.Watchdog.Start (Reference);
          Enable_XOSC (XOSC_Frequency);
       else
          Reference := RP.Device.ROSC_Frequency;
-         RP.Watchdog.Start (Reference);
          Enable_ROSC;
       end if;
 
+      RP.Watchdog.Configure (Reference);
       CLOCKS_Periph.FC0_REF_KHZ.FC0_REF_KHZ := FC0_REF_KHZ_FC0_REF_KHZ_Field (Reference / 1_000);
 
       --  Ensure that clk_sys = clk_ref before we reset the PLLs

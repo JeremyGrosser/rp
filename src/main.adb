@@ -41,11 +41,9 @@ procedure Main is
       (Bitmap => LCD.Hidden_Buffer (1),
        Width  => LCD.Width,
        Height => LCD.Height);
-
-   X : UInt32;
 begin
    RP.Clock.Initialize (XOSC_Frequency => 12_000_000);
-   RP.Watchdog.Reload;
+   RP.Watchdog.Enable;
 
    RP.GPIO.Enable;
    Configure (LED, Output);
@@ -59,13 +57,6 @@ begin
    Configure (LCD_DC, Output, Pull_Up);
 
    SPI_0.Enable;
-
-   Put_Line ("REF  = " & RP.Clock.Frequency (RP.Clock.REF)'Image);
-   Put_Line ("SYS  = " & RP.Clock.Frequency (RP.Clock.SYS)'Image);
-   Put_Line ("USB  = " & RP.Clock.Frequency (RP.Clock.USB)'Image);
-   Put_Line ("PERI = " & RP.Clock.Frequency (RP.Clock.PERI)'Image);
-
-   RP.Watchdog.Reload;
 
    Initialize (LCD);
    LCD.Initialize_Layer
@@ -85,11 +76,6 @@ begin
    Text.Initialize;
    Text.Put_Line ("Hello, there!");
    LCD.Update_Layers;
-   RP.Watchdog.Reload;
-
-   Assert (rom_id = (16#4d#, 16#75#, 16#01#));
-   X := popcount32 (2#1110#);
-   Assert (X = 3);
 
    loop
       Clear (LED);
