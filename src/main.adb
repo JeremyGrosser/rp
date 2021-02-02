@@ -11,7 +11,7 @@ with RP.GPIO;    use RP.GPIO;
 with RP.ROM;     use RP.ROM;
 
 procedure Main is
-   LED : constant GPIO_Pin := 15;
+   LED : constant GPIO_Pin := 25;
    X   : UInt32 with Volatile;
 begin
    RP.GPIO.Enable;
