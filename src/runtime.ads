@@ -1,3 +1,5 @@
+with RP.ROM;
+
 package Runtime is
    procedure Wait_For_Interrupt;
 

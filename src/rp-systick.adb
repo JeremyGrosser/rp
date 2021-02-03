@@ -9,6 +9,7 @@ package body RP.SysTick is
       -- 1ms ticks
       SysTick_Periph.RVR.RELOAD := SYST_RVR_Reload_Field
          (RP.Clock.Frequency (RP.Clock.SYS) / 1_000);
+      SysTick_Periph.CVR.CURRENT := 0;
 
       SysTick_Periph.CSR :=
          (CLKSOURCE => CPU_Clk,
@@ -17,6 +18,18 @@ package body RP.SysTick is
           others    => <>);
    end Enable;
 
+   procedure Disable is
+   begin
+      SysTick_Periph.CSR.ENABLE := DISABLE;
+   end Disable;
+
+   function Enabled
+      return Boolean
+   is
+   begin
+      return SysTick_Periph.CSR.ENABLE = ENABLE;
+   end Enabled;
+
    overriding
    procedure Delay_Microseconds
       (This : in out Delays;
@@ -24,7 +37,7 @@ package body RP.SysTick is
    is
    begin
       --  this really needs a tickless approach
-      null;
+      raise Not_Implemented;
    end Delay_Microseconds;
 
    overriding
