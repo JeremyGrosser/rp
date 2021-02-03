@@ -43,6 +43,35 @@ package body RP.GPIO is
       end if;
    end Configure;
 
+   procedure Set_Interrupt_Handler
+      (This    : in out GPIO_Point;
+       Handler : Interrupt_Procedure)
+   is
+   begin
+      raise Not_Implemented;
+   end Set_Interrupt_Handler;
+
+   procedure Enable_Interrupt
+      (This    : in out GPIO_Point;
+       Trigger : Interrupt_Triggers)
+   is
+   begin
+      raise Not_Implemented;
+   end Enable_Interrupt;
+
+   procedure Disable_Interrupt
+      (This    : in out GPIO_Point;
+       Trigger : Interrupt_Triggers)
+   is
+   begin
+      raise Not_Implemented;
+   end Disable_Interrupt;
+
+   procedure SIO_IRQ_PROC0_Handler is
+   begin
+      raise Not_Implemented;
+   end SIO_IRQ_PROC0_Handler;
+
    overriding
    function Support
       (This : GPIO_Point;
