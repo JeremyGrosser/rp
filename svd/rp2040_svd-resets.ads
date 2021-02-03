@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.RESETS is
@@ -28,7 +29,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  i2c as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  i2c as an array
             Arr : RESET_i2c_Field_Array;
@@ -52,7 +53,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  pio as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  pio as an array
             Arr : RESET_pio_Field_Array;
@@ -76,7 +77,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  spi as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  spi as an array
             Arr : RESET_spi_Field_Array;
@@ -100,7 +101,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  uart as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  uart as an array
             Arr : RESET_uart_Field_Array;
@@ -138,7 +139,7 @@ package RP2040_SVD.RESETS is
       uart           : RESET_uart_Field := (As_Array => False, Val => 16#1#);
       usbctrl        : Boolean := True;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -179,7 +180,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  i2c as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  i2c as an array
             Arr : WDSEL_i2c_Field_Array;
@@ -203,7 +204,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  pio as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  pio as an array
             Arr : WDSEL_pio_Field_Array;
@@ -227,7 +228,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  spi as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  spi as an array
             Arr : WDSEL_spi_Field_Array;
@@ -251,7 +252,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  uart as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  uart as an array
             Arr : WDSEL_uart_Field_Array;
@@ -289,7 +290,7 @@ package RP2040_SVD.RESETS is
       uart           : WDSEL_uart_Field := (As_Array => False, Val => 16#0#);
       usbctrl        : Boolean := False;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -330,7 +331,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  i2c as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  i2c as an array
             Arr : RESET_DONE_i2c_Field_Array;
@@ -354,7 +355,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  pio as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  pio as an array
             Arr : RESET_DONE_pio_Field_Array;
@@ -378,7 +379,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  spi as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  spi as an array
             Arr : RESET_DONE_spi_Field_Array;
@@ -402,7 +403,7 @@ package RP2040_SVD.RESETS is
       case As_Array is
          when False =>
             --  uart as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  uart as an array
             Arr : RESET_DONE_uart_Field_Array;
@@ -462,7 +463,7 @@ package RP2040_SVD.RESETS is
       --  Read-only.
       usbctrl        : Boolean;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7;
+      Reserved_25_31 : HAL.UInt7;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

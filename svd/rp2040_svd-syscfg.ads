@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Register block for various chip control signals
@@ -18,8 +19,8 @@ package RP2040_SVD.SYSCFG is
    -- Registers --
    ---------------
 
-   subtype PROC_CONFIG_PROC0_DAP_INSTID_Field is RP2040_SVD.UInt4;
-   subtype PROC_CONFIG_PROC1_DAP_INSTID_Field is RP2040_SVD.UInt4;
+   subtype PROC_CONFIG_PROC0_DAP_INSTID_Field is HAL.UInt4;
+   subtype PROC_CONFIG_PROC1_DAP_INSTID_Field is HAL.UInt4;
 
    --  Configuration for processors
    type PROC_CONFIG_Register is record
@@ -28,7 +29,7 @@ package RP2040_SVD.SYSCFG is
       --  Read-only. Indication that proc1 has halted
       PROC1_HALTED     : Boolean := False;
       --  unspecified
-      Reserved_2_23    : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_2_23    : HAL.UInt22 := 16#0#;
       --  Configure proc0 DAP instance ID.\n Recommend that this is NOT changed
       --  until you require debug access in multi-chip environment\n WARNING:
       --  do not set to 15 as this is reserved for RescueDP
@@ -49,7 +50,7 @@ package RP2040_SVD.SYSCFG is
       PROC1_DAP_INSTID at 0 range 28 .. 31;
    end record;
 
-   subtype PROC_IN_SYNC_BYPASS_PROC_IN_SYNC_BYPASS_Field is RP2040_SVD.UInt30;
+   subtype PROC_IN_SYNC_BYPASS_PROC_IN_SYNC_BYPASS_Field is HAL.UInt30;
 
    --  For each bit, if 1, bypass the input synchronizer between that GPIO\n
    --  and the GPIO input register in the SIO. The input synchronizers should\n
@@ -60,7 +61,7 @@ package RP2040_SVD.SYSCFG is
       PROC_IN_SYNC_BYPASS : PROC_IN_SYNC_BYPASS_PROC_IN_SYNC_BYPASS_Field :=
                              16#0#;
       --  unspecified
-      Reserved_30_31      : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31      : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -70,8 +71,7 @@ package RP2040_SVD.SYSCFG is
       Reserved_30_31      at 0 range 30 .. 31;
    end record;
 
-   subtype PROC_IN_SYNC_BYPASS_HI_PROC_IN_SYNC_BYPASS_HI_Field is
-     RP2040_SVD.UInt6;
+   subtype PROC_IN_SYNC_BYPASS_HI_PROC_IN_SYNC_BYPASS_HI_Field is HAL.UInt6;
 
    --  For each bit, if 1, bypass the input synchronizer between that GPIO\n
    --  and the GPIO input register in the SIO. The input synchronizers should\n
@@ -83,7 +83,7 @@ package RP2040_SVD.SYSCFG is
       PROC_IN_SYNC_BYPASS_HI : PROC_IN_SYNC_BYPASS_HI_PROC_IN_SYNC_BYPASS_HI_Field :=
                                 16#0#;
       --  unspecified
-      Reserved_6_31          : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31          : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -114,7 +114,7 @@ package RP2040_SVD.SYSCFG is
       --  from external SWD pads.
       PROC1_ATTACH  : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -142,7 +142,7 @@ package RP2040_SVD.SYSCFG is
       case As_Array is
          when False =>
             --  SRAM as a value
-            Val : RP2040_SVD.UInt6;
+            Val : HAL.UInt6;
          when True =>
             --  SRAM as an array
             Arr : MEMPOWERDOWN_SRAM_Field_Array;
@@ -163,7 +163,7 @@ package RP2040_SVD.SYSCFG is
       USB           : Boolean := False;
       ROM           : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -183,10 +183,10 @@ package RP2040_SVD.SYSCFG is
    type SYSCFG_Peripheral is record
       --  Processor core 0 NMI source mask\n Set a bit high to enable NMI from
       --  that IRQ
-      PROC0_NMI_MASK         : aliased RP2040_SVD.UInt32;
+      PROC0_NMI_MASK         : aliased HAL.UInt32;
       --  Processor core 1 NMI source mask\n Set a bit high to enable NMI from
       --  that IRQ
-      PROC1_NMI_MASK         : aliased RP2040_SVD.UInt32;
+      PROC1_NMI_MASK         : aliased HAL.UInt32;
       --  Configuration for processors
       PROC_CONFIG            : aliased PROC_CONFIG_Register;
       --  For each bit, if 1, bypass the input synchronizer between that GPIO\n

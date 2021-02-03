@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.ROSC is
@@ -72,7 +73,7 @@ package RP2040_SVD.ROSC is
       --  will enable the oscillator.
       ENABLE         : CTRL_ENABLE_Field := CTRL_ENABLE_Field_Reset;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -83,10 +84,10 @@ package RP2040_SVD.ROSC is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype FREQA_DS0_Field is RP2040_SVD.UInt3;
-   subtype FREQA_DS1_Field is RP2040_SVD.UInt3;
-   subtype FREQA_DS2_Field is RP2040_SVD.UInt3;
-   subtype FREQA_DS3_Field is RP2040_SVD.UInt3;
+   subtype FREQA_DS0_Field is HAL.UInt3;
+   subtype FREQA_DS1_Field is HAL.UInt3;
+   subtype FREQA_DS2_Field is HAL.UInt3;
+   subtype FREQA_DS3_Field is HAL.UInt3;
 
    --  Set to 0x9696 to apply the settings\n Any other value in this field will
    --  set all drive strengths to 0
@@ -110,19 +111,19 @@ package RP2040_SVD.ROSC is
       --  Stage 0 drive strength
       DS0            : FREQA_DS0_Field := 16#0#;
       --  unspecified
-      Reserved_3_3   : RP2040_SVD.Bit := 16#0#;
+      Reserved_3_3   : HAL.Bit := 16#0#;
       --  Stage 1 drive strength
       DS1            : FREQA_DS1_Field := 16#0#;
       --  unspecified
-      Reserved_7_7   : RP2040_SVD.Bit := 16#0#;
+      Reserved_7_7   : HAL.Bit := 16#0#;
       --  Stage 2 drive strength
       DS2            : FREQA_DS2_Field := 16#0#;
       --  unspecified
-      Reserved_11_11 : RP2040_SVD.Bit := 16#0#;
+      Reserved_11_11 : HAL.Bit := 16#0#;
       --  Stage 3 drive strength
       DS3            : FREQA_DS3_Field := 16#0#;
       --  unspecified
-      Reserved_15_15 : RP2040_SVD.Bit := 16#0#;
+      Reserved_15_15 : HAL.Bit := 16#0#;
       --  Set to 0x9696 to apply the settings\n Any other value in this field
       --  will set all drive strengths to 0
       PASSWD         : FREQA_PASSWD_Field := FREQA_PASSWD_Field_Reset;
@@ -142,10 +143,10 @@ package RP2040_SVD.ROSC is
       PASSWD         at 0 range 16 .. 31;
    end record;
 
-   subtype FREQB_DS4_Field is RP2040_SVD.UInt3;
-   subtype FREQB_DS5_Field is RP2040_SVD.UInt3;
-   subtype FREQB_DS6_Field is RP2040_SVD.UInt3;
-   subtype FREQB_DS7_Field is RP2040_SVD.UInt3;
+   subtype FREQB_DS4_Field is HAL.UInt3;
+   subtype FREQB_DS5_Field is HAL.UInt3;
+   subtype FREQB_DS6_Field is HAL.UInt3;
+   subtype FREQB_DS7_Field is HAL.UInt3;
 
    --  Set to 0x9696 to apply the settings\n Any other value in this field will
    --  set all drive strengths to 0
@@ -163,19 +164,19 @@ package RP2040_SVD.ROSC is
       --  Stage 4 drive strength
       DS4            : FREQB_DS4_Field := 16#0#;
       --  unspecified
-      Reserved_3_3   : RP2040_SVD.Bit := 16#0#;
+      Reserved_3_3   : HAL.Bit := 16#0#;
       --  Stage 5 drive strength
       DS5            : FREQB_DS5_Field := 16#0#;
       --  unspecified
-      Reserved_7_7   : RP2040_SVD.Bit := 16#0#;
+      Reserved_7_7   : HAL.Bit := 16#0#;
       --  Stage 6 drive strength
       DS6            : FREQB_DS6_Field := 16#0#;
       --  unspecified
-      Reserved_11_11 : RP2040_SVD.Bit := 16#0#;
+      Reserved_11_11 : HAL.Bit := 16#0#;
       --  Stage 7 drive strength
       DS7            : FREQB_DS7_Field := 16#0#;
       --  unspecified
-      Reserved_15_15 : RP2040_SVD.Bit := 16#0#;
+      Reserved_15_15 : HAL.Bit := 16#0#;
       --  Set to 0x9696 to apply the settings\n Any other value in this field
       --  will set all drive strengths to 0
       PASSWD         : FREQB_PASSWD_Field := FREQB_PASSWD_Field_Reset;
@@ -214,7 +215,7 @@ package RP2040_SVD.ROSC is
       --  this register resets to div=16
       DIV            : DIV_DIV_Field := DIV_DIV_Field_Reset;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -224,8 +225,8 @@ package RP2040_SVD.ROSC is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype PHASE_SHIFT_Field is RP2040_SVD.UInt2;
-   subtype PHASE_PASSWD_Field is RP2040_SVD.UInt8;
+   subtype PHASE_SHIFT_Field is HAL.UInt2;
+   subtype PHASE_PASSWD_Field is HAL.UInt8;
 
    --  Controls the phase shifted output
    type PHASE_Register is record
@@ -239,7 +240,7 @@ package RP2040_SVD.ROSC is
       --  set to 0xaa0\n any other value enables the output with shift=0
       PASSWD         : PHASE_PASSWD_Field := 16#0#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -255,23 +256,23 @@ package RP2040_SVD.ROSC is
    --  Ring Oscillator Status
    type STATUS_Register is record
       --  unspecified
-      Reserved_0_11  : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_0_11  : HAL.UInt12 := 16#0#;
       --  Read-only. Oscillator is enabled but not necessarily running and
       --  stable\n this resets to 0 but transitions to 1 during chip startup
       ENABLED        : Boolean := False;
       --  unspecified
-      Reserved_13_15 : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
       --  Read-only. post-divider is running\n this resets to 0 but transitions
       --  to 1 during chip startup
       DIV_RUNNING    : Boolean := False;
       --  unspecified
-      Reserved_17_23 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_17_23 : HAL.UInt7 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. An invalid value has been written to CTRL_ENABLE or
       --  CTRL_FREQ_RANGE or FRFEQA or FREQB or DORMANT
       BADWRITE       : Boolean := False;
       --  unspecified
-      Reserved_25_30 : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_25_30 : HAL.UInt6 := 16#0#;
       --  Read-only. Oscillator is running and stable
       STABLE         : Boolean := False;
    end record
@@ -296,7 +297,7 @@ package RP2040_SVD.ROSC is
       --  Read-only.
       RANDOMBIT     : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -306,7 +307,7 @@ package RP2040_SVD.ROSC is
       Reserved_1_31 at 0 range 1 .. 31;
    end record;
 
-   subtype COUNT_COUNT_Field is RP2040_SVD.UInt8;
+   subtype COUNT_COUNT_Field is HAL.UInt8;
 
    --  A down counter running at the ROSC frequency which counts to zero and
    --  stops.\n To start the counter write a non-zero value.\n Can be used for
@@ -314,7 +315,7 @@ package RP2040_SVD.ROSC is
    type COUNT_Register is record
       COUNT         : COUNT_COUNT_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -345,7 +346,7 @@ package RP2040_SVD.ROSC is
       --  the ROSC\n On power-up this field is initialised to WAKE\n An invalid
       --  write will also select WAKE\n Warning: setup the irq before selecting
       --  dormant mode
-      DORMANT   : aliased RP2040_SVD.UInt32;
+      DORMANT   : aliased HAL.UInt32;
       --  Controls the output divider
       DIV       : aliased DIV_Register;
       --  Controls the phase shifted output

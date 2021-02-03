@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Testbench manager. Allows the programmer to know what platform their
@@ -26,7 +27,7 @@ package RP2040_SVD.TBMAN is
       --  Read-only. Indicates the platform is an FPGA
       FPGA          : Boolean;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30;
+      Reserved_2_31 : HAL.UInt30;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

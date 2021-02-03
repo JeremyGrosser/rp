@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Programmable IO block
@@ -18,9 +19,9 @@ package RP2040_SVD.PIO0 is
    -- Registers --
    ---------------
 
-   subtype CTRL_SM_ENABLE_Field is RP2040_SVD.UInt4;
-   subtype CTRL_SM_RESTART_Field is RP2040_SVD.UInt4;
-   subtype CTRL_CLKDIV_RESTART_Field is RP2040_SVD.UInt4;
+   subtype CTRL_SM_ENABLE_Field is HAL.UInt4;
+   subtype CTRL_SM_RESTART_Field is HAL.UInt4;
+   subtype CTRL_CLKDIV_RESTART_Field is HAL.UInt4;
 
    --  PIO control register
    type CTRL_Register is record
@@ -36,7 +37,7 @@ package RP2040_SVD.PIO0 is
       --  them.
       CLKDIV_RESTART : CTRL_CLKDIV_RESTART_Field := 16#0#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -48,29 +49,29 @@ package RP2040_SVD.PIO0 is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype FSTAT_RXFULL_Field is RP2040_SVD.UInt4;
-   subtype FSTAT_RXEMPTY_Field is RP2040_SVD.UInt4;
-   subtype FSTAT_TXFULL_Field is RP2040_SVD.UInt4;
-   subtype FSTAT_TXEMPTY_Field is RP2040_SVD.UInt4;
+   subtype FSTAT_RXFULL_Field is HAL.UInt4;
+   subtype FSTAT_RXEMPTY_Field is HAL.UInt4;
+   subtype FSTAT_TXFULL_Field is HAL.UInt4;
+   subtype FSTAT_TXEMPTY_Field is HAL.UInt4;
 
    --  FIFO status register
    type FSTAT_Register is record
       --  Read-only. State machine RX FIFO is full
       RXFULL         : FSTAT_RXFULL_Field;
       --  unspecified
-      Reserved_4_7   : RP2040_SVD.UInt4;
+      Reserved_4_7   : HAL.UInt4;
       --  Read-only. State machine RX FIFO is empty
       RXEMPTY        : FSTAT_RXEMPTY_Field;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4;
+      Reserved_12_15 : HAL.UInt4;
       --  Read-only. State machine TX FIFO is full
       TXFULL         : FSTAT_TXFULL_Field;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. State machine TX FIFO is empty
       TXEMPTY        : FSTAT_TXEMPTY_Field;
       --  unspecified
-      Reserved_28_31 : RP2040_SVD.UInt4;
+      Reserved_28_31 : HAL.UInt4;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -86,10 +87,10 @@ package RP2040_SVD.PIO0 is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype FDEBUG_RXSTALL_Field is RP2040_SVD.UInt4;
-   subtype FDEBUG_RXUNDER_Field is RP2040_SVD.UInt4;
-   subtype FDEBUG_TXOVER_Field is RP2040_SVD.UInt4;
-   subtype FDEBUG_TXSTALL_Field is RP2040_SVD.UInt4;
+   subtype FDEBUG_RXSTALL_Field is HAL.UInt4;
+   subtype FDEBUG_RXUNDER_Field is HAL.UInt4;
+   subtype FDEBUG_TXOVER_Field is HAL.UInt4;
+   subtype FDEBUG_TXSTALL_Field is HAL.UInt4;
 
    --  FIFO debug register
    type FDEBUG_Register is record
@@ -98,23 +99,23 @@ package RP2040_SVD.PIO0 is
       --  clear.
       RXSTALL        : FDEBUG_RXSTALL_Field := 16#0#;
       --  unspecified
-      Reserved_4_7   : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_4_7   : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. RX FIFO underflow has occurred. Write 1 to clear.
       RXUNDER        : FDEBUG_RXUNDER_Field := 16#0#;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_12_15 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. TX FIFO overflow has occurred. Write 1 to clear.
       TXOVER         : FDEBUG_TXOVER_Field := 16#0#;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_20_23 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. State machine has stalled on empty TX FIFO. Write 1 to
       --  clear.
       TXSTALL        : FDEBUG_TXSTALL_Field := 16#0#;
       --  unspecified
-      Reserved_28_31 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_28_31 : HAL.UInt4 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -130,14 +131,14 @@ package RP2040_SVD.PIO0 is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   subtype FLEVEL_TX0_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_RX0_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_TX1_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_RX1_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_TX2_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_RX2_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_TX3_Field is RP2040_SVD.UInt4;
-   subtype FLEVEL_RX3_Field is RP2040_SVD.UInt4;
+   subtype FLEVEL_TX0_Field is HAL.UInt4;
+   subtype FLEVEL_RX0_Field is HAL.UInt4;
+   subtype FLEVEL_TX1_Field is HAL.UInt4;
+   subtype FLEVEL_RX1_Field is HAL.UInt4;
+   subtype FLEVEL_TX2_Field is HAL.UInt4;
+   subtype FLEVEL_RX2_Field is HAL.UInt4;
+   subtype FLEVEL_TX3_Field is HAL.UInt4;
+   subtype FLEVEL_RX3_Field is HAL.UInt4;
 
    --  FIFO levels
    type FLEVEL_Register is record
@@ -172,7 +173,7 @@ package RP2040_SVD.PIO0 is
       RX3 at 0 range 28 .. 31;
    end record;
 
-   subtype IRQ_IRQ_Field is RP2040_SVD.UInt8;
+   subtype IRQ_IRQ_Field is HAL.UInt8;
 
    --  Interrupt request register. Write 1 to clear
    type IRQ_Register is record
@@ -180,7 +181,7 @@ package RP2040_SVD.PIO0 is
       --  in the field.
       IRQ           : IRQ_IRQ_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -190,7 +191,7 @@ package RP2040_SVD.PIO0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype IRQ_FORCE_IRQ_FORCE_Field is RP2040_SVD.UInt8;
+   subtype IRQ_FORCE_IRQ_FORCE_Field is HAL.UInt8;
 
    --  Writing a 1 to each of these bits will forcibly assert the corresponding
    --  IRQ.\n Note this is different to the INTF register: writing here affects
@@ -200,7 +201,7 @@ package RP2040_SVD.PIO0 is
       --  Write-only.
       IRQ_FORCE     : IRQ_FORCE_IRQ_FORCE_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -210,9 +211,9 @@ package RP2040_SVD.PIO0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype DBG_CFGINFO_FIFO_DEPTH_Field is RP2040_SVD.UInt6;
-   subtype DBG_CFGINFO_SM_COUNT_Field is RP2040_SVD.UInt4;
-   subtype DBG_CFGINFO_IMEM_SIZE_Field is RP2040_SVD.UInt6;
+   subtype DBG_CFGINFO_FIFO_DEPTH_Field is HAL.UInt6;
+   subtype DBG_CFGINFO_SM_COUNT_Field is HAL.UInt4;
+   subtype DBG_CFGINFO_IMEM_SIZE_Field is HAL.UInt6;
 
    --  The PIO hardware has some free parameters that may vary between chip
    --  products.\n These should be provided in the chip datasheet, but are also
@@ -223,17 +224,17 @@ package RP2040_SVD.PIO0 is
       --  double\n this depth.
       FIFO_DEPTH     : DBG_CFGINFO_FIFO_DEPTH_Field;
       --  unspecified
-      Reserved_6_7   : RP2040_SVD.UInt2;
+      Reserved_6_7   : HAL.UInt2;
       --  Read-only. The number of state machines this PIO instance is equipped
       --  with.
       SM_COUNT       : DBG_CFGINFO_SM_COUNT_Field;
       --  unspecified
-      Reserved_12_15 : RP2040_SVD.UInt4;
+      Reserved_12_15 : HAL.UInt4;
       --  Read-only. The size of the instruction memory, measured in units of
       --  one instruction
       IMEM_SIZE      : DBG_CFGINFO_IMEM_SIZE_Field;
       --  unspecified
-      Reserved_22_31 : RP2040_SVD.UInt10;
+      Reserved_22_31 : HAL.UInt10;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -247,13 +248,13 @@ package RP2040_SVD.PIO0 is
       Reserved_22_31 at 0 range 22 .. 31;
    end record;
 
-   subtype INSTR_MEM0_INSTR_MEM0_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM0_INSTR_MEM0_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 0
    type INSTR_MEM0_Register is record
       INSTR_MEM0     : INSTR_MEM0_INSTR_MEM0_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -263,13 +264,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM1_INSTR_MEM1_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM1_INSTR_MEM1_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 1
    type INSTR_MEM1_Register is record
       INSTR_MEM1     : INSTR_MEM1_INSTR_MEM1_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -279,13 +280,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM2_INSTR_MEM2_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM2_INSTR_MEM2_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 2
    type INSTR_MEM2_Register is record
       INSTR_MEM2     : INSTR_MEM2_INSTR_MEM2_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -295,13 +296,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM3_INSTR_MEM3_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM3_INSTR_MEM3_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 3
    type INSTR_MEM3_Register is record
       INSTR_MEM3     : INSTR_MEM3_INSTR_MEM3_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -311,13 +312,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM4_INSTR_MEM4_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM4_INSTR_MEM4_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 4
    type INSTR_MEM4_Register is record
       INSTR_MEM4     : INSTR_MEM4_INSTR_MEM4_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -327,13 +328,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM5_INSTR_MEM5_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM5_INSTR_MEM5_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 5
    type INSTR_MEM5_Register is record
       INSTR_MEM5     : INSTR_MEM5_INSTR_MEM5_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -343,13 +344,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM6_INSTR_MEM6_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM6_INSTR_MEM6_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 6
    type INSTR_MEM6_Register is record
       INSTR_MEM6     : INSTR_MEM6_INSTR_MEM6_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -359,13 +360,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM7_INSTR_MEM7_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM7_INSTR_MEM7_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 7
    type INSTR_MEM7_Register is record
       INSTR_MEM7     : INSTR_MEM7_INSTR_MEM7_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -375,13 +376,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM8_INSTR_MEM8_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM8_INSTR_MEM8_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 8
    type INSTR_MEM8_Register is record
       INSTR_MEM8     : INSTR_MEM8_INSTR_MEM8_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -391,13 +392,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM9_INSTR_MEM9_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM9_INSTR_MEM9_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 9
    type INSTR_MEM9_Register is record
       INSTR_MEM9     : INSTR_MEM9_INSTR_MEM9_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -407,13 +408,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM10_INSTR_MEM10_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM10_INSTR_MEM10_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 10
    type INSTR_MEM10_Register is record
       INSTR_MEM10    : INSTR_MEM10_INSTR_MEM10_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -423,13 +424,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM11_INSTR_MEM11_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM11_INSTR_MEM11_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 11
    type INSTR_MEM11_Register is record
       INSTR_MEM11    : INSTR_MEM11_INSTR_MEM11_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -439,13 +440,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM12_INSTR_MEM12_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM12_INSTR_MEM12_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 12
    type INSTR_MEM12_Register is record
       INSTR_MEM12    : INSTR_MEM12_INSTR_MEM12_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -455,13 +456,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM13_INSTR_MEM13_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM13_INSTR_MEM13_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 13
    type INSTR_MEM13_Register is record
       INSTR_MEM13    : INSTR_MEM13_INSTR_MEM13_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -471,13 +472,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM14_INSTR_MEM14_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM14_INSTR_MEM14_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 14
    type INSTR_MEM14_Register is record
       INSTR_MEM14    : INSTR_MEM14_INSTR_MEM14_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -487,13 +488,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM15_INSTR_MEM15_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM15_INSTR_MEM15_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 15
    type INSTR_MEM15_Register is record
       INSTR_MEM15    : INSTR_MEM15_INSTR_MEM15_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -503,13 +504,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM16_INSTR_MEM16_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM16_INSTR_MEM16_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 16
    type INSTR_MEM16_Register is record
       INSTR_MEM16    : INSTR_MEM16_INSTR_MEM16_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -519,13 +520,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM17_INSTR_MEM17_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM17_INSTR_MEM17_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 17
    type INSTR_MEM17_Register is record
       INSTR_MEM17    : INSTR_MEM17_INSTR_MEM17_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -535,13 +536,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM18_INSTR_MEM18_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM18_INSTR_MEM18_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 18
    type INSTR_MEM18_Register is record
       INSTR_MEM18    : INSTR_MEM18_INSTR_MEM18_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -551,13 +552,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM19_INSTR_MEM19_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM19_INSTR_MEM19_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 19
    type INSTR_MEM19_Register is record
       INSTR_MEM19    : INSTR_MEM19_INSTR_MEM19_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -567,13 +568,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM20_INSTR_MEM20_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM20_INSTR_MEM20_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 20
    type INSTR_MEM20_Register is record
       INSTR_MEM20    : INSTR_MEM20_INSTR_MEM20_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -583,13 +584,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM21_INSTR_MEM21_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM21_INSTR_MEM21_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 21
    type INSTR_MEM21_Register is record
       INSTR_MEM21    : INSTR_MEM21_INSTR_MEM21_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -599,13 +600,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM22_INSTR_MEM22_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM22_INSTR_MEM22_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 22
    type INSTR_MEM22_Register is record
       INSTR_MEM22    : INSTR_MEM22_INSTR_MEM22_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -615,13 +616,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM23_INSTR_MEM23_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM23_INSTR_MEM23_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 23
    type INSTR_MEM23_Register is record
       INSTR_MEM23    : INSTR_MEM23_INSTR_MEM23_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -631,13 +632,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM24_INSTR_MEM24_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM24_INSTR_MEM24_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 24
    type INSTR_MEM24_Register is record
       INSTR_MEM24    : INSTR_MEM24_INSTR_MEM24_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -647,13 +648,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM25_INSTR_MEM25_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM25_INSTR_MEM25_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 25
    type INSTR_MEM25_Register is record
       INSTR_MEM25    : INSTR_MEM25_INSTR_MEM25_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -663,13 +664,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM26_INSTR_MEM26_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM26_INSTR_MEM26_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 26
    type INSTR_MEM26_Register is record
       INSTR_MEM26    : INSTR_MEM26_INSTR_MEM26_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -679,13 +680,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM27_INSTR_MEM27_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM27_INSTR_MEM27_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 27
    type INSTR_MEM27_Register is record
       INSTR_MEM27    : INSTR_MEM27_INSTR_MEM27_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -695,13 +696,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM28_INSTR_MEM28_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM28_INSTR_MEM28_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 28
    type INSTR_MEM28_Register is record
       INSTR_MEM28    : INSTR_MEM28_INSTR_MEM28_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -711,13 +712,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM29_INSTR_MEM29_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM29_INSTR_MEM29_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 29
    type INSTR_MEM29_Register is record
       INSTR_MEM29    : INSTR_MEM29_INSTR_MEM29_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -727,13 +728,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM30_INSTR_MEM30_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM30_INSTR_MEM30_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 30
    type INSTR_MEM30_Register is record
       INSTR_MEM30    : INSTR_MEM30_INSTR_MEM30_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -743,13 +744,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INSTR_MEM31_INSTR_MEM31_Field is RP2040_SVD.UInt16;
+   subtype INSTR_MEM31_INSTR_MEM31_Field is HAL.UInt16;
 
    --  Write-only access to instruction memory location 31
    type INSTR_MEM31_Register is record
       INSTR_MEM31    : INSTR_MEM31_INSTR_MEM31_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -759,14 +760,14 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype SM0_CLKDIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype SM0_CLKDIV_INT_Field is RP2040_SVD.UInt16;
+   subtype SM0_CLKDIV_FRAC_Field is HAL.UInt8;
+   subtype SM0_CLKDIV_INT_Field is HAL.UInt16;
 
    --  Clock divider register for state machine 0\n Frequency = clock freq /
    --  (CLKDIV_INT + CLKDIV_FRAC / 256)
    type SM0_CLKDIV_Register is record
       --  unspecified
-      Reserved_0_7 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7 : HAL.UInt8 := 16#0#;
       --  Fractional part of clock divider
       FRAC         : SM0_CLKDIV_FRAC_Field := 16#0#;
       --  Effective frequency is sysclk/int.\n Value of 0 is interpreted as max
@@ -782,7 +783,7 @@ package RP2040_SVD.PIO0 is
       INT          at 0 range 16 .. 31;
    end record;
 
-   subtype SM0_EXECCTRL_STATUS_N_Field is RP2040_SVD.UInt4;
+   subtype SM0_EXECCTRL_STATUS_N_Field is HAL.UInt4;
 
    --  Comparison used for the MOV x, STATUS instruction.
    type SM0_EXECCTRL_STATUS_SEL_Field is
@@ -795,10 +796,10 @@ package RP2040_SVD.PIO0 is
      (TXLEVEL => 0,
       RXLEVEL => 1);
 
-   subtype SM0_EXECCTRL_WRAP_BOTTOM_Field is RP2040_SVD.UInt5;
-   subtype SM0_EXECCTRL_WRAP_TOP_Field is RP2040_SVD.UInt5;
-   subtype SM0_EXECCTRL_OUT_EN_SEL_Field is RP2040_SVD.UInt5;
-   subtype SM0_EXECCTRL_JMP_PIN_Field is RP2040_SVD.UInt5;
+   subtype SM0_EXECCTRL_WRAP_BOTTOM_Field is HAL.UInt5;
+   subtype SM0_EXECCTRL_WRAP_TOP_Field is HAL.UInt5;
+   subtype SM0_EXECCTRL_OUT_EN_SEL_Field is HAL.UInt5;
+   subtype SM0_EXECCTRL_JMP_PIN_Field is HAL.UInt5;
 
    --  Execution/behavioural settings for state machine 0
    type SM0_EXECCTRL_Register is record
@@ -808,7 +809,7 @@ package RP2040_SVD.PIO0 is
       STATUS_SEL    : SM0_EXECCTRL_STATUS_SEL_Field :=
                        RP2040_SVD.PIO0.TXLEVEL;
       --  unspecified
-      Reserved_5_6  : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_5_6  : HAL.UInt2 := 16#0#;
       --  After reaching wrap_top, execution is wrapped to this address.
       WRAP_BOTTOM   : SM0_EXECCTRL_WRAP_BOTTOM_Field := 16#0#;
       --  After reaching this address, execution is wrapped to wrap_bottom.\n
@@ -857,14 +858,14 @@ package RP2040_SVD.PIO0 is
       EXEC_STALLED  at 0 range 31 .. 31;
    end record;
 
-   subtype SM0_SHIFTCTRL_PUSH_THRESH_Field is RP2040_SVD.UInt5;
-   subtype SM0_SHIFTCTRL_PULL_THRESH_Field is RP2040_SVD.UInt5;
+   subtype SM0_SHIFTCTRL_PUSH_THRESH_Field is HAL.UInt5;
+   subtype SM0_SHIFTCTRL_PULL_THRESH_Field is HAL.UInt5;
 
    --  Control behaviour of the input/output shift registers for state machine
    --  0
    type SM0_SHIFTCTRL_Register is record
       --  unspecified
-      Reserved_0_15 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_0_15 : HAL.UInt16 := 16#0#;
       --  Push automatically when the input shift register is filled
       AUTOPUSH      : Boolean := False;
       --  Pull automatically when the output shift register is emptied
@@ -904,14 +905,14 @@ package RP2040_SVD.PIO0 is
       FJOIN_RX      at 0 range 31 .. 31;
    end record;
 
-   subtype SM0_ADDR_SM0_ADDR_Field is RP2040_SVD.UInt5;
+   subtype SM0_ADDR_SM0_ADDR_Field is HAL.UInt5;
 
    --  Current instruction address of state machine 0
    type SM0_ADDR_Register is record
       --  Read-only.
       SM0_ADDR      : SM0_ADDR_SM0_ADDR_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -921,7 +922,7 @@ package RP2040_SVD.PIO0 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype SM0_INSTR_SM0_INSTR_Field is RP2040_SVD.UInt16;
+   subtype SM0_INSTR_SM0_INSTR_Field is HAL.UInt16;
 
    --  Instruction currently being executed by state machine 0\n Write to
    --  execute an instruction immediately (including jumps) and then resume
@@ -929,7 +930,7 @@ package RP2040_SVD.PIO0 is
    type SM0_INSTR_Register is record
       SM0_INSTR      : SM0_INSTR_SM0_INSTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -939,13 +940,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype SM0_PINCTRL_OUT_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM0_PINCTRL_SET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM0_PINCTRL_SIDESET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM0_PINCTRL_IN_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM0_PINCTRL_OUT_COUNT_Field is RP2040_SVD.UInt6;
-   subtype SM0_PINCTRL_SET_COUNT_Field is RP2040_SVD.UInt3;
-   subtype SM0_PINCTRL_SIDESET_COUNT_Field is RP2040_SVD.UInt3;
+   subtype SM0_PINCTRL_OUT_BASE_Field is HAL.UInt5;
+   subtype SM0_PINCTRL_SET_BASE_Field is HAL.UInt5;
+   subtype SM0_PINCTRL_SIDESET_BASE_Field is HAL.UInt5;
+   subtype SM0_PINCTRL_IN_BASE_Field is HAL.UInt5;
+   subtype SM0_PINCTRL_OUT_COUNT_Field is HAL.UInt6;
+   subtype SM0_PINCTRL_SET_COUNT_Field is HAL.UInt3;
+   subtype SM0_PINCTRL_SIDESET_COUNT_Field is HAL.UInt3;
 
    --  State machine pin control
    type SM0_PINCTRL_Register is record
@@ -978,14 +979,14 @@ package RP2040_SVD.PIO0 is
       SIDESET_COUNT at 0 range 29 .. 31;
    end record;
 
-   subtype SM1_CLKDIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype SM1_CLKDIV_INT_Field is RP2040_SVD.UInt16;
+   subtype SM1_CLKDIV_FRAC_Field is HAL.UInt8;
+   subtype SM1_CLKDIV_INT_Field is HAL.UInt16;
 
    --  Clock divider register for state machine 1\n Frequency = clock freq /
    --  (CLKDIV_INT + CLKDIV_FRAC / 256)
    type SM1_CLKDIV_Register is record
       --  unspecified
-      Reserved_0_7 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7 : HAL.UInt8 := 16#0#;
       --  Fractional part of clock divider
       FRAC         : SM1_CLKDIV_FRAC_Field := 16#0#;
       --  Effective frequency is sysclk/int.\n Value of 0 is interpreted as max
@@ -1001,7 +1002,7 @@ package RP2040_SVD.PIO0 is
       INT          at 0 range 16 .. 31;
    end record;
 
-   subtype SM1_EXECCTRL_STATUS_N_Field is RP2040_SVD.UInt4;
+   subtype SM1_EXECCTRL_STATUS_N_Field is HAL.UInt4;
 
    --  Comparison used for the MOV x, STATUS instruction.
    type SM1_EXECCTRL_STATUS_SEL_Field is
@@ -1014,10 +1015,10 @@ package RP2040_SVD.PIO0 is
      (TXLEVEL => 0,
       RXLEVEL => 1);
 
-   subtype SM1_EXECCTRL_WRAP_BOTTOM_Field is RP2040_SVD.UInt5;
-   subtype SM1_EXECCTRL_WRAP_TOP_Field is RP2040_SVD.UInt5;
-   subtype SM1_EXECCTRL_OUT_EN_SEL_Field is RP2040_SVD.UInt5;
-   subtype SM1_EXECCTRL_JMP_PIN_Field is RP2040_SVD.UInt5;
+   subtype SM1_EXECCTRL_WRAP_BOTTOM_Field is HAL.UInt5;
+   subtype SM1_EXECCTRL_WRAP_TOP_Field is HAL.UInt5;
+   subtype SM1_EXECCTRL_OUT_EN_SEL_Field is HAL.UInt5;
+   subtype SM1_EXECCTRL_JMP_PIN_Field is HAL.UInt5;
 
    --  Execution/behavioural settings for state machine 1
    type SM1_EXECCTRL_Register is record
@@ -1027,7 +1028,7 @@ package RP2040_SVD.PIO0 is
       STATUS_SEL    : SM1_EXECCTRL_STATUS_SEL_Field :=
                        RP2040_SVD.PIO0.TXLEVEL;
       --  unspecified
-      Reserved_5_6  : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_5_6  : HAL.UInt2 := 16#0#;
       --  After reaching wrap_top, execution is wrapped to this address.
       WRAP_BOTTOM   : SM1_EXECCTRL_WRAP_BOTTOM_Field := 16#0#;
       --  After reaching this address, execution is wrapped to wrap_bottom.\n
@@ -1076,14 +1077,14 @@ package RP2040_SVD.PIO0 is
       EXEC_STALLED  at 0 range 31 .. 31;
    end record;
 
-   subtype SM1_SHIFTCTRL_PUSH_THRESH_Field is RP2040_SVD.UInt5;
-   subtype SM1_SHIFTCTRL_PULL_THRESH_Field is RP2040_SVD.UInt5;
+   subtype SM1_SHIFTCTRL_PUSH_THRESH_Field is HAL.UInt5;
+   subtype SM1_SHIFTCTRL_PULL_THRESH_Field is HAL.UInt5;
 
    --  Control behaviour of the input/output shift registers for state machine
    --  1
    type SM1_SHIFTCTRL_Register is record
       --  unspecified
-      Reserved_0_15 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_0_15 : HAL.UInt16 := 16#0#;
       --  Push automatically when the input shift register is filled
       AUTOPUSH      : Boolean := False;
       --  Pull automatically when the output shift register is emptied
@@ -1123,14 +1124,14 @@ package RP2040_SVD.PIO0 is
       FJOIN_RX      at 0 range 31 .. 31;
    end record;
 
-   subtype SM1_ADDR_SM1_ADDR_Field is RP2040_SVD.UInt5;
+   subtype SM1_ADDR_SM1_ADDR_Field is HAL.UInt5;
 
    --  Current instruction address of state machine 1
    type SM1_ADDR_Register is record
       --  Read-only.
       SM1_ADDR      : SM1_ADDR_SM1_ADDR_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1140,7 +1141,7 @@ package RP2040_SVD.PIO0 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype SM1_INSTR_SM1_INSTR_Field is RP2040_SVD.UInt16;
+   subtype SM1_INSTR_SM1_INSTR_Field is HAL.UInt16;
 
    --  Instruction currently being executed by state machine 1\n Write to
    --  execute an instruction immediately (including jumps) and then resume
@@ -1148,7 +1149,7 @@ package RP2040_SVD.PIO0 is
    type SM1_INSTR_Register is record
       SM1_INSTR      : SM1_INSTR_SM1_INSTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1158,13 +1159,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype SM1_PINCTRL_OUT_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM1_PINCTRL_SET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM1_PINCTRL_SIDESET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM1_PINCTRL_IN_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM1_PINCTRL_OUT_COUNT_Field is RP2040_SVD.UInt6;
-   subtype SM1_PINCTRL_SET_COUNT_Field is RP2040_SVD.UInt3;
-   subtype SM1_PINCTRL_SIDESET_COUNT_Field is RP2040_SVD.UInt3;
+   subtype SM1_PINCTRL_OUT_BASE_Field is HAL.UInt5;
+   subtype SM1_PINCTRL_SET_BASE_Field is HAL.UInt5;
+   subtype SM1_PINCTRL_SIDESET_BASE_Field is HAL.UInt5;
+   subtype SM1_PINCTRL_IN_BASE_Field is HAL.UInt5;
+   subtype SM1_PINCTRL_OUT_COUNT_Field is HAL.UInt6;
+   subtype SM1_PINCTRL_SET_COUNT_Field is HAL.UInt3;
+   subtype SM1_PINCTRL_SIDESET_COUNT_Field is HAL.UInt3;
 
    --  State machine pin control
    type SM1_PINCTRL_Register is record
@@ -1197,14 +1198,14 @@ package RP2040_SVD.PIO0 is
       SIDESET_COUNT at 0 range 29 .. 31;
    end record;
 
-   subtype SM2_CLKDIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype SM2_CLKDIV_INT_Field is RP2040_SVD.UInt16;
+   subtype SM2_CLKDIV_FRAC_Field is HAL.UInt8;
+   subtype SM2_CLKDIV_INT_Field is HAL.UInt16;
 
    --  Clock divider register for state machine 2\n Frequency = clock freq /
    --  (CLKDIV_INT + CLKDIV_FRAC / 256)
    type SM2_CLKDIV_Register is record
       --  unspecified
-      Reserved_0_7 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7 : HAL.UInt8 := 16#0#;
       --  Fractional part of clock divider
       FRAC         : SM2_CLKDIV_FRAC_Field := 16#0#;
       --  Effective frequency is sysclk/int.\n Value of 0 is interpreted as max
@@ -1220,7 +1221,7 @@ package RP2040_SVD.PIO0 is
       INT          at 0 range 16 .. 31;
    end record;
 
-   subtype SM2_EXECCTRL_STATUS_N_Field is RP2040_SVD.UInt4;
+   subtype SM2_EXECCTRL_STATUS_N_Field is HAL.UInt4;
 
    --  Comparison used for the MOV x, STATUS instruction.
    type SM2_EXECCTRL_STATUS_SEL_Field is
@@ -1233,10 +1234,10 @@ package RP2040_SVD.PIO0 is
      (TXLEVEL => 0,
       RXLEVEL => 1);
 
-   subtype SM2_EXECCTRL_WRAP_BOTTOM_Field is RP2040_SVD.UInt5;
-   subtype SM2_EXECCTRL_WRAP_TOP_Field is RP2040_SVD.UInt5;
-   subtype SM2_EXECCTRL_OUT_EN_SEL_Field is RP2040_SVD.UInt5;
-   subtype SM2_EXECCTRL_JMP_PIN_Field is RP2040_SVD.UInt5;
+   subtype SM2_EXECCTRL_WRAP_BOTTOM_Field is HAL.UInt5;
+   subtype SM2_EXECCTRL_WRAP_TOP_Field is HAL.UInt5;
+   subtype SM2_EXECCTRL_OUT_EN_SEL_Field is HAL.UInt5;
+   subtype SM2_EXECCTRL_JMP_PIN_Field is HAL.UInt5;
 
    --  Execution/behavioural settings for state machine 2
    type SM2_EXECCTRL_Register is record
@@ -1246,7 +1247,7 @@ package RP2040_SVD.PIO0 is
       STATUS_SEL    : SM2_EXECCTRL_STATUS_SEL_Field :=
                        RP2040_SVD.PIO0.TXLEVEL;
       --  unspecified
-      Reserved_5_6  : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_5_6  : HAL.UInt2 := 16#0#;
       --  After reaching wrap_top, execution is wrapped to this address.
       WRAP_BOTTOM   : SM2_EXECCTRL_WRAP_BOTTOM_Field := 16#0#;
       --  After reaching this address, execution is wrapped to wrap_bottom.\n
@@ -1295,14 +1296,14 @@ package RP2040_SVD.PIO0 is
       EXEC_STALLED  at 0 range 31 .. 31;
    end record;
 
-   subtype SM2_SHIFTCTRL_PUSH_THRESH_Field is RP2040_SVD.UInt5;
-   subtype SM2_SHIFTCTRL_PULL_THRESH_Field is RP2040_SVD.UInt5;
+   subtype SM2_SHIFTCTRL_PUSH_THRESH_Field is HAL.UInt5;
+   subtype SM2_SHIFTCTRL_PULL_THRESH_Field is HAL.UInt5;
 
    --  Control behaviour of the input/output shift registers for state machine
    --  2
    type SM2_SHIFTCTRL_Register is record
       --  unspecified
-      Reserved_0_15 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_0_15 : HAL.UInt16 := 16#0#;
       --  Push automatically when the input shift register is filled
       AUTOPUSH      : Boolean := False;
       --  Pull automatically when the output shift register is emptied
@@ -1342,14 +1343,14 @@ package RP2040_SVD.PIO0 is
       FJOIN_RX      at 0 range 31 .. 31;
    end record;
 
-   subtype SM2_ADDR_SM2_ADDR_Field is RP2040_SVD.UInt5;
+   subtype SM2_ADDR_SM2_ADDR_Field is HAL.UInt5;
 
    --  Current instruction address of state machine 2
    type SM2_ADDR_Register is record
       --  Read-only.
       SM2_ADDR      : SM2_ADDR_SM2_ADDR_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1359,7 +1360,7 @@ package RP2040_SVD.PIO0 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype SM2_INSTR_SM2_INSTR_Field is RP2040_SVD.UInt16;
+   subtype SM2_INSTR_SM2_INSTR_Field is HAL.UInt16;
 
    --  Instruction currently being executed by state machine 2\n Write to
    --  execute an instruction immediately (including jumps) and then resume
@@ -1367,7 +1368,7 @@ package RP2040_SVD.PIO0 is
    type SM2_INSTR_Register is record
       SM2_INSTR      : SM2_INSTR_SM2_INSTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1377,13 +1378,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype SM2_PINCTRL_OUT_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM2_PINCTRL_SET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM2_PINCTRL_SIDESET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM2_PINCTRL_IN_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM2_PINCTRL_OUT_COUNT_Field is RP2040_SVD.UInt6;
-   subtype SM2_PINCTRL_SET_COUNT_Field is RP2040_SVD.UInt3;
-   subtype SM2_PINCTRL_SIDESET_COUNT_Field is RP2040_SVD.UInt3;
+   subtype SM2_PINCTRL_OUT_BASE_Field is HAL.UInt5;
+   subtype SM2_PINCTRL_SET_BASE_Field is HAL.UInt5;
+   subtype SM2_PINCTRL_SIDESET_BASE_Field is HAL.UInt5;
+   subtype SM2_PINCTRL_IN_BASE_Field is HAL.UInt5;
+   subtype SM2_PINCTRL_OUT_COUNT_Field is HAL.UInt6;
+   subtype SM2_PINCTRL_SET_COUNT_Field is HAL.UInt3;
+   subtype SM2_PINCTRL_SIDESET_COUNT_Field is HAL.UInt3;
 
    --  State machine pin control
    type SM2_PINCTRL_Register is record
@@ -1416,14 +1417,14 @@ package RP2040_SVD.PIO0 is
       SIDESET_COUNT at 0 range 29 .. 31;
    end record;
 
-   subtype SM3_CLKDIV_FRAC_Field is RP2040_SVD.UInt8;
-   subtype SM3_CLKDIV_INT_Field is RP2040_SVD.UInt16;
+   subtype SM3_CLKDIV_FRAC_Field is HAL.UInt8;
+   subtype SM3_CLKDIV_INT_Field is HAL.UInt16;
 
    --  Clock divider register for state machine 3\n Frequency = clock freq /
    --  (CLKDIV_INT + CLKDIV_FRAC / 256)
    type SM3_CLKDIV_Register is record
       --  unspecified
-      Reserved_0_7 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_0_7 : HAL.UInt8 := 16#0#;
       --  Fractional part of clock divider
       FRAC         : SM3_CLKDIV_FRAC_Field := 16#0#;
       --  Effective frequency is sysclk/int.\n Value of 0 is interpreted as max
@@ -1439,7 +1440,7 @@ package RP2040_SVD.PIO0 is
       INT          at 0 range 16 .. 31;
    end record;
 
-   subtype SM3_EXECCTRL_STATUS_N_Field is RP2040_SVD.UInt4;
+   subtype SM3_EXECCTRL_STATUS_N_Field is HAL.UInt4;
 
    --  Comparison used for the MOV x, STATUS instruction.
    type SM3_EXECCTRL_STATUS_SEL_Field is
@@ -1452,10 +1453,10 @@ package RP2040_SVD.PIO0 is
      (TXLEVEL => 0,
       RXLEVEL => 1);
 
-   subtype SM3_EXECCTRL_WRAP_BOTTOM_Field is RP2040_SVD.UInt5;
-   subtype SM3_EXECCTRL_WRAP_TOP_Field is RP2040_SVD.UInt5;
-   subtype SM3_EXECCTRL_OUT_EN_SEL_Field is RP2040_SVD.UInt5;
-   subtype SM3_EXECCTRL_JMP_PIN_Field is RP2040_SVD.UInt5;
+   subtype SM3_EXECCTRL_WRAP_BOTTOM_Field is HAL.UInt5;
+   subtype SM3_EXECCTRL_WRAP_TOP_Field is HAL.UInt5;
+   subtype SM3_EXECCTRL_OUT_EN_SEL_Field is HAL.UInt5;
+   subtype SM3_EXECCTRL_JMP_PIN_Field is HAL.UInt5;
 
    --  Execution/behavioural settings for state machine 3
    type SM3_EXECCTRL_Register is record
@@ -1465,7 +1466,7 @@ package RP2040_SVD.PIO0 is
       STATUS_SEL    : SM3_EXECCTRL_STATUS_SEL_Field :=
                        RP2040_SVD.PIO0.TXLEVEL;
       --  unspecified
-      Reserved_5_6  : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_5_6  : HAL.UInt2 := 16#0#;
       --  After reaching wrap_top, execution is wrapped to this address.
       WRAP_BOTTOM   : SM3_EXECCTRL_WRAP_BOTTOM_Field := 16#0#;
       --  After reaching this address, execution is wrapped to wrap_bottom.\n
@@ -1514,14 +1515,14 @@ package RP2040_SVD.PIO0 is
       EXEC_STALLED  at 0 range 31 .. 31;
    end record;
 
-   subtype SM3_SHIFTCTRL_PUSH_THRESH_Field is RP2040_SVD.UInt5;
-   subtype SM3_SHIFTCTRL_PULL_THRESH_Field is RP2040_SVD.UInt5;
+   subtype SM3_SHIFTCTRL_PUSH_THRESH_Field is HAL.UInt5;
+   subtype SM3_SHIFTCTRL_PULL_THRESH_Field is HAL.UInt5;
 
    --  Control behaviour of the input/output shift registers for state machine
    --  3
    type SM3_SHIFTCTRL_Register is record
       --  unspecified
-      Reserved_0_15 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_0_15 : HAL.UInt16 := 16#0#;
       --  Push automatically when the input shift register is filled
       AUTOPUSH      : Boolean := False;
       --  Pull automatically when the output shift register is emptied
@@ -1561,14 +1562,14 @@ package RP2040_SVD.PIO0 is
       FJOIN_RX      at 0 range 31 .. 31;
    end record;
 
-   subtype SM3_ADDR_SM3_ADDR_Field is RP2040_SVD.UInt5;
+   subtype SM3_ADDR_SM3_ADDR_Field is HAL.UInt5;
 
    --  Current instruction address of state machine 3
    type SM3_ADDR_Register is record
       --  Read-only.
       SM3_ADDR      : SM3_ADDR_SM3_ADDR_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1578,7 +1579,7 @@ package RP2040_SVD.PIO0 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype SM3_INSTR_SM3_INSTR_Field is RP2040_SVD.UInt16;
+   subtype SM3_INSTR_SM3_INSTR_Field is HAL.UInt16;
 
    --  Instruction currently being executed by state machine 3\n Write to
    --  execute an instruction immediately (including jumps) and then resume
@@ -1586,7 +1587,7 @@ package RP2040_SVD.PIO0 is
    type SM3_INSTR_Register is record
       SM3_INSTR      : SM3_INSTR_SM3_INSTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1596,13 +1597,13 @@ package RP2040_SVD.PIO0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype SM3_PINCTRL_OUT_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM3_PINCTRL_SET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM3_PINCTRL_SIDESET_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM3_PINCTRL_IN_BASE_Field is RP2040_SVD.UInt5;
-   subtype SM3_PINCTRL_OUT_COUNT_Field is RP2040_SVD.UInt6;
-   subtype SM3_PINCTRL_SET_COUNT_Field is RP2040_SVD.UInt3;
-   subtype SM3_PINCTRL_SIDESET_COUNT_Field is RP2040_SVD.UInt3;
+   subtype SM3_PINCTRL_OUT_BASE_Field is HAL.UInt5;
+   subtype SM3_PINCTRL_SET_BASE_Field is HAL.UInt5;
+   subtype SM3_PINCTRL_SIDESET_BASE_Field is HAL.UInt5;
+   subtype SM3_PINCTRL_IN_BASE_Field is HAL.UInt5;
+   subtype SM3_PINCTRL_OUT_COUNT_Field is HAL.UInt6;
+   subtype SM3_PINCTRL_SET_COUNT_Field is HAL.UInt3;
+   subtype SM3_PINCTRL_SIDESET_COUNT_Field is HAL.UInt3;
 
    --  State machine pin control
    type SM3_PINCTRL_Register is record
@@ -1646,7 +1647,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : INTR_SM_Field_Array;
@@ -1680,7 +1681,7 @@ package RP2040_SVD.PIO0 is
       --  Read-only.
       SM             : INTR_SM_Field;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20;
+      Reserved_12_31 : HAL.UInt20;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1709,7 +1710,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : IRQ0_INTE_SM_Field_Array;
@@ -1735,7 +1736,7 @@ package RP2040_SVD.PIO0 is
       SM             : IRQ0_INTE_SM_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1764,7 +1765,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : IRQ0_INTF_SM_Field_Array;
@@ -1790,7 +1791,7 @@ package RP2040_SVD.PIO0 is
       SM             : IRQ0_INTF_SM_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1819,7 +1820,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : IRQ0_INTS_SM_Field_Array;
@@ -1853,7 +1854,7 @@ package RP2040_SVD.PIO0 is
       --  Read-only.
       SM             : IRQ0_INTS_SM_Field;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20;
+      Reserved_12_31 : HAL.UInt20;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1882,7 +1883,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : IRQ1_INTE_SM_Field_Array;
@@ -1908,7 +1909,7 @@ package RP2040_SVD.PIO0 is
       SM             : IRQ1_INTE_SM_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1937,7 +1938,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : IRQ1_INTF_SM_Field_Array;
@@ -1963,7 +1964,7 @@ package RP2040_SVD.PIO0 is
       SM             : IRQ1_INTF_SM_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1992,7 +1993,7 @@ package RP2040_SVD.PIO0 is
       case As_Array is
          when False =>
             --  SM as a value
-            Val : RP2040_SVD.UInt4;
+            Val : HAL.UInt4;
          when True =>
             --  SM as an array
             Arr : IRQ1_INTS_SM_Field_Array;
@@ -2026,7 +2027,7 @@ package RP2040_SVD.PIO0 is
       --  Read-only.
       SM             : IRQ1_INTS_SM_Field;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20;
+      Reserved_12_31 : HAL.UInt20;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2060,28 +2061,28 @@ package RP2040_SVD.PIO0 is
       FLEVEL            : aliased FLEVEL_Register;
       --  Direct write access to the TX FIFO for this state machine. Each write
       --  pushes one word to the FIFO.
-      TXF0              : aliased RP2040_SVD.UInt32;
+      TXF0              : aliased HAL.UInt32;
       --  Direct write access to the TX FIFO for this state machine. Each write
       --  pushes one word to the FIFO.
-      TXF1              : aliased RP2040_SVD.UInt32;
+      TXF1              : aliased HAL.UInt32;
       --  Direct write access to the TX FIFO for this state machine. Each write
       --  pushes one word to the FIFO.
-      TXF2              : aliased RP2040_SVD.UInt32;
+      TXF2              : aliased HAL.UInt32;
       --  Direct write access to the TX FIFO for this state machine. Each write
       --  pushes one word to the FIFO.
-      TXF3              : aliased RP2040_SVD.UInt32;
+      TXF3              : aliased HAL.UInt32;
       --  Direct read access to the RX FIFO for this state machine. Each read
       --  pops one word from the FIFO.
-      RXF0              : aliased RP2040_SVD.UInt32;
+      RXF0              : aliased HAL.UInt32;
       --  Direct read access to the RX FIFO for this state machine. Each read
       --  pops one word from the FIFO.
-      RXF1              : aliased RP2040_SVD.UInt32;
+      RXF1              : aliased HAL.UInt32;
       --  Direct read access to the RX FIFO for this state machine. Each read
       --  pops one word from the FIFO.
-      RXF2              : aliased RP2040_SVD.UInt32;
+      RXF2              : aliased HAL.UInt32;
       --  Direct read access to the RX FIFO for this state machine. Each read
       --  pops one word from the FIFO.
-      RXF3              : aliased RP2040_SVD.UInt32;
+      RXF3              : aliased HAL.UInt32;
       --  Interrupt request register. Write 1 to clear
       IRQ               : aliased IRQ_Register;
       --  Writing a 1 to each of these bits will forcibly assert the
@@ -2096,13 +2097,13 @@ package RP2040_SVD.PIO0 is
       --  may need to be bypassed.\n Each bit in this register corresponds to
       --  one GPIO.\n 0 -> input is synchronized (default)\n 1 -> synchronizer
       --  is bypassed\n If in doubt, leave this register as all zeroes.
-      INPUT_SYNC_BYPASS : aliased RP2040_SVD.UInt32;
+      INPUT_SYNC_BYPASS : aliased HAL.UInt32;
       --  Read to sample the pad output values PIO is currently driving to the
       --  GPIOs.
-      DBG_PADOUT        : aliased RP2040_SVD.UInt32;
+      DBG_PADOUT        : aliased HAL.UInt32;
       --  Read to sample the pad output enables (direction) PIO is currently
       --  driving to the GPIOs.
-      DBG_PADOE         : aliased RP2040_SVD.UInt32;
+      DBG_PADOE         : aliased HAL.UInt32;
       --  The PIO hardware has some free parameters that may vary between chip
       --  products.\n These should be provided in the chip datasheet, but are
       --  also exposed here.

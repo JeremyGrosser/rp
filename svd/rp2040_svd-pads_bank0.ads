@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.PADS_BANK0 is
@@ -32,7 +33,7 @@ package RP2040_SVD.PADS_BANK0 is
       VOLTAGE_SELECT : VOLTAGE_SELECT_VOLTAGE_SELECT_Field :=
                         RP2040_SVD.PADS_BANK0.Val_3v3;
       --  unspecified
-      Reserved_1_31  : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31  : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -72,7 +73,7 @@ package RP2040_SVD.PADS_BANK0 is
       --  Output disable. Has priority over output enable from peripherals
       OD            : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -118,7 +119,7 @@ package RP2040_SVD.PADS_BANK0 is
       --  Output disable. Has priority over output enable from peripherals
       OD            : Boolean := True;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -164,7 +165,7 @@ package RP2040_SVD.PADS_BANK0 is
       --  Output disable. Has priority over output enable from peripherals
       OD            : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

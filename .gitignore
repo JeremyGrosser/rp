@@ -3,3 +3,5 @@ obj
 pico-sdk
 src/boot2.S
 src/crt0.S
+Ada_Drivers_Library
+tiny_text

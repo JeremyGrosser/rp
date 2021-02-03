@@ -5,6 +5,7 @@
 --
 
 with RP2040_SVD; use RP2040_SVD;
+with HAL;        use HAL;
 with Interfaces.C;
 with System;
 

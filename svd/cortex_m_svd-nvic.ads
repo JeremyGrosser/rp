@@ -4,7 +4,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
-with RP2040_SVD;
+with HAL;
 with System;
 
 package Cortex_M_SVD.NVIC is
@@ -17,7 +17,7 @@ package Cortex_M_SVD.NVIC is
    --  Interrupt Priority Register
 
    --  Interrupt Priority Register
-   type NVIC_IPR_Registers is array (0 .. 7) of RP2040_SVD.UInt32;
+   type NVIC_IPR_Registers is array (0 .. 7) of HAL.UInt32;
 
    -----------------
    -- Peripherals --
@@ -25,13 +25,13 @@ package Cortex_M_SVD.NVIC is
 
    type NVIC_Peripheral is record
       --  Interrupt Set-Enable Registers
-      NVIC_ISER : aliased RP2040_SVD.UInt32;
+      NVIC_ISER : aliased HAL.UInt32;
       --  Interrupt Clear-Enable Registers
-      NVIC_ICER : aliased RP2040_SVD.UInt32;
+      NVIC_ICER : aliased HAL.UInt32;
       --  Interrupt Set-Pending Registers
-      NVIC_ISPR : aliased RP2040_SVD.UInt32;
+      NVIC_ISPR : aliased HAL.UInt32;
       --  Interrupt Clear-Pending Registers
-      NVIC_ICPR : aliased RP2040_SVD.UInt32;
+      NVIC_ICPR : aliased HAL.UInt32;
       --  Interrupt Priority Register
       NVIC_IPR  : aliased NVIC_IPR_Registers;
    end record

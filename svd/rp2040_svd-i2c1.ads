@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  DW_apb_i2c address block
@@ -246,7 +247,7 @@ package RP2040_SVD.I2C1 is
       --  whether master is active or not
       STOP_DET_IF_MASTER_ACTIVE : Boolean := False;
       --  unspecified
-      Reserved_11_31            : RP2040_SVD.UInt21 := 16#0#;
+      Reserved_11_31            : HAL.UInt21 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -265,7 +266,7 @@ package RP2040_SVD.I2C1 is
       Reserved_11_31            at 0 range 11 .. 31;
    end record;
 
-   subtype IC_TAR_IC_TAR_Field is RP2040_SVD.UInt10;
+   subtype IC_TAR_IC_TAR_Field is HAL.UInt10;
 
    --  If bit 11 (SPECIAL) is set to 1 and bit 13(Device-ID) is set to 0, then
    --  this bit indicates whether a General Call or START byte command is to be
@@ -331,7 +332,7 @@ package RP2040_SVD.I2C1 is
       --  Device_ID or GC_OR_START bit Reset value: 0x0
       SPECIAL        : IC_TAR_SPECIAL_Field := RP2040_SVD.I2C1.DISABLED;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -343,7 +344,7 @@ package RP2040_SVD.I2C1 is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype IC_SAR_IC_SAR_Field is RP2040_SVD.UInt10;
+   subtype IC_SAR_IC_SAR_Field is HAL.UInt10;
 
    --  I2C Slave Address Register
    type IC_SAR_Register is record
@@ -359,7 +360,7 @@ package RP2040_SVD.I2C1 is
       --  reserved values.
       IC_SAR         : IC_SAR_IC_SAR_Field := 16#55#;
       --  unspecified
-      Reserved_10_31 : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_10_31 : HAL.UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -369,7 +370,7 @@ package RP2040_SVD.I2C1 is
       Reserved_10_31 at 0 range 10 .. 31;
    end record;
 
-   subtype IC_DATA_CMD_DAT_Field is RP2040_SVD.UInt8;
+   subtype IC_DATA_CMD_DAT_Field is HAL.UInt8;
 
    --  This bit controls whether a read or a write is performed. This bit does
    --  not control the direction when the DW_apb_i2con acts as a slave. It
@@ -523,7 +524,7 @@ package RP2040_SVD.I2C1 is
       FIRST_DATA_BYTE : IC_DATA_CMD_FIRST_DATA_BYTE_Field :=
                          RP2040_SVD.I2C1.INACTIVE;
       --  unspecified
-      Reserved_12_31  : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31  : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -537,7 +538,7 @@ package RP2040_SVD.I2C1 is
       Reserved_12_31  at 0 range 12 .. 31;
    end record;
 
-   subtype IC_SS_SCL_HCNT_IC_SS_SCL_HCNT_Field is RP2040_SVD.UInt16;
+   subtype IC_SS_SCL_HCNT_IC_SS_SCL_HCNT_Field is HAL.UInt16;
 
    --  Standard Speed I2C Clock SCL High Count Register
    type IC_SS_SCL_HCNT_Register is record
@@ -558,7 +559,7 @@ package RP2040_SVD.I2C1 is
       --  IC_SS_SCL_HCNT + 10.
       IC_SS_SCL_HCNT : IC_SS_SCL_HCNT_IC_SS_SCL_HCNT_Field := 16#28#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -568,7 +569,7 @@ package RP2040_SVD.I2C1 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype IC_SS_SCL_LCNT_IC_SS_SCL_LCNT_Field is RP2040_SVD.UInt16;
+   subtype IC_SS_SCL_LCNT_IC_SS_SCL_LCNT_Field is HAL.UInt16;
 
    --  Standard Speed I2C Clock SCL Low Count Register
    type IC_SS_SCL_LCNT_Register is record
@@ -585,7 +586,7 @@ package RP2040_SVD.I2C1 is
       --  byte must be programmed first, and then the upper byte is programmed.
       IC_SS_SCL_LCNT : IC_SS_SCL_LCNT_IC_SS_SCL_LCNT_Field := 16#2F#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -595,7 +596,7 @@ package RP2040_SVD.I2C1 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype IC_FS_SCL_HCNT_IC_FS_SCL_HCNT_Field is RP2040_SVD.UInt16;
+   subtype IC_FS_SCL_HCNT_IC_FS_SCL_HCNT_Field is HAL.UInt16;
 
    --  Fast Mode or Fast Mode Plus I2C Clock SCL High Count Register
    type IC_FS_SCL_HCNT_Register is record
@@ -616,7 +617,7 @@ package RP2040_SVD.I2C1 is
       --  programmed.
       IC_FS_SCL_HCNT : IC_FS_SCL_HCNT_IC_FS_SCL_HCNT_Field := 16#6#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -626,7 +627,7 @@ package RP2040_SVD.I2C1 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype IC_FS_SCL_LCNT_IC_FS_SCL_LCNT_Field is RP2040_SVD.UInt16;
+   subtype IC_FS_SCL_LCNT_IC_FS_SCL_LCNT_Field is HAL.UInt16;
 
    --  Fast Mode or Fast Mode Plus I2C Clock SCL Low Count Register
    type IC_FS_SCL_LCNT_Register is record
@@ -648,7 +649,7 @@ package RP2040_SVD.I2C1 is
       --  changed to 8.
       IC_FS_SCL_LCNT : IC_FS_SCL_LCNT_IC_FS_SCL_LCNT_Field := 16#D#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -875,7 +876,7 @@ package RP2040_SVD.I2C1 is
       --  R_MASTER_ON_HOLD bit.\n\n Reset value: 0x0
       R_MASTER_ON_HOLD : IC_INTR_STAT_R_MASTER_ON_HOLD_Field;
       --  unspecified
-      Reserved_14_31   : RP2040_SVD.UInt18;
+      Reserved_14_31   : HAL.UInt18;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1128,7 +1129,7 @@ package RP2040_SVD.I2C1 is
       M_MASTER_ON_HOLD_READ_ONLY : IC_INTR_MASK_M_MASTER_ON_HOLD_READ_ONLY_Field :=
                                     RP2040_SVD.I2C1.ENABLED;
       --  unspecified
-      Reserved_14_31             : RP2040_SVD.UInt18 := 16#0#;
+      Reserved_14_31             : HAL.UInt18 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1520,7 +1521,7 @@ package RP2040_SVD.I2C1 is
       --  IC_EMPTYFIFO_HOLD_MASTER_EN=1.\n\n Reset value: 0x0
       MASTER_ON_HOLD : IC_RAW_INTR_STAT_MASTER_ON_HOLD_Field;
       --  unspecified
-      Reserved_14_31 : RP2040_SVD.UInt18;
+      Reserved_14_31 : HAL.UInt18;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1543,7 +1544,7 @@ package RP2040_SVD.I2C1 is
       Reserved_14_31 at 0 range 14 .. 31;
    end record;
 
-   subtype IC_RX_TL_RX_TL_Field is RP2040_SVD.UInt8;
+   subtype IC_RX_TL_RX_TL_Field is HAL.UInt8;
 
    --  I2C Receive FIFO Threshold Register
    type IC_RX_TL_Register is record
@@ -1557,7 +1558,7 @@ package RP2040_SVD.I2C1 is
       --  threshold for 256 entries.
       RX_TL         : IC_RX_TL_RX_TL_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1567,7 +1568,7 @@ package RP2040_SVD.I2C1 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype IC_TX_TL_TX_TL_Field is RP2040_SVD.UInt8;
+   subtype IC_TX_TL_TX_TL_Field is HAL.UInt8;
 
    --  I2C Transmit FIFO Threshold Register
    type IC_TX_TL_Register is record
@@ -1580,7 +1581,7 @@ package RP2040_SVD.I2C1 is
       --  entries, and a value of 255 sets the threshold for 255 entries.
       TX_TL         : IC_TX_TL_TX_TL_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1599,7 +1600,7 @@ package RP2040_SVD.I2C1 is
       --  exception to clearing IC_TX_ABRT_SOURCE.\n\n Reset value: 0x0
       CLR_INTR      : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1615,7 +1616,7 @@ package RP2040_SVD.I2C1 is
       --  of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_RX_UNDER  : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1631,7 +1632,7 @@ package RP2040_SVD.I2C1 is
       --  of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_RX_OVER   : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1647,7 +1648,7 @@ package RP2040_SVD.I2C1 is
       --  of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_TX_OVER   : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1663,7 +1664,7 @@ package RP2040_SVD.I2C1 is
       --  of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_RD_REQ    : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1683,7 +1684,7 @@ package RP2040_SVD.I2C1 is
       --  value: 0x0
       CLR_TX_ABRT   : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1699,7 +1700,7 @@ package RP2040_SVD.I2C1 is
       --  of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_RX_DONE   : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1720,7 +1721,7 @@ package RP2040_SVD.I2C1 is
       --  IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_ACTIVITY  : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1736,7 +1737,7 @@ package RP2040_SVD.I2C1 is
       --  of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_STOP_DET  : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1752,7 +1753,7 @@ package RP2040_SVD.I2C1 is
       --  10) of the IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_START_DET : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1768,7 +1769,7 @@ package RP2040_SVD.I2C1 is
       --  11) of IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_GEN_CALL  : Boolean;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31;
+      Reserved_1_31 : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1886,7 +1887,7 @@ package RP2040_SVD.I2C1 is
       TX_CMD_BLOCK  : IC_ENABLE_TX_CMD_BLOCK_Field :=
                        RP2040_SVD.I2C1.NOT_BLOCKED;
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_3_31 : HAL.UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2038,7 +2039,7 @@ package RP2040_SVD.I2C1 is
       --  Active Reset value: 0x0
       SLV_ACTIVITY  : IC_STATUS_SLV_ACTIVITY_Field;
       --  unspecified
-      Reserved_7_31 : RP2040_SVD.UInt25;
+      Reserved_7_31 : HAL.UInt25;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2054,7 +2055,7 @@ package RP2040_SVD.I2C1 is
       Reserved_7_31 at 0 range 7 .. 31;
    end record;
 
-   subtype IC_TXFLR_TXFLR_Field is RP2040_SVD.UInt5;
+   subtype IC_TXFLR_TXFLR_Field is HAL.UInt5;
 
    --  I2C Transmit FIFO Level Register This register contains the number of
    --  valid data entries in the transmit FIFO buffer. It is cleared whenever:
@@ -2067,7 +2068,7 @@ package RP2040_SVD.I2C1 is
       --  entries in the transmit FIFO.\n\n Reset value: 0x0
       TXFLR         : IC_TXFLR_TXFLR_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2077,7 +2078,7 @@ package RP2040_SVD.I2C1 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype IC_RXFLR_RXFLR_Field is RP2040_SVD.UInt5;
+   subtype IC_RXFLR_RXFLR_Field is HAL.UInt5;
 
    --  I2C Receive FIFO Level Register This register contains the number of
    --  valid data entries in the receive FIFO buffer. It is cleared whenever: -
@@ -2090,7 +2091,7 @@ package RP2040_SVD.I2C1 is
       --  entries in the receive FIFO.\n\n Reset value: 0x0
       RXFLR         : IC_RXFLR_RXFLR_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2100,8 +2101,8 @@ package RP2040_SVD.I2C1 is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype IC_SDA_HOLD_IC_SDA_TX_HOLD_Field is RP2040_SVD.UInt16;
-   subtype IC_SDA_HOLD_IC_SDA_RX_HOLD_Field is RP2040_SVD.UInt8;
+   subtype IC_SDA_HOLD_IC_SDA_TX_HOLD_Field is HAL.UInt16;
+   subtype IC_SDA_HOLD_IC_SDA_RX_HOLD_Field is HAL.UInt8;
 
    --  I2C SDA Hold Time Length Register\n\n The bits [15:0] of this register
    --  are used to control the hold time of SDA during transmit in both slave
@@ -2127,7 +2128,7 @@ package RP2040_SVD.I2C1 is
       --  IC_DEFAULT_SDA_HOLD[23:16].
       IC_SDA_RX_HOLD : IC_SDA_HOLD_IC_SDA_RX_HOLD_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2382,7 +2383,7 @@ package RP2040_SVD.I2C1 is
      (ABRT_USER_ABRT_VOID => 0,
       ABRT_USER_ABRT_GENERATED => 1);
 
-   subtype IC_TX_ABRT_SOURCE_TX_FLUSH_CNT_Field is RP2040_SVD.UInt9;
+   subtype IC_TX_ABRT_SOURCE_TX_FLUSH_CNT_Field is HAL.UInt9;
 
    --  I2C Transmit Abort Source Register\n\n This register has 32 bits that
    --  indicate the source of the TX_ABRT bit. Except for Bit 9, this register
@@ -2489,7 +2490,7 @@ package RP2040_SVD.I2C1 is
       --  DW_apb_i2c: Master-Transmitter
       ABRT_USER_ABRT       : IC_TX_ABRT_SOURCE_ABRT_USER_ABRT_Field;
       --  unspecified
-      Reserved_17_22       : RP2040_SVD.UInt6;
+      Reserved_17_22       : HAL.UInt6;
       --  Read-only. This field indicates the number of Tx FIFO Data Commands
       --  which are flushed due to TX_ABRT interrupt. It is cleared whenever
       --  I2C is disabled.\n\n Reset value: 0x0\n\n Role of DW_apb_i2c:
@@ -2560,7 +2561,7 @@ package RP2040_SVD.I2C1 is
       NACK          : IC_SLV_DATA_NACK_ONLY_NACK_Field :=
                        RP2040_SVD.I2C1.DISABLED;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2605,7 +2606,7 @@ package RP2040_SVD.I2C1 is
       --  channel. Reset value: 0x0
       TDMAE         : IC_DMA_CR_TDMAE_Field := RP2040_SVD.I2C1.DISABLED;
       --  unspecified
-      Reserved_2_31 : RP2040_SVD.UInt30 := 16#0#;
+      Reserved_2_31 : HAL.UInt30 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2616,7 +2617,7 @@ package RP2040_SVD.I2C1 is
       Reserved_2_31 at 0 range 2 .. 31;
    end record;
 
-   subtype IC_DMA_TDLR_DMATDL_Field is RP2040_SVD.UInt4;
+   subtype IC_DMA_TDLR_DMATDL_Field is HAL.UInt4;
 
    --  DMA Transmit Data Level Register
    type IC_DMA_TDLR_Register is record
@@ -2627,7 +2628,7 @@ package RP2040_SVD.I2C1 is
       --  field value, and TDMAE = 1.\n\n Reset value: 0x0
       DMATDL        : IC_DMA_TDLR_DMATDL_Field := 16#0#;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2637,7 +2638,7 @@ package RP2040_SVD.I2C1 is
       Reserved_4_31 at 0 range 4 .. 31;
    end record;
 
-   subtype IC_DMA_RDLR_DMARDL_Field is RP2040_SVD.UInt4;
+   subtype IC_DMA_RDLR_DMARDL_Field is HAL.UInt4;
 
    --  I2C Receive Data Level Register
    type IC_DMA_RDLR_Register is record
@@ -2650,7 +2651,7 @@ package RP2040_SVD.I2C1 is
       --  FIFO.\n\n Reset value: 0x0
       DMARDL        : IC_DMA_RDLR_DMARDL_Field := 16#0#;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2660,7 +2661,7 @@ package RP2040_SVD.I2C1 is
       Reserved_4_31 at 0 range 4 .. 31;
    end record;
 
-   subtype IC_SDA_SETUP_SDA_SETUP_Field is RP2040_SVD.UInt8;
+   subtype IC_SDA_SETUP_SDA_SETUP_Field is HAL.UInt8;
 
    --  I2C SDA Setup Register\n\n This register controls the amount of time
    --  delay (in terms of number of ic_clk clock periods) introduced in the
@@ -2681,7 +2682,7 @@ package RP2040_SVD.I2C1 is
       --  minimum value of 2.
       SDA_SETUP     : IC_SDA_SETUP_SDA_SETUP_Field := 16#64#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2715,7 +2716,7 @@ package RP2040_SVD.I2C1 is
       ACK_GEN_CALL  : IC_ACK_GENERAL_CALL_ACK_GEN_CALL_Field :=
                        RP2040_SVD.I2C1.ENABLED;
       --  unspecified
-      Reserved_1_31 : RP2040_SVD.UInt31 := 16#0#;
+      Reserved_1_31 : HAL.UInt31 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2843,7 +2844,7 @@ package RP2040_SVD.I2C1 is
       --  Reset value: 0x0
       SLV_RX_DATA_LOST        : IC_ENABLE_STATUS_SLV_RX_DATA_LOST_Field;
       --  unspecified
-      Reserved_3_31           : RP2040_SVD.UInt29;
+      Reserved_3_31           : HAL.UInt29;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2855,7 +2856,7 @@ package RP2040_SVD.I2C1 is
       Reserved_3_31           at 0 range 3 .. 31;
    end record;
 
-   subtype IC_FS_SPKLEN_IC_FS_SPKLEN_Field is RP2040_SVD.UInt8;
+   subtype IC_FS_SPKLEN_IC_FS_SPKLEN_Field is HAL.UInt8;
 
    --  I2C SS, FS or FM+ spike suppression limit\n\n This register is used to
    --  store the duration, measured in ic_clk cycles, of the longest spike that
@@ -2876,7 +2877,7 @@ package RP2040_SVD.I2C1 is
       --  Suppression'.
       IC_FS_SPKLEN  : IC_FS_SPKLEN_IC_FS_SPKLEN_Field := 16#7#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2892,7 +2893,7 @@ package RP2040_SVD.I2C1 is
       --  12) of IC_RAW_INTR_STAT register.\n\n Reset value: 0x0
       CLR_RESTART_DET : Boolean;
       --  unspecified
-      Reserved_1_31   : RP2040_SVD.UInt31;
+      Reserved_1_31   : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2902,10 +2903,10 @@ package RP2040_SVD.I2C1 is
       Reserved_1_31   at 0 range 1 .. 31;
    end record;
 
-   subtype IC_COMP_PARAM_1_APB_DATA_WIDTH_Field is RP2040_SVD.UInt2;
-   subtype IC_COMP_PARAM_1_MAX_SPEED_MODE_Field is RP2040_SVD.UInt2;
-   subtype IC_COMP_PARAM_1_RX_BUFFER_DEPTH_Field is RP2040_SVD.UInt8;
-   subtype IC_COMP_PARAM_1_TX_BUFFER_DEPTH_Field is RP2040_SVD.UInt8;
+   subtype IC_COMP_PARAM_1_APB_DATA_WIDTH_Field is HAL.UInt2;
+   subtype IC_COMP_PARAM_1_MAX_SPEED_MODE_Field is HAL.UInt2;
+   subtype IC_COMP_PARAM_1_RX_BUFFER_DEPTH_Field is HAL.UInt8;
+   subtype IC_COMP_PARAM_1_TX_BUFFER_DEPTH_Field is HAL.UInt8;
 
    --  Component Parameter Register 1\n\n Note This register is not implemented
    --  and therefore reads as 0. If it was implemented it would be a constant
@@ -2930,7 +2931,7 @@ package RP2040_SVD.I2C1 is
       --  Read-only. TX Buffer Depth = 16
       TX_BUFFER_DEPTH    : IC_COMP_PARAM_1_TX_BUFFER_DEPTH_Field;
       --  unspecified
-      Reserved_24_31     : RP2040_SVD.UInt8;
+      Reserved_24_31     : HAL.UInt8;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3146,9 +3147,9 @@ package RP2040_SVD.I2C1 is
       --  settings for those parameters
       IC_COMP_PARAM_1       : aliased IC_COMP_PARAM_1_Register;
       --  I2C Component Version Register
-      IC_COMP_VERSION       : aliased RP2040_SVD.UInt32;
+      IC_COMP_VERSION       : aliased HAL.UInt32;
       --  I2C Component Type Register
-      IC_COMP_TYPE          : aliased RP2040_SVD.UInt32;
+      IC_COMP_TYPE          : aliased HAL.UInt32;
    end record
      with Volatile;
 

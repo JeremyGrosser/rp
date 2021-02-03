@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Simple PWM
@@ -56,7 +57,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -72,8 +73,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH0_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH0_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH0_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH0_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -82,7 +83,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH0_DIV_FRAC_Field := 16#0#;
       INT            : CH0_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -93,13 +94,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH0_CTR_CH0_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH0_CTR_CH0_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH0_CTR_Register is record
       CH0_CTR        : CH0_CTR_CH0_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -109,8 +110,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH0_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH0_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH0_CC_A_Field is HAL.UInt16;
+   subtype CH0_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH0_CC_Register is record
@@ -125,13 +126,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH0_TOP_CH0_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH0_TOP_CH0_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH0_TOP_Register is record
       CH0_TOP        : CH0_TOP_CH0_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -179,7 +180,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -195,8 +196,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH1_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH1_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH1_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH1_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -205,7 +206,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH1_DIV_FRAC_Field := 16#0#;
       INT            : CH1_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -216,13 +217,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH1_CTR_CH1_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH1_CTR_CH1_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH1_CTR_Register is record
       CH1_CTR        : CH1_CTR_CH1_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -232,8 +233,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH1_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH1_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH1_CC_A_Field is HAL.UInt16;
+   subtype CH1_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH1_CC_Register is record
@@ -248,13 +249,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH1_TOP_CH1_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH1_TOP_CH1_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH1_TOP_Register is record
       CH1_TOP        : CH1_TOP_CH1_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -302,7 +303,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -318,8 +319,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH2_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH2_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH2_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH2_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -328,7 +329,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH2_DIV_FRAC_Field := 16#0#;
       INT            : CH2_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -339,13 +340,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH2_CTR_CH2_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH2_CTR_CH2_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH2_CTR_Register is record
       CH2_CTR        : CH2_CTR_CH2_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -355,8 +356,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH2_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH2_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH2_CC_A_Field is HAL.UInt16;
+   subtype CH2_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH2_CC_Register is record
@@ -371,13 +372,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH2_TOP_CH2_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH2_TOP_CH2_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH2_TOP_Register is record
       CH2_TOP        : CH2_TOP_CH2_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -425,7 +426,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -441,8 +442,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH3_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH3_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH3_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH3_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -451,7 +452,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH3_DIV_FRAC_Field := 16#0#;
       INT            : CH3_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -462,13 +463,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH3_CTR_CH3_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH3_CTR_CH3_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH3_CTR_Register is record
       CH3_CTR        : CH3_CTR_CH3_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -478,8 +479,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH3_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH3_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH3_CC_A_Field is HAL.UInt16;
+   subtype CH3_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH3_CC_Register is record
@@ -494,13 +495,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH3_TOP_CH3_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH3_TOP_CH3_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH3_TOP_Register is record
       CH3_TOP        : CH3_TOP_CH3_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -548,7 +549,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -564,8 +565,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH4_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH4_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH4_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH4_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -574,7 +575,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH4_DIV_FRAC_Field := 16#0#;
       INT            : CH4_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -585,13 +586,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH4_CTR_CH4_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH4_CTR_CH4_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH4_CTR_Register is record
       CH4_CTR        : CH4_CTR_CH4_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -601,8 +602,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH4_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH4_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH4_CC_A_Field is HAL.UInt16;
+   subtype CH4_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH4_CC_Register is record
@@ -617,13 +618,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH4_TOP_CH4_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH4_TOP_CH4_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH4_TOP_Register is record
       CH4_TOP        : CH4_TOP_CH4_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -671,7 +672,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -687,8 +688,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH5_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH5_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH5_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH5_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -697,7 +698,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH5_DIV_FRAC_Field := 16#0#;
       INT            : CH5_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -708,13 +709,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH5_CTR_CH5_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH5_CTR_CH5_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH5_CTR_Register is record
       CH5_CTR        : CH5_CTR_CH5_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -724,8 +725,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH5_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH5_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH5_CC_A_Field is HAL.UInt16;
+   subtype CH5_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH5_CC_Register is record
@@ -740,13 +741,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH5_TOP_CH5_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH5_TOP_CH5_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH5_TOP_Register is record
       CH5_TOP        : CH5_TOP_CH5_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -794,7 +795,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -810,8 +811,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH6_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH6_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH6_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH6_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -820,7 +821,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH6_DIV_FRAC_Field := 16#0#;
       INT            : CH6_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -831,13 +832,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH6_CTR_CH6_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH6_CTR_CH6_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH6_CTR_Register is record
       CH6_CTR        : CH6_CTR_CH6_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -847,8 +848,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH6_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH6_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH6_CC_A_Field is HAL.UInt16;
+   subtype CH6_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH6_CC_Register is record
@@ -863,13 +864,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH6_TOP_CH6_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH6_TOP_CH6_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH6_TOP_Register is record
       CH6_TOP        : CH6_TOP_CH6_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -917,7 +918,7 @@ package RP2040_SVD.PWM is
       --  be running\n at less than full speed (div_int + div_frac / 16 > 1)
       PH_ADV        : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -933,8 +934,8 @@ package RP2040_SVD.PWM is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype CH7_DIV_FRAC_Field is RP2040_SVD.UInt4;
-   subtype CH7_DIV_INT_Field is RP2040_SVD.UInt8;
+   subtype CH7_DIV_FRAC_Field is HAL.UInt4;
+   subtype CH7_DIV_INT_Field is HAL.UInt8;
 
    --  INT and FRAC form a fixed-point fractional number.\n Counting rate is
    --  system clock frequency divided by this number.\n Fractional division
@@ -943,7 +944,7 @@ package RP2040_SVD.PWM is
       FRAC           : CH7_DIV_FRAC_Field := 16#0#;
       INT            : CH7_DIV_INT_Field := 16#1#;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -954,13 +955,13 @@ package RP2040_SVD.PWM is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype CH7_CTR_CH7_CTR_Field is RP2040_SVD.UInt16;
+   subtype CH7_CTR_CH7_CTR_Field is HAL.UInt16;
 
    --  Direct access to the PWM counter
    type CH7_CTR_Register is record
       CH7_CTR        : CH7_CTR_CH7_CTR_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -970,8 +971,8 @@ package RP2040_SVD.PWM is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype CH7_CC_A_Field is RP2040_SVD.UInt16;
-   subtype CH7_CC_B_Field is RP2040_SVD.UInt16;
+   subtype CH7_CC_A_Field is HAL.UInt16;
+   subtype CH7_CC_B_Field is HAL.UInt16;
 
    --  Counter compare values
    type CH7_CC_Register is record
@@ -986,13 +987,13 @@ package RP2040_SVD.PWM is
       B at 0 range 16 .. 31;
    end record;
 
-   subtype CH7_TOP_CH7_TOP_Field is RP2040_SVD.UInt16;
+   subtype CH7_TOP_CH7_TOP_Field is HAL.UInt16;
 
    --  Counter wrap value
    type CH7_TOP_Register is record
       CH7_TOP        : CH7_TOP_CH7_TOP_Field := 16#FFFF#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1013,7 +1014,7 @@ package RP2040_SVD.PWM is
       case As_Array is
          when False =>
             --  CH as a value
-            Val : RP2040_SVD.UInt8;
+            Val : HAL.UInt8;
          when True =>
             --  CH as an array
             Arr : EN_CH_Field_Array;
@@ -1034,7 +1035,7 @@ package RP2040_SVD.PWM is
    type EN_Register is record
       CH            : EN_CH_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1055,7 +1056,7 @@ package RP2040_SVD.PWM is
       case As_Array is
          when False =>
             --  CH as a value
-            Val : RP2040_SVD.UInt8;
+            Val : HAL.UInt8;
          when True =>
             --  CH as an array
             Arr : INTR_CH_Field_Array;
@@ -1074,7 +1075,7 @@ package RP2040_SVD.PWM is
       --  in the field.
       CH            : INTR_CH_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1095,7 +1096,7 @@ package RP2040_SVD.PWM is
       case As_Array is
          when False =>
             --  CH as a value
-            Val : RP2040_SVD.UInt8;
+            Val : HAL.UInt8;
          when True =>
             --  CH as an array
             Arr : INTE_CH_Field_Array;
@@ -1112,7 +1113,7 @@ package RP2040_SVD.PWM is
    type INTE_Register is record
       CH            : INTE_CH_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1133,7 +1134,7 @@ package RP2040_SVD.PWM is
       case As_Array is
          when False =>
             --  CH as a value
-            Val : RP2040_SVD.UInt8;
+            Val : HAL.UInt8;
          when True =>
             --  CH as an array
             Arr : INTF_CH_Field_Array;
@@ -1150,7 +1151,7 @@ package RP2040_SVD.PWM is
    type INTF_Register is record
       CH            : INTF_CH_Field := (As_Array => False, Val => 16#0#);
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1171,7 +1172,7 @@ package RP2040_SVD.PWM is
       case As_Array is
          when False =>
             --  CH as a value
-            Val : RP2040_SVD.UInt8;
+            Val : HAL.UInt8;
          when True =>
             --  CH as an array
             Arr : INTS_CH_Field_Array;
@@ -1189,7 +1190,7 @@ package RP2040_SVD.PWM is
       --  Read-only.
       CH            : INTS_CH_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

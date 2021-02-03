@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  DMA with separate read and write masters
@@ -41,7 +42,7 @@ package RP2040_SVD.DMA is
    for CH0_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH0_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH0_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -143,7 +144,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -207,7 +208,7 @@ package RP2040_SVD.DMA is
    for CH1_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH1_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH1_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -309,7 +310,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -373,7 +374,7 @@ package RP2040_SVD.DMA is
    for CH2_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH2_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH2_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -475,7 +476,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -539,7 +540,7 @@ package RP2040_SVD.DMA is
    for CH3_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH3_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH3_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -641,7 +642,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -705,7 +706,7 @@ package RP2040_SVD.DMA is
    for CH4_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH4_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH4_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -807,7 +808,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -871,7 +872,7 @@ package RP2040_SVD.DMA is
    for CH5_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH5_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH5_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -973,7 +974,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -1037,7 +1038,7 @@ package RP2040_SVD.DMA is
    for CH6_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH6_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH6_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -1139,7 +1140,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -1203,7 +1204,7 @@ package RP2040_SVD.DMA is
    for CH7_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH7_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH7_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -1305,7 +1306,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -1369,7 +1370,7 @@ package RP2040_SVD.DMA is
    for CH8_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH8_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH8_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -1471,7 +1472,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -1535,7 +1536,7 @@ package RP2040_SVD.DMA is
    for CH9_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH9_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH9_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -1637,7 +1638,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -1701,7 +1702,7 @@ package RP2040_SVD.DMA is
    for CH10_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH10_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH10_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -1803,7 +1804,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -1867,7 +1868,7 @@ package RP2040_SVD.DMA is
    for CH11_CTRL_TRIG_RING_SIZE_Field use
      (RING_NONE => 0);
 
-   subtype CH11_CTRL_TRIG_CHAIN_TO_Field is RP2040_SVD.UInt4;
+   subtype CH11_CTRL_TRIG_CHAIN_TO_Field is HAL.UInt4;
 
    --  Select a Transfer Request signal.\n The channel uses the transfer
    --  request signal to pace its data transfer rate. Sources for TREQ signals
@@ -1969,7 +1970,7 @@ package RP2040_SVD.DMA is
       --  BUSY flag), see CHAN_ABORT.
       BUSY           : Boolean := False;
       --  unspecified
-      Reserved_25_28 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_25_28 : HAL.UInt4 := 16#0#;
       --  Write data bit of one shall clear (set to zero) the corresponding bit
       --  in the field. If 1, the channel received a write bus error. Write one
       --  to clear.\n WRITE_ADDR shows the approximate address where the bus
@@ -2010,7 +2011,7 @@ package RP2040_SVD.DMA is
       AHB_ERROR      at 0 range 31 .. 31;
    end record;
 
-   subtype INTR_INTR_Field is RP2040_SVD.UInt16;
+   subtype INTR_INTR_Field is HAL.UInt16;
 
    --  Interrupt Status (raw)
    type INTR_Register is record
@@ -2025,7 +2026,7 @@ package RP2040_SVD.DMA is
       --  ignore this behaviour and just use INTE0/INTS0/IRQ 0.
       INTR           : INTR_INTR_Field;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16;
+      Reserved_16_31 : HAL.UInt16;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2035,14 +2036,14 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INTE0_INTE0_Field is RP2040_SVD.UInt16;
+   subtype INTE0_INTE0_Field is HAL.UInt16;
 
    --  Interrupt Enables for IRQ 0
    type INTE0_Register is record
       --  Set bit n to pass interrupts from channel n to DMA IRQ 0.
       INTE0          : INTE0_INTE0_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2052,7 +2053,7 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INTF0_INTF0_Field is RP2040_SVD.UInt16;
+   subtype INTF0_INTF0_Field is HAL.UInt16;
 
    --  Force Interrupts
    type INTF0_Register is record
@@ -2060,7 +2061,7 @@ package RP2040_SVD.DMA is
       --  remains asserted until INTF0 is cleared.
       INTF0          : INTF0_INTF0_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2070,7 +2071,7 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INTS0_INTS0_Field is RP2040_SVD.UInt16;
+   subtype INTS0_INTS0_Field is HAL.UInt16;
 
    --  Interrupt Status for IRQ 0
    type INTS0_Register is record
@@ -2080,7 +2081,7 @@ package RP2040_SVD.DMA is
       --  cleared by writing a bit mask here.
       INTS0          : INTS0_INTS0_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2090,14 +2091,14 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INTE1_INTE1_Field is RP2040_SVD.UInt16;
+   subtype INTE1_INTE1_Field is HAL.UInt16;
 
    --  Interrupt Enables for IRQ 1
    type INTE1_Register is record
       --  Set bit n to pass interrupts from channel n to DMA IRQ 1.
       INTE1          : INTE1_INTE1_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2107,7 +2108,7 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INTF1_INTF1_Field is RP2040_SVD.UInt16;
+   subtype INTF1_INTF1_Field is HAL.UInt16;
 
    --  Force Interrupts for IRQ 1
    type INTF1_Register is record
@@ -2115,7 +2116,7 @@ package RP2040_SVD.DMA is
       --  remains asserted until INTF0 is cleared.
       INTF1          : INTF1_INTF1_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2125,7 +2126,7 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype INTS1_INTS1_Field is RP2040_SVD.UInt16;
+   subtype INTS1_INTS1_Field is HAL.UInt16;
 
    --  Interrupt Status (masked) for IRQ 1
    type INTS1_Register is record
@@ -2135,7 +2136,7 @@ package RP2040_SVD.DMA is
       --  cleared by writing a bit mask here.
       INTS1          : INTS1_INTS1_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2145,8 +2146,8 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype TIMER_Y_Field is RP2040_SVD.UInt16;
-   subtype TIMER_X_Field is RP2040_SVD.UInt16;
+   subtype TIMER_Y_Field is HAL.UInt16;
+   subtype TIMER_X_Field is HAL.UInt16;
 
    --  Pacing (X/Y) Fractional Timer\n The pacing timer produces TREQ
    --  assertions at a rate set by ((X/Y) * sys_clk). This equation is
@@ -2168,7 +2169,7 @@ package RP2040_SVD.DMA is
       X at 0 range 16 .. 31;
    end record;
 
-   subtype MULTI_CHAN_TRIGGER_MULTI_CHAN_TRIGGER_Field is RP2040_SVD.UInt16;
+   subtype MULTI_CHAN_TRIGGER_MULTI_CHAN_TRIGGER_Field is HAL.UInt16;
 
    --  Trigger one or more channels simultaneously
    type MULTI_CHAN_TRIGGER_Register is record
@@ -2180,7 +2181,7 @@ package RP2040_SVD.DMA is
       MULTI_CHAN_TRIGGER : MULTI_CHAN_TRIGGER_MULTI_CHAN_TRIGGER_Field :=
                             16#0#;
       --  unspecified
-      Reserved_16_31     : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31     : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2190,7 +2191,7 @@ package RP2040_SVD.DMA is
       Reserved_16_31     at 0 range 16 .. 31;
    end record;
 
-   subtype SNIFF_CTRL_DMACH_Field is RP2040_SVD.UInt4;
+   subtype SNIFF_CTRL_DMACH_Field is HAL.UInt4;
 
    type SNIFF_CTRL_CALC_Field is
      (--  Calculate a CRC-32 (IEEE802.3 polynomial)
@@ -2236,7 +2237,7 @@ package RP2040_SVD.DMA is
       --  is transformed on-the-fly between the result register and the bus.
       OUT_INV        : Boolean := False;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2251,9 +2252,9 @@ package RP2040_SVD.DMA is
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
-   subtype FIFO_LEVELS_TDF_LVL_Field is RP2040_SVD.UInt8;
-   subtype FIFO_LEVELS_WAF_LVL_Field is RP2040_SVD.UInt8;
-   subtype FIFO_LEVELS_RAF_LVL_Field is RP2040_SVD.UInt8;
+   subtype FIFO_LEVELS_TDF_LVL_Field is HAL.UInt8;
+   subtype FIFO_LEVELS_WAF_LVL_Field is HAL.UInt8;
+   subtype FIFO_LEVELS_RAF_LVL_Field is HAL.UInt8;
 
    --  Debug RAF, WAF, TDF levels
    type FIFO_LEVELS_Register is record
@@ -2264,7 +2265,7 @@ package RP2040_SVD.DMA is
       --  Read-only. Current Read-Address-FIFO fill level
       RAF_LVL        : FIFO_LEVELS_RAF_LVL_Field;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8;
+      Reserved_24_31 : HAL.UInt8;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2276,7 +2277,7 @@ package RP2040_SVD.DMA is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype CHAN_ABORT_CHAN_ABORT_Field is RP2040_SVD.UInt16;
+   subtype CHAN_ABORT_CHAN_ABORT_Field is HAL.UInt16;
 
    --  Abort an in-progress transfer sequence on one or more channels
    type CHAN_ABORT_Register is record
@@ -2289,7 +2290,7 @@ package RP2040_SVD.DMA is
       --  restart the channel.
       CHAN_ABORT     : CHAN_ABORT_CHAN_ABORT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2299,7 +2300,7 @@ package RP2040_SVD.DMA is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype N_CHANNELS_N_CHANNELS_Field is RP2040_SVD.UInt5;
+   subtype N_CHANNELS_N_CHANNELS_Field is HAL.UInt5;
 
    --  The number of channels this DMA instance is equipped with. This DMA
    --  supports up to 16 hardware channels, but can be configured with as few
@@ -2308,7 +2309,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       N_CHANNELS    : N_CHANNELS_N_CHANNELS_Field;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27;
+      Reserved_5_31 : HAL.UInt27;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2318,7 +2319,7 @@ package RP2040_SVD.DMA is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype CH0_DBG_CTDREQ_CH0_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH0_DBG_CTDREQ_CH0_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2328,7 +2329,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH0_DBG_CTDREQ : CH0_DBG_CTDREQ_CH0_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2338,7 +2339,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH1_DBG_CTDREQ_CH1_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH1_DBG_CTDREQ_CH1_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2348,7 +2349,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH1_DBG_CTDREQ : CH1_DBG_CTDREQ_CH1_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2358,7 +2359,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH2_DBG_CTDREQ_CH2_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH2_DBG_CTDREQ_CH2_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2368,7 +2369,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH2_DBG_CTDREQ : CH2_DBG_CTDREQ_CH2_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2378,7 +2379,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH3_DBG_CTDREQ_CH3_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH3_DBG_CTDREQ_CH3_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2388,7 +2389,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH3_DBG_CTDREQ : CH3_DBG_CTDREQ_CH3_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2398,7 +2399,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH4_DBG_CTDREQ_CH4_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH4_DBG_CTDREQ_CH4_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2408,7 +2409,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH4_DBG_CTDREQ : CH4_DBG_CTDREQ_CH4_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2418,7 +2419,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH5_DBG_CTDREQ_CH5_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH5_DBG_CTDREQ_CH5_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2428,7 +2429,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH5_DBG_CTDREQ : CH5_DBG_CTDREQ_CH5_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2438,7 +2439,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH6_DBG_CTDREQ_CH6_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH6_DBG_CTDREQ_CH6_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2448,7 +2449,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH6_DBG_CTDREQ : CH6_DBG_CTDREQ_CH6_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2458,7 +2459,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH7_DBG_CTDREQ_CH7_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH7_DBG_CTDREQ_CH7_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2468,7 +2469,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH7_DBG_CTDREQ : CH7_DBG_CTDREQ_CH7_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2478,7 +2479,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH8_DBG_CTDREQ_CH8_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH8_DBG_CTDREQ_CH8_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2488,7 +2489,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH8_DBG_CTDREQ : CH8_DBG_CTDREQ_CH8_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2498,7 +2499,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH9_DBG_CTDREQ_CH9_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH9_DBG_CTDREQ_CH9_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2508,7 +2509,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH9_DBG_CTDREQ : CH9_DBG_CTDREQ_CH9_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31  : RP2040_SVD.UInt26;
+      Reserved_6_31  : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2518,7 +2519,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31  at 0 range 6 .. 31;
    end record;
 
-   subtype CH10_DBG_CTDREQ_CH10_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH10_DBG_CTDREQ_CH10_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2528,7 +2529,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH10_DBG_CTDREQ : CH10_DBG_CTDREQ_CH10_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31   : RP2040_SVD.UInt26;
+      Reserved_6_31   : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2538,7 +2539,7 @@ package RP2040_SVD.DMA is
       Reserved_6_31   at 0 range 6 .. 31;
    end record;
 
-   subtype CH11_DBG_CTDREQ_CH11_DBG_CTDREQ_Field is RP2040_SVD.UInt6;
+   subtype CH11_DBG_CTDREQ_CH11_DBG_CTDREQ_Field is HAL.UInt6;
 
    --  Read: get channel DREQ counter (i.e. how many accesses the DMA expects
    --  it can perform on the peripheral without overflow/underflow. Write any
@@ -2548,7 +2549,7 @@ package RP2040_SVD.DMA is
       --  Read-only.
       CH11_DBG_CTDREQ : CH11_DBG_CTDREQ_CH11_DBG_CTDREQ_Field;
       --  unspecified
-      Reserved_6_31   : RP2040_SVD.UInt26;
+      Reserved_6_31   : HAL.UInt26;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2567,11 +2568,11 @@ package RP2040_SVD.DMA is
       --  DMA Channel 0 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH0_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH0_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 0 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH0_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH0_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 0 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2586,47 +2587,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH0_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH0_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 0 Control and Status
       CH0_CTRL_TRIG             : aliased CH0_CTRL_TRIG_Register;
       --  Alias for channel 0 CTRL register
-      CH0_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH0_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 0 READ_ADDR register
-      CH0_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH0_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 0 WRITE_ADDR register
-      CH0_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH0_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 0 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH0_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH0_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 0 CTRL register
-      CH0_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH0_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 0 TRANS_COUNT register
-      CH0_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH0_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 0 READ_ADDR register
-      CH0_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH0_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 0 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH0_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH0_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 0 CTRL register
-      CH0_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH0_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 0 WRITE_ADDR register
-      CH0_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH0_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 0 TRANS_COUNT register
-      CH0_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH0_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 0 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH0_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH0_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 1 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH1_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH1_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 1 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH1_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH1_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 1 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2641,47 +2642,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH1_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH1_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 1 Control and Status
       CH1_CTRL_TRIG             : aliased CH1_CTRL_TRIG_Register;
       --  Alias for channel 1 CTRL register
-      CH1_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH1_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 1 READ_ADDR register
-      CH1_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH1_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 1 WRITE_ADDR register
-      CH1_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH1_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 1 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH1_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH1_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 1 CTRL register
-      CH1_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH1_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 1 TRANS_COUNT register
-      CH1_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH1_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 1 READ_ADDR register
-      CH1_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH1_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 1 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH1_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH1_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 1 CTRL register
-      CH1_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH1_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 1 WRITE_ADDR register
-      CH1_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH1_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 1 TRANS_COUNT register
-      CH1_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH1_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 1 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH1_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH1_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 2 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH2_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH2_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 2 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH2_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH2_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 2 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2696,47 +2697,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH2_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH2_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 2 Control and Status
       CH2_CTRL_TRIG             : aliased CH2_CTRL_TRIG_Register;
       --  Alias for channel 2 CTRL register
-      CH2_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH2_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 2 READ_ADDR register
-      CH2_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH2_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 2 WRITE_ADDR register
-      CH2_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH2_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 2 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH2_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH2_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 2 CTRL register
-      CH2_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH2_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 2 TRANS_COUNT register
-      CH2_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH2_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 2 READ_ADDR register
-      CH2_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH2_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 2 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH2_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH2_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 2 CTRL register
-      CH2_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH2_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 2 WRITE_ADDR register
-      CH2_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH2_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 2 TRANS_COUNT register
-      CH2_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH2_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 2 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH2_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH2_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 3 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH3_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH3_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 3 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH3_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH3_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 3 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2751,47 +2752,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH3_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH3_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 3 Control and Status
       CH3_CTRL_TRIG             : aliased CH3_CTRL_TRIG_Register;
       --  Alias for channel 3 CTRL register
-      CH3_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH3_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 3 READ_ADDR register
-      CH3_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH3_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 3 WRITE_ADDR register
-      CH3_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH3_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 3 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH3_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH3_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 3 CTRL register
-      CH3_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH3_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 3 TRANS_COUNT register
-      CH3_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH3_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 3 READ_ADDR register
-      CH3_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH3_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 3 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH3_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH3_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 3 CTRL register
-      CH3_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH3_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 3 WRITE_ADDR register
-      CH3_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH3_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 3 TRANS_COUNT register
-      CH3_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH3_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 3 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH3_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH3_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 4 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH4_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH4_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 4 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH4_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH4_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 4 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2806,47 +2807,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH4_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH4_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 4 Control and Status
       CH4_CTRL_TRIG             : aliased CH4_CTRL_TRIG_Register;
       --  Alias for channel 4 CTRL register
-      CH4_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH4_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 4 READ_ADDR register
-      CH4_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH4_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 4 WRITE_ADDR register
-      CH4_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH4_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 4 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH4_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH4_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 4 CTRL register
-      CH4_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH4_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 4 TRANS_COUNT register
-      CH4_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH4_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 4 READ_ADDR register
-      CH4_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH4_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 4 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH4_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH4_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 4 CTRL register
-      CH4_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH4_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 4 WRITE_ADDR register
-      CH4_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH4_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 4 TRANS_COUNT register
-      CH4_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH4_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 4 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH4_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH4_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 5 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH5_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH5_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 5 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH5_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH5_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 5 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2861,47 +2862,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH5_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH5_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 5 Control and Status
       CH5_CTRL_TRIG             : aliased CH5_CTRL_TRIG_Register;
       --  Alias for channel 5 CTRL register
-      CH5_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH5_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 5 READ_ADDR register
-      CH5_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH5_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 5 WRITE_ADDR register
-      CH5_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH5_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 5 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH5_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH5_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 5 CTRL register
-      CH5_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH5_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 5 TRANS_COUNT register
-      CH5_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH5_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 5 READ_ADDR register
-      CH5_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH5_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 5 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH5_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH5_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 5 CTRL register
-      CH5_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH5_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 5 WRITE_ADDR register
-      CH5_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH5_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 5 TRANS_COUNT register
-      CH5_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH5_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 5 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH5_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH5_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 6 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH6_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH6_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 6 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH6_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH6_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 6 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2916,47 +2917,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH6_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH6_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 6 Control and Status
       CH6_CTRL_TRIG             : aliased CH6_CTRL_TRIG_Register;
       --  Alias for channel 6 CTRL register
-      CH6_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH6_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 6 READ_ADDR register
-      CH6_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH6_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 6 WRITE_ADDR register
-      CH6_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH6_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 6 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH6_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH6_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 6 CTRL register
-      CH6_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH6_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 6 TRANS_COUNT register
-      CH6_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH6_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 6 READ_ADDR register
-      CH6_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH6_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 6 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH6_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH6_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 6 CTRL register
-      CH6_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH6_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 6 WRITE_ADDR register
-      CH6_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH6_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 6 TRANS_COUNT register
-      CH6_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH6_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 6 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH6_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH6_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 7 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH7_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH7_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 7 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH7_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH7_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 7 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -2971,47 +2972,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH7_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH7_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 7 Control and Status
       CH7_CTRL_TRIG             : aliased CH7_CTRL_TRIG_Register;
       --  Alias for channel 7 CTRL register
-      CH7_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH7_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 7 READ_ADDR register
-      CH7_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH7_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 7 WRITE_ADDR register
-      CH7_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH7_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 7 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH7_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH7_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 7 CTRL register
-      CH7_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH7_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 7 TRANS_COUNT register
-      CH7_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH7_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 7 READ_ADDR register
-      CH7_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH7_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 7 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH7_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH7_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 7 CTRL register
-      CH7_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH7_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 7 WRITE_ADDR register
-      CH7_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH7_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 7 TRANS_COUNT register
-      CH7_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH7_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 7 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH7_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH7_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 8 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH8_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH8_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 8 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH8_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH8_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 8 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -3026,47 +3027,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH8_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH8_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 8 Control and Status
       CH8_CTRL_TRIG             : aliased CH8_CTRL_TRIG_Register;
       --  Alias for channel 8 CTRL register
-      CH8_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH8_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 8 READ_ADDR register
-      CH8_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH8_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 8 WRITE_ADDR register
-      CH8_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH8_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 8 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH8_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH8_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 8 CTRL register
-      CH8_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH8_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 8 TRANS_COUNT register
-      CH8_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH8_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 8 READ_ADDR register
-      CH8_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH8_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 8 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH8_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH8_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 8 CTRL register
-      CH8_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH8_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 8 WRITE_ADDR register
-      CH8_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH8_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 8 TRANS_COUNT register
-      CH8_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH8_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 8 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH8_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH8_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 9 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH9_READ_ADDR             : aliased RP2040_SVD.UInt32;
+      CH9_READ_ADDR             : aliased HAL.UInt32;
       --  DMA Channel 9 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH9_WRITE_ADDR            : aliased RP2040_SVD.UInt32;
+      CH9_WRITE_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 9 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -3081,47 +3082,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH9_TRANS_COUNT           : aliased RP2040_SVD.UInt32;
+      CH9_TRANS_COUNT           : aliased HAL.UInt32;
       --  DMA Channel 9 Control and Status
       CH9_CTRL_TRIG             : aliased CH9_CTRL_TRIG_Register;
       --  Alias for channel 9 CTRL register
-      CH9_AL1_CTRL              : aliased RP2040_SVD.UInt32;
+      CH9_AL1_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 9 READ_ADDR register
-      CH9_AL1_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH9_AL1_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 9 WRITE_ADDR register
-      CH9_AL1_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH9_AL1_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 9 TRANS_COUNT register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH9_AL1_TRANS_COUNT_TRIG  : aliased RP2040_SVD.UInt32;
+      CH9_AL1_TRANS_COUNT_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 9 CTRL register
-      CH9_AL2_CTRL              : aliased RP2040_SVD.UInt32;
+      CH9_AL2_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 9 TRANS_COUNT register
-      CH9_AL2_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH9_AL2_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 9 READ_ADDR register
-      CH9_AL2_READ_ADDR         : aliased RP2040_SVD.UInt32;
+      CH9_AL2_READ_ADDR         : aliased HAL.UInt32;
       --  Alias for channel 9 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH9_AL2_WRITE_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH9_AL2_WRITE_ADDR_TRIG   : aliased HAL.UInt32;
       --  Alias for channel 9 CTRL register
-      CH9_AL3_CTRL              : aliased RP2040_SVD.UInt32;
+      CH9_AL3_CTRL              : aliased HAL.UInt32;
       --  Alias for channel 9 WRITE_ADDR register
-      CH9_AL3_WRITE_ADDR        : aliased RP2040_SVD.UInt32;
+      CH9_AL3_WRITE_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 9 TRANS_COUNT register
-      CH9_AL3_TRANS_COUNT       : aliased RP2040_SVD.UInt32;
+      CH9_AL3_TRANS_COUNT       : aliased HAL.UInt32;
       --  Alias for channel 9 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH9_AL3_READ_ADDR_TRIG    : aliased RP2040_SVD.UInt32;
+      CH9_AL3_READ_ADDR_TRIG    : aliased HAL.UInt32;
       --  DMA Channel 10 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH10_READ_ADDR            : aliased RP2040_SVD.UInt32;
+      CH10_READ_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 10 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH10_WRITE_ADDR           : aliased RP2040_SVD.UInt32;
+      CH10_WRITE_ADDR           : aliased HAL.UInt32;
       --  DMA Channel 10 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -3136,47 +3137,47 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH10_TRANS_COUNT          : aliased RP2040_SVD.UInt32;
+      CH10_TRANS_COUNT          : aliased HAL.UInt32;
       --  DMA Channel 10 Control and Status
       CH10_CTRL_TRIG            : aliased CH10_CTRL_TRIG_Register;
       --  Alias for channel 10 CTRL register
-      CH10_AL1_CTRL             : aliased RP2040_SVD.UInt32;
+      CH10_AL1_CTRL             : aliased HAL.UInt32;
       --  Alias for channel 10 READ_ADDR register
-      CH10_AL1_READ_ADDR        : aliased RP2040_SVD.UInt32;
+      CH10_AL1_READ_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 10 WRITE_ADDR register
-      CH10_AL1_WRITE_ADDR       : aliased RP2040_SVD.UInt32;
+      CH10_AL1_WRITE_ADDR       : aliased HAL.UInt32;
       --  Alias for channel 10 TRANS_COUNT register\n This is a trigger
       --  register (0xc). Writing a nonzero value will\n reload the channel
       --  counter and start the channel.
-      CH10_AL1_TRANS_COUNT_TRIG : aliased RP2040_SVD.UInt32;
+      CH10_AL1_TRANS_COUNT_TRIG : aliased HAL.UInt32;
       --  Alias for channel 10 CTRL register
-      CH10_AL2_CTRL             : aliased RP2040_SVD.UInt32;
+      CH10_AL2_CTRL             : aliased HAL.UInt32;
       --  Alias for channel 10 TRANS_COUNT register
-      CH10_AL2_TRANS_COUNT      : aliased RP2040_SVD.UInt32;
+      CH10_AL2_TRANS_COUNT      : aliased HAL.UInt32;
       --  Alias for channel 10 READ_ADDR register
-      CH10_AL2_READ_ADDR        : aliased RP2040_SVD.UInt32;
+      CH10_AL2_READ_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 10 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH10_AL2_WRITE_ADDR_TRIG  : aliased RP2040_SVD.UInt32;
+      CH10_AL2_WRITE_ADDR_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 10 CTRL register
-      CH10_AL3_CTRL             : aliased RP2040_SVD.UInt32;
+      CH10_AL3_CTRL             : aliased HAL.UInt32;
       --  Alias for channel 10 WRITE_ADDR register
-      CH10_AL3_WRITE_ADDR       : aliased RP2040_SVD.UInt32;
+      CH10_AL3_WRITE_ADDR       : aliased HAL.UInt32;
       --  Alias for channel 10 TRANS_COUNT register
-      CH10_AL3_TRANS_COUNT      : aliased RP2040_SVD.UInt32;
+      CH10_AL3_TRANS_COUNT      : aliased HAL.UInt32;
       --  Alias for channel 10 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH10_AL3_READ_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH10_AL3_READ_ADDR_TRIG   : aliased HAL.UInt32;
       --  DMA Channel 11 Read Address pointer\n This register updates
       --  automatically each time a read completes. The current value is the
       --  next address to be read by this channel.
-      CH11_READ_ADDR            : aliased RP2040_SVD.UInt32;
+      CH11_READ_ADDR            : aliased HAL.UInt32;
       --  DMA Channel 11 Write Address pointer\n This register updates
       --  automatically each time a write completes. The current value is the
       --  next address to be written by this channel.
-      CH11_WRITE_ADDR           : aliased RP2040_SVD.UInt32;
+      CH11_WRITE_ADDR           : aliased HAL.UInt32;
       --  DMA Channel 11 Transfer Count\n Program the number of bus transfers a
       --  channel will perform before halting. Note that, if transfers are
       --  larger than one byte in size, this is not equal to the number of
@@ -3191,39 +3192,39 @@ package RP2040_SVD.DMA is
       --  can be observed at CHx_DBG_TCR. If TRANS_COUNT is used as a trigger,
       --  the written value is used immediately as the length of the new
       --  transfer sequence, as well as being written to RELOAD.
-      CH11_TRANS_COUNT          : aliased RP2040_SVD.UInt32;
+      CH11_TRANS_COUNT          : aliased HAL.UInt32;
       --  DMA Channel 11 Control and Status
       CH11_CTRL_TRIG            : aliased CH11_CTRL_TRIG_Register;
       --  Alias for channel 11 CTRL register
-      CH11_AL1_CTRL             : aliased RP2040_SVD.UInt32;
+      CH11_AL1_CTRL             : aliased HAL.UInt32;
       --  Alias for channel 11 READ_ADDR register
-      CH11_AL1_READ_ADDR        : aliased RP2040_SVD.UInt32;
+      CH11_AL1_READ_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 11 WRITE_ADDR register
-      CH11_AL1_WRITE_ADDR       : aliased RP2040_SVD.UInt32;
+      CH11_AL1_WRITE_ADDR       : aliased HAL.UInt32;
       --  Alias for channel 11 TRANS_COUNT register\n This is a trigger
       --  register (0xc). Writing a nonzero value will\n reload the channel
       --  counter and start the channel.
-      CH11_AL1_TRANS_COUNT_TRIG : aliased RP2040_SVD.UInt32;
+      CH11_AL1_TRANS_COUNT_TRIG : aliased HAL.UInt32;
       --  Alias for channel 11 CTRL register
-      CH11_AL2_CTRL             : aliased RP2040_SVD.UInt32;
+      CH11_AL2_CTRL             : aliased HAL.UInt32;
       --  Alias for channel 11 TRANS_COUNT register
-      CH11_AL2_TRANS_COUNT      : aliased RP2040_SVD.UInt32;
+      CH11_AL2_TRANS_COUNT      : aliased HAL.UInt32;
       --  Alias for channel 11 READ_ADDR register
-      CH11_AL2_READ_ADDR        : aliased RP2040_SVD.UInt32;
+      CH11_AL2_READ_ADDR        : aliased HAL.UInt32;
       --  Alias for channel 11 WRITE_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH11_AL2_WRITE_ADDR_TRIG  : aliased RP2040_SVD.UInt32;
+      CH11_AL2_WRITE_ADDR_TRIG  : aliased HAL.UInt32;
       --  Alias for channel 11 CTRL register
-      CH11_AL3_CTRL             : aliased RP2040_SVD.UInt32;
+      CH11_AL3_CTRL             : aliased HAL.UInt32;
       --  Alias for channel 11 WRITE_ADDR register
-      CH11_AL3_WRITE_ADDR       : aliased RP2040_SVD.UInt32;
+      CH11_AL3_WRITE_ADDR       : aliased HAL.UInt32;
       --  Alias for channel 11 TRANS_COUNT register
-      CH11_AL3_TRANS_COUNT      : aliased RP2040_SVD.UInt32;
+      CH11_AL3_TRANS_COUNT      : aliased HAL.UInt32;
       --  Alias for channel 11 READ_ADDR register\n This is a trigger register
       --  (0xc). Writing a nonzero value will\n reload the channel counter and
       --  start the channel.
-      CH11_AL3_READ_ADDR_TRIG   : aliased RP2040_SVD.UInt32;
+      CH11_AL3_READ_ADDR_TRIG   : aliased HAL.UInt32;
       --  Interrupt Status (raw)
       INTR                      : aliased INTR_Register;
       --  Interrupt Enables for IRQ 0
@@ -3257,7 +3258,7 @@ package RP2040_SVD.DMA is
       --  SNIFF_CTRL_DMACH. The hardware will update this register each time it
       --  observes a read from the indicated channel. Once the channel
       --  completes, the final result can be read from this register.
-      SNIFF_DATA                : aliased RP2040_SVD.UInt32;
+      SNIFF_DATA                : aliased HAL.UInt32;
       --  Debug RAF, WAF, TDF levels
       FIFO_LEVELS               : aliased FIFO_LEVELS_Register;
       --  Abort an in-progress transfer sequence on one or more channels
@@ -3273,7 +3274,7 @@ package RP2040_SVD.DMA is
       CH0_DBG_CTDREQ            : aliased CH0_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH0_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH0_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3281,7 +3282,7 @@ package RP2040_SVD.DMA is
       CH1_DBG_CTDREQ            : aliased CH1_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH1_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH1_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3289,7 +3290,7 @@ package RP2040_SVD.DMA is
       CH2_DBG_CTDREQ            : aliased CH2_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH2_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH2_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3297,7 +3298,7 @@ package RP2040_SVD.DMA is
       CH3_DBG_CTDREQ            : aliased CH3_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH3_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH3_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3305,7 +3306,7 @@ package RP2040_SVD.DMA is
       CH4_DBG_CTDREQ            : aliased CH4_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH4_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH4_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3313,7 +3314,7 @@ package RP2040_SVD.DMA is
       CH5_DBG_CTDREQ            : aliased CH5_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH5_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH5_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3321,7 +3322,7 @@ package RP2040_SVD.DMA is
       CH6_DBG_CTDREQ            : aliased CH6_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH6_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH6_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3329,7 +3330,7 @@ package RP2040_SVD.DMA is
       CH7_DBG_CTDREQ            : aliased CH7_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH7_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH7_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3337,7 +3338,7 @@ package RP2040_SVD.DMA is
       CH8_DBG_CTDREQ            : aliased CH8_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH8_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH8_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3345,7 +3346,7 @@ package RP2040_SVD.DMA is
       CH9_DBG_CTDREQ            : aliased CH9_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH9_DBG_TCR               : aliased RP2040_SVD.UInt32;
+      CH9_DBG_TCR               : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3353,7 +3354,7 @@ package RP2040_SVD.DMA is
       CH10_DBG_CTDREQ           : aliased CH10_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH10_DBG_TCR              : aliased RP2040_SVD.UInt32;
+      CH10_DBG_TCR              : aliased HAL.UInt32;
       --  Read: get channel DREQ counter (i.e. how many accesses the DMA
       --  expects it can perform on the peripheral without overflow/underflow.
       --  Write any value: clears the counter, and cause channel to re-initiate
@@ -3361,7 +3362,7 @@ package RP2040_SVD.DMA is
       CH11_DBG_CTDREQ           : aliased CH11_DBG_CTDREQ_Register;
       --  Read to get channel TRANS_COUNT reload value, i.e. the length of the
       --  next transfer
-      CH11_DBG_TCR              : aliased RP2040_SVD.UInt32;
+      CH11_DBG_TCR              : aliased HAL.UInt32;
    end record
      with Volatile;
 

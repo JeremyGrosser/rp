@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.UART0 is
@@ -17,7 +18,7 @@ package RP2040_SVD.UART0 is
    -- Registers --
    ---------------
 
-   subtype UARTDR_DATA_Field is RP2040_SVD.UInt8;
+   subtype UARTDR_DATA_Field is HAL.UInt8;
 
    --  Data Register, UARTDR
    type UARTDR_Register is record
@@ -48,7 +49,7 @@ package RP2040_SVD.UART0 is
       --  it.
       OE             : Boolean := False;
       --  unspecified
-      Reserved_12_31 : RP2040_SVD.UInt20 := 16#0#;
+      Reserved_12_31 : HAL.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -97,7 +98,7 @@ package RP2040_SVD.UART0 is
       --  the FIFO.
       OE            : Boolean := False;
       --  unspecified
-      Reserved_4_31 : RP2040_SVD.UInt28 := 16#0#;
+      Reserved_4_31 : HAL.UInt28 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -160,7 +161,7 @@ package RP2040_SVD.UART0 is
       --  when nUARTRI is LOW.
       RI            : Boolean;
       --  unspecified
-      Reserved_9_31 : RP2040_SVD.UInt23;
+      Reserved_9_31 : HAL.UInt23;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -178,14 +179,14 @@ package RP2040_SVD.UART0 is
       Reserved_9_31 at 0 range 9 .. 31;
    end record;
 
-   subtype UARTILPR_ILPDVSR_Field is RP2040_SVD.UInt8;
+   subtype UARTILPR_ILPDVSR_Field is HAL.UInt8;
 
    --  IrDA Low-Power Counter Register, UARTILPR
    type UARTILPR_Register is record
       --  8-bit low-power divisor value. These bits are cleared to 0 at reset.
       ILPDVSR       : UARTILPR_ILPDVSR_Field := 16#0#;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -195,14 +196,14 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTIBRD_BAUD_DIVINT_Field is RP2040_SVD.UInt16;
+   subtype UARTIBRD_BAUD_DIVINT_Field is HAL.UInt16;
 
    --  Integer Baud Rate Register, UARTIBRD
    type UARTIBRD_Register is record
       --  The integer baud rate divisor. These bits are cleared to 0 on reset.
       BAUD_DIVINT    : UARTIBRD_BAUD_DIVINT_Field := 16#0#;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -212,7 +213,7 @@ package RP2040_SVD.UART0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype UARTFBRD_BAUD_DIVFRAC_Field is RP2040_SVD.UInt6;
+   subtype UARTFBRD_BAUD_DIVFRAC_Field is HAL.UInt6;
 
    --  Fractional Baud Rate Register, UARTFBRD
    type UARTFBRD_Register is record
@@ -220,7 +221,7 @@ package RP2040_SVD.UART0 is
       --  reset.
       BAUD_DIVFRAC  : UARTFBRD_BAUD_DIVFRAC_Field := 16#0#;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31 : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -230,7 +231,7 @@ package RP2040_SVD.UART0 is
       Reserved_6_31 at 0 range 6 .. 31;
    end record;
 
-   subtype UARTLCR_H_WLEN_Field is RP2040_SVD.UInt2;
+   subtype UARTLCR_H_WLEN_Field is HAL.UInt2;
 
    --  Line Control Register, UARTLCR_H
    type UARTLCR_H_Register is record
@@ -269,7 +270,7 @@ package RP2040_SVD.UART0 is
       --  parity checking and generation.
       SPS           : Boolean := False;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -296,7 +297,7 @@ package RP2040_SVD.UART0 is
       case As_Array is
          when False =>
             --  OUT as a value
-            Val : RP2040_SVD.UInt2;
+            Val : HAL.UInt2;
          when True =>
             --  OUT as an array
             Arr : UARTCR_OUT_Field_Array;
@@ -333,7 +334,7 @@ package RP2040_SVD.UART0 is
       --  transmission distances.
       SIRLP          : Boolean := False;
       --  unspecified
-      Reserved_3_6   : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_3_6   : HAL.UInt4 := 16#0#;
       --  Loopback enable. If this bit is set to 1 and the SIREN bit is set to
       --  1 and the SIRTEST bit in the Test Control Register, UARTTCR is set to
       --  1, then the nSIROUT path is inverted, and fed through to the SIRIN
@@ -381,7 +382,7 @@ package RP2040_SVD.UART0 is
       --  nUARTCTS signal is asserted.
       CTSEN          : Boolean := False;
       --  unspecified
-      Reserved_16_31 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -402,8 +403,8 @@ package RP2040_SVD.UART0 is
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
-   subtype UARTIFLS_TXIFLSEL_Field is RP2040_SVD.UInt3;
-   subtype UARTIFLS_RXIFLSEL_Field is RP2040_SVD.UInt3;
+   subtype UARTIFLS_TXIFLSEL_Field is HAL.UInt3;
+   subtype UARTIFLS_RXIFLSEL_Field is HAL.UInt3;
 
    --  Interrupt FIFO Level Select Register, UARTIFLS
    type UARTIFLS_Register is record
@@ -420,7 +421,7 @@ package RP2040_SVD.UART0 is
       --  = Receive FIFO becomes >= 7 / 8 full b101-b111 = reserved.
       RXIFLSEL      : UARTIFLS_RXIFLSEL_Field := 16#2#;
       --  unspecified
-      Reserved_6_31 : RP2040_SVD.UInt26 := 16#0#;
+      Reserved_6_31 : HAL.UInt26 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -478,7 +479,7 @@ package RP2040_SVD.UART0 is
       --  interrupt is set. A write of 0 clears the mask.
       OEIM           : Boolean := False;
       --  unspecified
-      Reserved_11_31 : RP2040_SVD.UInt21 := 16#0#;
+      Reserved_11_31 : HAL.UInt21 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -534,7 +535,7 @@ package RP2040_SVD.UART0 is
       --  state of the UARTOEINTR interrupt.
       OERIS          : Boolean;
       --  unspecified
-      Reserved_11_31 : RP2040_SVD.UInt21;
+      Reserved_11_31 : HAL.UInt21;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -590,7 +591,7 @@ package RP2040_SVD.UART0 is
       --  interrupt state of the UARTOEINTR interrupt.
       OEMIS          : Boolean;
       --  unspecified
-      Reserved_11_31 : RP2040_SVD.UInt21;
+      Reserved_11_31 : HAL.UInt21;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -657,7 +658,7 @@ package RP2040_SVD.UART0 is
       --  interrupt.
       OEIC           : Boolean := False;
       --  unspecified
-      Reserved_11_31 : RP2040_SVD.UInt21 := 16#0#;
+      Reserved_11_31 : HAL.UInt21 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -690,7 +691,7 @@ package RP2040_SVD.UART0 is
       --  error interrupt is asserted.
       DMAONERR      : Boolean := False;
       --  unspecified
-      Reserved_3_31 : RP2040_SVD.UInt29 := 16#0#;
+      Reserved_3_31 : HAL.UInt29 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -702,14 +703,14 @@ package RP2040_SVD.UART0 is
       Reserved_3_31 at 0 range 3 .. 31;
    end record;
 
-   subtype UARTPERIPHID0_PARTNUMBER0_Field is RP2040_SVD.UInt8;
+   subtype UARTPERIPHID0_PARTNUMBER0_Field is HAL.UInt8;
 
    --  UARTPeriphID0 Register
    type UARTPERIPHID0_Register is record
       --  Read-only. These bits read back as 0x11
       PARTNUMBER0   : UARTPERIPHID0_PARTNUMBER0_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -719,8 +720,8 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPERIPHID1_PARTNUMBER1_Field is RP2040_SVD.UInt4;
-   subtype UARTPERIPHID1_DESIGNER0_Field is RP2040_SVD.UInt4;
+   subtype UARTPERIPHID1_PARTNUMBER1_Field is HAL.UInt4;
+   subtype UARTPERIPHID1_DESIGNER0_Field is HAL.UInt4;
 
    --  UARTPeriphID1 Register
    type UARTPERIPHID1_Register is record
@@ -729,7 +730,7 @@ package RP2040_SVD.UART0 is
       --  Read-only. These bits read back as 0x1
       DESIGNER0     : UARTPERIPHID1_DESIGNER0_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -740,8 +741,8 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPERIPHID2_DESIGNER1_Field is RP2040_SVD.UInt4;
-   subtype UARTPERIPHID2_REVISION_Field is RP2040_SVD.UInt4;
+   subtype UARTPERIPHID2_DESIGNER1_Field is HAL.UInt4;
+   subtype UARTPERIPHID2_REVISION_Field is HAL.UInt4;
 
    --  UARTPeriphID2 Register
    type UARTPERIPHID2_Register is record
@@ -751,7 +752,7 @@ package RP2040_SVD.UART0 is
       --  r1p1 0x1 r1p3 0x2 r1p4 0x2 r1p5 0x3
       REVISION      : UARTPERIPHID2_REVISION_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -762,14 +763,14 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPERIPHID3_CONFIGURATION_Field is RP2040_SVD.UInt8;
+   subtype UARTPERIPHID3_CONFIGURATION_Field is HAL.UInt8;
 
    --  UARTPeriphID3 Register
    type UARTPERIPHID3_Register is record
       --  Read-only. These bits read back as 0x00
       CONFIGURATION : UARTPERIPHID3_CONFIGURATION_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -779,14 +780,14 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPCELLID0_UARTPCELLID0_Field is RP2040_SVD.UInt8;
+   subtype UARTPCELLID0_UARTPCELLID0_Field is HAL.UInt8;
 
    --  UARTPCellID0 Register
    type UARTPCELLID0_Register is record
       --  Read-only. These bits read back as 0x0D
       UARTPCELLID0  : UARTPCELLID0_UARTPCELLID0_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -796,14 +797,14 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPCELLID1_UARTPCELLID1_Field is RP2040_SVD.UInt8;
+   subtype UARTPCELLID1_UARTPCELLID1_Field is HAL.UInt8;
 
    --  UARTPCellID1 Register
    type UARTPCELLID1_Register is record
       --  Read-only. These bits read back as 0xF0
       UARTPCELLID1  : UARTPCELLID1_UARTPCELLID1_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -813,14 +814,14 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPCELLID2_UARTPCELLID2_Field is RP2040_SVD.UInt8;
+   subtype UARTPCELLID2_UARTPCELLID2_Field is HAL.UInt8;
 
    --  UARTPCellID2 Register
    type UARTPCELLID2_Register is record
       --  Read-only. These bits read back as 0x05
       UARTPCELLID2  : UARTPCELLID2_UARTPCELLID2_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -830,14 +831,14 @@ package RP2040_SVD.UART0 is
       Reserved_8_31 at 0 range 8 .. 31;
    end record;
 
-   subtype UARTPCELLID3_UARTPCELLID3_Field is RP2040_SVD.UInt8;
+   subtype UARTPCELLID3_UARTPCELLID3_Field is HAL.UInt8;
 
    --  UARTPCellID3 Register
    type UARTPCELLID3_Register is record
       --  Read-only. These bits read back as 0xB1
       UARTPCELLID3  : UARTPCELLID3_UARTPCELLID3_Field;
       --  unspecified
-      Reserved_8_31 : RP2040_SVD.UInt24;
+      Reserved_8_31 : HAL.UInt24;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

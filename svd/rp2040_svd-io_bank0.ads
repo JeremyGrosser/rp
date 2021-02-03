@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 package RP2040_SVD.IO_BANK0 is
@@ -20,37 +21,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO0_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -167,19 +168,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO0_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO0_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO0_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO0_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO0_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -200,37 +201,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO1_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -347,19 +348,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO1_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO1_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO1_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO1_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO1_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -380,37 +381,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO2_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -527,19 +528,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO2_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO2_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO2_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO2_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO2_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -560,37 +561,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO3_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -707,19 +708,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO3_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO3_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO3_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO3_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO3_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -740,37 +741,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO4_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -885,19 +886,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO4_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO4_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO4_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO4_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO4_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -918,37 +919,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO5_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1063,19 +1064,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO5_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO5_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO5_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO5_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO5_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1096,37 +1097,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO6_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1243,19 +1244,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO6_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO6_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO6_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO6_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO6_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1276,37 +1277,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO7_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1423,19 +1424,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO7_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO7_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO7_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO7_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO7_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1456,37 +1457,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO8_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1603,19 +1604,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO8_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO8_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO8_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO8_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO8_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1636,37 +1637,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO9_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1783,19 +1784,19 @@ package RP2040_SVD.IO_BANK0 is
       --  0-31 -> selects pin function according to the gpio table\n 31 == NULL
       FUNCSEL        : GPIO9_CTRL_FUNCSEL_Field := RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO9_CTRL_OUTOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO9_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO9_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO9_CTRL_IRQOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1816,37 +1817,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO10_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1964,21 +1965,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO10_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO10_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO10_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO10_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO10_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -1999,37 +2000,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO11_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2147,21 +2148,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO11_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO11_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO11_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO11_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO11_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2182,37 +2183,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO12_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2330,21 +2331,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO12_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO12_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO12_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO12_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO12_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2365,37 +2366,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO13_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2513,21 +2514,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO13_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO13_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO13_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO13_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO13_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2548,37 +2549,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO14_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2696,21 +2697,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO14_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO14_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO14_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO14_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO14_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2731,37 +2732,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO15_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2879,21 +2880,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO15_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO15_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO15_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO15_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO15_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -2914,37 +2915,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO16_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3062,21 +3063,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO16_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO16_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO16_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO16_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO16_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3097,37 +3098,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO17_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3243,21 +3244,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO17_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO17_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO17_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO17_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO17_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3278,37 +3279,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO18_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3424,21 +3425,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO18_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO18_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO18_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO18_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO18_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3459,37 +3460,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO19_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3605,21 +3606,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO19_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO19_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO19_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO19_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO19_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3640,37 +3641,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO20_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3788,21 +3789,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO20_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO20_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO20_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO20_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO20_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3823,37 +3824,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO21_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -3971,21 +3972,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO21_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO21_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO21_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO21_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO21_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4006,37 +4007,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO22_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4154,21 +4155,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO22_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO22_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO22_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO22_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO22_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4189,37 +4190,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO23_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4337,21 +4338,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO23_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO23_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO23_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO23_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO23_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4372,37 +4373,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO24_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4520,21 +4521,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO24_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO24_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO24_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO24_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO24_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4555,37 +4556,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO25_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4703,21 +4704,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO25_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO25_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO25_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO25_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO25_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4738,37 +4739,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO26_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4884,21 +4885,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO26_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO26_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO26_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO26_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO26_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -4919,37 +4920,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO27_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -5065,21 +5066,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO27_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO27_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO27_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO27_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO27_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -5100,37 +5101,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO28_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -5246,21 +5247,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO28_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO28_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO28_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO28_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO28_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -5281,37 +5282,37 @@ package RP2040_SVD.IO_BANK0 is
    --  GPIO status
    type GPIO29_STATUS_Register is record
       --  unspecified
-      Reserved_0_7   : RP2040_SVD.UInt8;
+      Reserved_0_7   : HAL.UInt8;
       --  Read-only. output signal from selected peripheral, before register
       --  override is applied
       OUTFROMPERI    : Boolean;
       --  Read-only. output signal to pad after register override is applied
       OUTTOPAD       : Boolean;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2;
+      Reserved_10_11 : HAL.UInt2;
       --  Read-only. output enable from selected peripheral, before register
       --  override is applied
       OEFROMPERI     : Boolean;
       --  Read-only. output enable to pad after register override is applied
       OETOPAD        : Boolean;
       --  unspecified
-      Reserved_14_16 : RP2040_SVD.UInt3;
+      Reserved_14_16 : HAL.UInt3;
       --  Read-only. input signal from pad, before override is applied
       INFROMPAD      : Boolean;
       --  unspecified
-      Reserved_18_18 : RP2040_SVD.Bit;
+      Reserved_18_18 : HAL.Bit;
       --  Read-only. input signal to peripheral, after override is applied
       INTOPERI       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only. interrupt from pad before override is applied
       IRQFROMPAD     : Boolean;
       --  unspecified
-      Reserved_25_25 : RP2040_SVD.Bit;
+      Reserved_25_25 : HAL.Bit;
       --  Read-only. interrupt to processors, after override is applied
       IRQTOPROC      : Boolean;
       --  unspecified
-      Reserved_27_31 : RP2040_SVD.UInt5;
+      Reserved_27_31 : HAL.UInt5;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -5427,21 +5428,21 @@ package RP2040_SVD.IO_BANK0 is
       FUNCSEL        : GPIO29_CTRL_FUNCSEL_Field :=
                         RP2040_SVD.IO_BANK0.null_k;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       OUTOVER        : GPIO29_CTRL_OUTOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_10_11 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
       OEOVER         : GPIO29_CTRL_OEOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_14_15 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_14_15 : HAL.UInt2 := 16#0#;
       INOVER         : GPIO29_CTRL_INOVER_Field := RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_18_27 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_18_27 : HAL.UInt10 := 16#0#;
       IRQOVER        : GPIO29_CTRL_IRQOVER_Field :=
                         RP2040_SVD.IO_BANK0.NORMAL;
       --  unspecified
-      Reserved_30_31 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_30_31 : HAL.UInt2 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -5885,7 +5886,7 @@ package RP2040_SVD.IO_BANK0 is
       --  in the field.
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -6164,7 +6165,7 @@ package RP2040_SVD.IO_BANK0 is
       GPIO29_EDGE_LOW   : Boolean := False;
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -6443,7 +6444,7 @@ package RP2040_SVD.IO_BANK0 is
       GPIO29_EDGE_LOW   : Boolean := False;
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -6842,7 +6843,7 @@ package RP2040_SVD.IO_BANK0 is
       --  Read-only.
       GPIO29_EDGE_HIGH  : Boolean;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8;
+      Reserved_24_31    : HAL.UInt8;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -7121,7 +7122,7 @@ package RP2040_SVD.IO_BANK0 is
       GPIO29_EDGE_LOW   : Boolean := False;
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -7400,7 +7401,7 @@ package RP2040_SVD.IO_BANK0 is
       GPIO29_EDGE_LOW   : Boolean := False;
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -7799,7 +7800,7 @@ package RP2040_SVD.IO_BANK0 is
       --  Read-only.
       GPIO29_EDGE_HIGH  : Boolean;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8;
+      Reserved_24_31    : HAL.UInt8;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -8078,7 +8079,7 @@ package RP2040_SVD.IO_BANK0 is
       GPIO29_EDGE_LOW   : Boolean := False;
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -8357,7 +8358,7 @@ package RP2040_SVD.IO_BANK0 is
       GPIO29_EDGE_LOW   : Boolean := False;
       GPIO29_EDGE_HIGH  : Boolean := False;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31    : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -8756,7 +8757,7 @@ package RP2040_SVD.IO_BANK0 is
       --  Read-only.
       GPIO29_EDGE_HIGH  : Boolean;
       --  unspecified
-      Reserved_24_31    : RP2040_SVD.UInt8;
+      Reserved_24_31    : HAL.UInt8;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

@@ -8,6 +8,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
+with HAL;
 with System;
 
 --  Register block for busfabric control signals and performance counters
@@ -23,19 +24,19 @@ package RP2040_SVD.BUSCTRL is
       --  0 - low priority, 1 - high priority
       PROC0          : Boolean := False;
       --  unspecified
-      Reserved_1_3   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_1_3   : HAL.UInt3 := 16#0#;
       --  0 - low priority, 1 - high priority
       PROC1          : Boolean := False;
       --  unspecified
-      Reserved_5_7   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
       --  0 - low priority, 1 - high priority
       DMA_R          : Boolean := False;
       --  unspecified
-      Reserved_9_11  : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_9_11  : HAL.UInt3 := 16#0#;
       --  0 - low priority, 1 - high priority
       DMA_W          : Boolean := False;
       --  unspecified
-      Reserved_13_31 : RP2040_SVD.UInt19 := 16#0#;
+      Reserved_13_31 : HAL.UInt19 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -59,7 +60,7 @@ package RP2040_SVD.BUSCTRL is
       --  will happen almost immediately.
       BUS_PRIORITY_ACK : Boolean;
       --  unspecified
-      Reserved_1_31    : RP2040_SVD.UInt31;
+      Reserved_1_31    : HAL.UInt31;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -69,7 +70,7 @@ package RP2040_SVD.BUSCTRL is
       Reserved_1_31    at 0 range 1 .. 31;
    end record;
 
-   subtype PERFCTR0_PERFCTR0_Field is RP2040_SVD.UInt24;
+   subtype PERFCTR0_PERFCTR0_Field is HAL.UInt24;
 
    --  Bus fabric performance counter 0
    type PERFCTR0_Register is record
@@ -79,7 +80,7 @@ package RP2040_SVD.BUSCTRL is
       --  Select an event to count using PERFSEL0
       PERFCTR0       : PERFCTR0_PERFCTR0_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -89,14 +90,14 @@ package RP2040_SVD.BUSCTRL is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype PERFSEL0_PERFSEL0_Field is RP2040_SVD.UInt5;
+   subtype PERFSEL0_PERFSEL0_Field is HAL.UInt5;
 
    --  Bus fabric performance event select for PERFCTR0
    type PERFSEL0_Register is record
       --  Select a performance event for PERFCTR0
       PERFSEL0      : PERFSEL0_PERFSEL0_Field := 16#1F#;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -106,7 +107,7 @@ package RP2040_SVD.BUSCTRL is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype PERFCTR1_PERFCTR1_Field is RP2040_SVD.UInt24;
+   subtype PERFCTR1_PERFCTR1_Field is HAL.UInt24;
 
    --  Bus fabric performance counter 1
    type PERFCTR1_Register is record
@@ -116,7 +117,7 @@ package RP2040_SVD.BUSCTRL is
       --  Select an event to count using PERFSEL1
       PERFCTR1       : PERFCTR1_PERFCTR1_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -126,14 +127,14 @@ package RP2040_SVD.BUSCTRL is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype PERFSEL1_PERFSEL1_Field is RP2040_SVD.UInt5;
+   subtype PERFSEL1_PERFSEL1_Field is HAL.UInt5;
 
    --  Bus fabric performance event select for PERFCTR1
    type PERFSEL1_Register is record
       --  Select a performance event for PERFCTR1
       PERFSEL1      : PERFSEL1_PERFSEL1_Field := 16#1F#;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -143,7 +144,7 @@ package RP2040_SVD.BUSCTRL is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype PERFCTR2_PERFCTR2_Field is RP2040_SVD.UInt24;
+   subtype PERFCTR2_PERFCTR2_Field is HAL.UInt24;
 
    --  Bus fabric performance counter 2
    type PERFCTR2_Register is record
@@ -153,7 +154,7 @@ package RP2040_SVD.BUSCTRL is
       --  Select an event to count using PERFSEL2
       PERFCTR2       : PERFCTR2_PERFCTR2_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -163,14 +164,14 @@ package RP2040_SVD.BUSCTRL is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype PERFSEL2_PERFSEL2_Field is RP2040_SVD.UInt5;
+   subtype PERFSEL2_PERFSEL2_Field is HAL.UInt5;
 
    --  Bus fabric performance event select for PERFCTR2
    type PERFSEL2_Register is record
       --  Select a performance event for PERFCTR2
       PERFSEL2      : PERFSEL2_PERFSEL2_Field := 16#1F#;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -180,7 +181,7 @@ package RP2040_SVD.BUSCTRL is
       Reserved_5_31 at 0 range 5 .. 31;
    end record;
 
-   subtype PERFCTR3_PERFCTR3_Field is RP2040_SVD.UInt24;
+   subtype PERFCTR3_PERFCTR3_Field is HAL.UInt24;
 
    --  Bus fabric performance counter 3
    type PERFCTR3_Register is record
@@ -190,7 +191,7 @@ package RP2040_SVD.BUSCTRL is
       --  Select an event to count using PERFSEL3
       PERFCTR3       : PERFCTR3_PERFCTR3_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -200,14 +201,14 @@ package RP2040_SVD.BUSCTRL is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype PERFSEL3_PERFSEL3_Field is RP2040_SVD.UInt5;
+   subtype PERFSEL3_PERFSEL3_Field is HAL.UInt5;
 
    --  Bus fabric performance event select for PERFCTR3
    type PERFSEL3_Register is record
       --  Select a performance event for PERFCTR3
       PERFSEL3      : PERFSEL3_PERFSEL3_Field := 16#1F#;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;

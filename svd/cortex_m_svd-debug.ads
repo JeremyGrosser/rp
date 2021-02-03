@@ -4,7 +4,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
-with RP2040_SVD;
+with HAL;
 with System;
 
 package Cortex_M_SVD.Debug is
@@ -28,7 +28,7 @@ package Cortex_M_SVD.Debug is
       --  An asynchronous exception generated due to the assertion of EDBGRQ.
       EXTERNAL      : Boolean := False;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -56,11 +56,11 @@ package Cortex_M_SVD.Debug is
       --  Read-only.
       C_MASKINTS     : Boolean;
       --  unspecified
-      Reserved_4_4   : RP2040_SVD.Bit;
+      Reserved_4_4   : HAL.Bit;
       --  Read-only.
       C_SNAPSTALL    : Boolean;
       --  unspecified
-      Reserved_6_15  : RP2040_SVD.UInt10;
+      Reserved_6_15  : HAL.UInt10;
       --  Read-only.
       S_REGRDY       : Boolean;
       --  Read-only.
@@ -70,13 +70,13 @@ package Cortex_M_SVD.Debug is
       --  Read-only.
       S_LOCKUP       : Boolean;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4;
+      Reserved_20_23 : HAL.UInt4;
       --  Read-only.
       S_RETIRE_ST    : Boolean;
       --  Read-only.
       S_RESET_ST     : Boolean;
       --  unspecified
-      Reserved_26_31 : RP2040_SVD.UInt6;
+      Reserved_26_31 : HAL.UInt6;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -99,7 +99,7 @@ package Cortex_M_SVD.Debug is
       Reserved_26_31 at 0 range 26 .. 31;
    end record;
 
-   subtype Write_DHCSR_S_RESET_ST_Field is RP2040_SVD.UInt16;
+   subtype Write_DHCSR_S_RESET_ST_Field is HAL.UInt16;
 
    type Write_DHCSR_Register is record
       --  Write-only.
@@ -111,11 +111,11 @@ package Cortex_M_SVD.Debug is
       --  Write-only.
       C_MASKINTS    : Boolean := False;
       --  unspecified
-      Reserved_4_4  : RP2040_SVD.Bit := 16#0#;
+      Reserved_4_4  : HAL.Bit := 16#0#;
       --  Write-only.
       C_SNAPSTALL   : Boolean := False;
       --  unspecified
-      Reserved_6_15 : RP2040_SVD.UInt10 := 16#0#;
+      Reserved_6_15 : HAL.UInt10 := 16#0#;
       --  Write-only. Debug Key. The value 0xA05F must be written to enable
       --  write accesses to bits [15:0], otherwise the write access will be
       --  ignored. Read behavior of bits [31:16] is as listed below.
@@ -218,11 +218,11 @@ package Cortex_M_SVD.Debug is
       --  Write-only.
       HALTED         : DCRSR_HALTED_Field := Cortex_M_SVD.Debug.Register_0;
       --  unspecified
-      Reserved_5_15  : RP2040_SVD.UInt11 := 16#0#;
+      Reserved_5_15  : HAL.UInt11 := 16#0#;
       --  Write-only.
       REGWnR         : DCRSR_REGWnR_Field := Cortex_M_SVD.Debug.Read;
       --  unspecified
-      Reserved_17_31 : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31 : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -238,7 +238,7 @@ package Cortex_M_SVD.Debug is
    type DEMCR_Register is record
       VC_CORERESET   : Boolean := False;
       --  unspecified
-      Reserved_1_3   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_1_3   : HAL.UInt3 := 16#0#;
       VC_MMERR       : Boolean := False;
       VC_NOCPERR     : Boolean := False;
       VC_CHKERR      : Boolean := False;
@@ -247,16 +247,16 @@ package Cortex_M_SVD.Debug is
       VC_INTERR      : Boolean := False;
       VC_HARDERR     : Boolean := False;
       --  unspecified
-      Reserved_11_15 : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_11_15 : HAL.UInt5 := 16#0#;
       MON_EN         : Boolean := False;
       MON_PEND       : Boolean := False;
       MON_STEP       : Boolean := False;
       MON_REQ        : Boolean := False;
       --  unspecified
-      Reserved_20_23 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_20_23 : HAL.UInt4 := 16#0#;
       TRCENA         : Boolean := False;
       --  unspecified
-      Reserved_25_31 : RP2040_SVD.UInt7 := 16#0#;
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -297,7 +297,7 @@ package Cortex_M_SVD.Debug is
       --  This register is only accessible from Debug state.
       DCRSR : aliased DCRSR_Register;
       --  Debug Core Register Data Register
-      DCRDR : aliased RP2040_SVD.UInt32;
+      DCRDR : aliased HAL.UInt32;
       --  Debug Exception and Monitor Control Register
       DEMCR : aliased DEMCR_Register;
    end record

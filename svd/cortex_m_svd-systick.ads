@@ -4,7 +4,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
-with RP2040_SVD;
+with HAL;
 with System;
 
 --  24Bit System Tick Timer for use in RTOS
@@ -58,11 +58,11 @@ package Cortex_M_SVD.SysTick is
       CLKSOURCE      : CSR_CLKSOURCE_Field :=
                         Cortex_M_SVD.SysTick.External_Clk;
       --  unspecified
-      Reserved_3_15  : RP2040_SVD.UInt13 := 16#0#;
+      Reserved_3_15  : HAL.UInt13 := 16#0#;
       --  SysTick counted to zero
       COUNTFLAG      : Boolean := False;
       --  unspecified
-      Reserved_17_31 : RP2040_SVD.UInt15 := 16#0#;
+      Reserved_17_31 : HAL.UInt15 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -76,14 +76,14 @@ package Cortex_M_SVD.SysTick is
       Reserved_17_31 at 0 range 17 .. 31;
    end record;
 
-   subtype SYST_RVR_RELOAD_Field is RP2040_SVD.UInt24;
+   subtype SYST_RVR_RELOAD_Field is HAL.UInt24;
 
    --  SysTick Reload Value Register
    type SYST_RVR_Register is record
       --  Value to auto reload SysTick after reaching zero
       RELOAD         : SYST_RVR_RELOAD_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -93,14 +93,14 @@ package Cortex_M_SVD.SysTick is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype SYST_CVR_CURRENT_Field is RP2040_SVD.UInt24;
+   subtype SYST_CVR_CURRENT_Field is HAL.UInt24;
 
    --  SysTick Current Value Register
    type SYST_CVR_Register is record
       --  Current value
       CURRENT        : SYST_CVR_CURRENT_Field := 16#0#;
       --  unspecified
-      Reserved_24_31 : RP2040_SVD.UInt8 := 16#0#;
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -110,7 +110,7 @@ package Cortex_M_SVD.SysTick is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
-   subtype SYST_CALIB_TENMS_Field is RP2040_SVD.UInt24;
+   subtype SYST_CALIB_TENMS_Field is HAL.UInt24;
 
    --  Clock Skew
    type CALIB_SKEW_Field is
@@ -139,7 +139,7 @@ package Cortex_M_SVD.SysTick is
       --  Read-only. Reload value to use for 10ms timing
       TENMS          : SYST_CALIB_TENMS_Field;
       --  unspecified
-      Reserved_24_29 : RP2040_SVD.UInt6;
+      Reserved_24_29 : HAL.UInt6;
       --  Read-only. Clock Skew
       SKEW           : CALIB_SKEW_Field;
       --  Read-only. No Ref

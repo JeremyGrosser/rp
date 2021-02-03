@@ -4,7 +4,7 @@ pragma Style_Checks (Off);
 
 pragma Restrictions (No_Elaboration_Code);
 
-with RP2040_SVD;
+with HAL;
 with System;
 
 package Cortex_M_SVD.SCB is
@@ -36,7 +36,7 @@ package Cortex_M_SVD.SCB is
    for CPUID_PartNo_Field use
      (Cortex_M7 => 3111);
 
-   subtype CPUID_Constant_Field is RP2040_SVD.UInt4;
+   subtype CPUID_Constant_Field is HAL.UInt4;
 
    --  Variant number, the r value in the rnpn product revision identifier.
    type CPUID_Variant_Field is
@@ -83,8 +83,8 @@ package Cortex_M_SVD.SCB is
       Implementer at 0 range 24 .. 31;
    end record;
 
-   subtype ICSR_VECTACTIVE_Field is RP2040_SVD.UInt6;
-   subtype ICSR_VECTPENDING_Field is RP2040_SVD.UInt6;
+   subtype ICSR_VECTACTIVE_Field is HAL.UInt6;
+   subtype ICSR_VECTPENDING_Field is HAL.UInt6;
 
    --  Interrupt Control and State Register
    type ICSR_Register is record
@@ -94,16 +94,16 @@ package Cortex_M_SVD.SCB is
       --  Priority Registers.
       VECTACTIVE     : ICSR_VECTACTIVE_Field := 16#0#;
       --  unspecified
-      Reserved_6_11  : RP2040_SVD.UInt6 := 16#0#;
+      Reserved_6_11  : HAL.UInt6 := 16#0#;
       --  Read-only. Indicates the exception number of the highest priority
       --  pending enabled exception.
       VECTPENDING    : ICSR_VECTPENDING_Field := 16#0#;
       --  unspecified
-      Reserved_18_21 : RP2040_SVD.UInt4 := 16#0#;
+      Reserved_18_21 : HAL.UInt4 := 16#0#;
       --  Interrupt pending flag, excluding NMI and Faults
       ISRPENDING     : Boolean := False;
       --  unspecified
-      Reserved_23_24 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_23_24 : HAL.UInt2 := 16#0#;
       --  Write-only. SysTick exception clear-pending bit.
       PENDSTCLR      : Boolean := False;
       --  SysTick exception set-pending bit.
@@ -113,7 +113,7 @@ package Cortex_M_SVD.SCB is
       --  PendSV set-pending bit.
       PENDSVSET      : Boolean := False;
       --  unspecified
-      Reserved_29_30 : RP2040_SVD.UInt2 := 16#0#;
+      Reserved_29_30 : HAL.UInt2 := 16#0#;
       --  NMI set-pending bit.
       NMIPENDSET     : Boolean := False;
    end record
@@ -161,7 +161,7 @@ package Cortex_M_SVD.SCB is
    --  Application Interrupt and Reset Control Register
    type AIRCR_Register is record
       --  unspecified
-      Reserved_0_0  : RP2040_SVD.Bit := 16#0#;
+      Reserved_0_0  : HAL.Bit := 16#0#;
       --  Write-only. Reserved for debug use. This bit reads as 0. When writing
       --  to the register youmust write 0 to this bit, otherwise behavior is
       --  Unpredictable.
@@ -170,7 +170,7 @@ package Cortex_M_SVD.SCB is
       --  defined.
       SYSRESETREQ   : Boolean := False;
       --  unspecified
-      Reserved_3_14 : RP2040_SVD.UInt12 := 16#0#;
+      Reserved_3_14 : HAL.UInt12 := 16#0#;
       --  Read-only. Data endianness bit setting is implementation defined.
       ENDIANNESS    : AIRCR_ENDIANNESS_Field :=
                        Cortex_M_SVD.SCB.Little_Endian;
@@ -193,7 +193,7 @@ package Cortex_M_SVD.SCB is
    --  System Control Register
    type SCR_Register is record
       --  unspecified
-      Reserved_0_0  : RP2040_SVD.Bit := 16#0#;
+      Reserved_0_0  : HAL.Bit := 16#0#;
       --  Indicates sleep-on-exit when returning from Handler mode to Thread
       --  mode
       SLEEPONEXIT   : Boolean := False;
@@ -201,11 +201,11 @@ package Cortex_M_SVD.SCB is
       --  low-power mode
       SLEEPDEEP     : Boolean := False;
       --  unspecified
-      Reserved_3_3  : RP2040_SVD.Bit := 16#0#;
+      Reserved_3_3  : HAL.Bit := 16#0#;
       --  Send event on pending bit
       SEVONPEND     : Boolean := False;
       --  unspecified
-      Reserved_5_31 : RP2040_SVD.UInt27 := 16#0#;
+      Reserved_5_31 : HAL.UInt27 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -222,16 +222,16 @@ package Cortex_M_SVD.SCB is
    --  Configuration and Control Register
    type CCR_Register is record
       --  unspecified
-      Reserved_0_2   : RP2040_SVD.UInt3 := 16#0#;
+      Reserved_0_2   : HAL.UInt3 := 16#0#;
       --  Enables unalign access traps.
       UNALIGNED_TRP  : Boolean := False;
       --  unspecified
-      Reserved_4_8   : RP2040_SVD.UInt5 := 16#0#;
+      Reserved_4_8   : HAL.UInt5 := 16#0#;
       --  Read-only. Always reads-as-one. It indicates stack alignment on
       --  exception entry is 8-byte aligned.
       STKALIGN       : Boolean := True;
       --  unspecified
-      Reserved_10_31 : RP2040_SVD.UInt22 := 16#0#;
+      Reserved_10_31 : HAL.UInt22 := 16#0#;
    end record
      with Volatile_Full_Access, Object_Size => 32,
           Bit_Order => System.Low_Order_First;
@@ -244,12 +244,12 @@ package Cortex_M_SVD.SCB is
       Reserved_10_31 at 0 range 10 .. 31;
    end record;
 
-   subtype SHPR2_PRI_11_Field is RP2040_SVD.UInt8;
+   subtype SHPR2_PRI_11_Field is HAL.UInt8;
 
    --  System Handler Priority Register 2
    type SHPR2_Register is record
       --  unspecified
-      Reserved_0_23 : RP2040_SVD.UInt24 := 16#0#;
+      Reserved_0_23 : HAL.UInt24 := 16#0#;
       --  Priority of the system handler, SVCall
       PRI_11        : SHPR2_PRI_11_Field := 16#0#;
    end record
@@ -261,13 +261,13 @@ package Cortex_M_SVD.SCB is
       PRI_11        at 0 range 24 .. 31;
    end record;
 
-   subtype SHPR3_PRI_14_Field is RP2040_SVD.UInt8;
-   subtype SHPR3_PRI_15_Field is RP2040_SVD.UInt8;
+   subtype SHPR3_PRI_14_Field is HAL.UInt8;
+   subtype SHPR3_PRI_15_Field is HAL.UInt8;
 
    --  System Handler Priority Register 3
    type SHPR3_Register is record
       --  unspecified
-      Reserved_0_15 : RP2040_SVD.UInt16 := 16#0#;
+      Reserved_0_15 : HAL.UInt16 := 16#0#;
       --  Priority of the system handler, PendSV
       PRI_14        : SHPR3_PRI_14_Field := 16#0#;
       --  Priority of the system handler, SysTick
