@@ -8,9 +8,6 @@ project RP is
    for Languages use ("Ada", "ASM_CPP"); -- ASM_CPP to compile the startup code
    for Source_Dirs use
        ("Ada_Drivers_Library/hal/src",
-        "Ada_Drivers_Library/middleware/src/bitmap",
-        "Ada_Drivers_Library/components/src/screen/pcd8544",
-        "tiny_text/src",
         "svd",
         "src");
    for Object_Dir use "obj";
